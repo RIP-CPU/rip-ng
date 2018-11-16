@@ -1,3 +1,19 @@
+## Documentation
+
+- https://nodejs.org/en/download/
+- https://code.visualstudio.com/download
+- https://github.com/akveo/ngx-admin
+  - cd rip
+  - npm install
+  - npm install @angular/cli -g
+  - ng version
+  - ng serve
+  - http://localhost:4200
+- https://akveo.github.io/nebular/docs/auth/introduction
+  - https://akveo.github.io/nebular/docs/auth/introduction
+  - npm i @nebular/auth
+  - https://console.developers.google.com/apis/credentials
+
 ### What's included:
 
 - Angular 6+ & Typescript
@@ -27,22 +43,6 @@ And many more!
 ### Demo
 
 <a target="_blank" href="http://akveo.com/ngx-admin/">Live Demo</a>
-
-## Documentation
-
-- https://nodejs.org/en/download/
-- https://code.visualstudio.com/download
-- https://github.com/akveo/ngx-admin
-  - cd ngx-admin
-  - npm install
-  - npm install @angular/cli -g
-  - ng version
-  - ng serve
-  - http://localhost:4200
-- https://akveo.github.io/nebular/docs/auth/introduction
-  - https://akveo.github.io/nebular/docs/auth/introduction
-  - npm i @nebular/auth
-  - https://console.developers.google.com/apis/credentials
 
 ### From Akveo
 Made with :heart: by [Akveo team](http://akveo.com/). Follow us on [Twitter](https://twitter.com/akveo_inc) to get the latest news first!
