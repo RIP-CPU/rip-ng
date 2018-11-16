@@ -1,0 +1,5 @@
+<nb-tabset>
+  <nb-tab *ngFor="let tab of tabs" tabTitle="{{tab.title}}" >
+    <p *ngIf="tab.isView">{{tab.description}}</p>
+  </nb-tab>
+</nb-tabset>

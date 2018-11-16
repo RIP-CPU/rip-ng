@@ -1,0 +1,32 @@
+<h1 id="title" class="title">Login</h1>
+<p class="sub-title">Hello! Log in with your username.</p>
+
+<form [formGroup]="form" (ngSubmit)="login()" aria-labelledby="title">
+
+  <div class="form-control-group">
+    <label class="label">Username :</label>
+    <input [formControlName]="'username'"
+           name="username"
+           id="inputUsername"
+           placeholder="Username"
+           class="form-control"
+           autofocus>
+  </div>
+
+  <div class="form-control-group">
+    <label class="label">Password:</label>
+    <input [formControlName]="'password'"
+           class="form-control"
+           name="password"
+           type="password"
+           id="inputPassword"
+           placeholder="Password">
+  </div>
+
+  <button
+          fullWidth
+          status="success"
+          class="btn btn-primary">
+    Log In
+  </button>
+</form>

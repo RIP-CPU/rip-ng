@@ -1,0 +1,129 @@
+<div class="row">
+  <div class="col-md-12">
+    <nb-card>
+      <nb-card-header>
+        Latihan [Day-2]
+      </nb-card-header>
+      <nb-card-body>
+        <form [formGroup]="form">
+          <div class="form-group row">
+            <label for="inputID" class="col-sm-3 col-form-label">ID</label>
+            <div class="col-sm-9">
+              <input [formControlName]="'id'" type="text" class="form-control" id="inputID" placeholder="ID">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="inputName" class="col-sm-3 col-form-label">Name</label>
+            <div class="col-sm-9">
+              <input [formControlName]="'name'" type="text" class="form-control" id="inputName" placeholder="Name">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="inputAge" class="col-sm-3 col-form-label">Age</label>
+            <div class="col-sm-9">
+              <input [formControlName]="'age'" type="text" class="form-control" id="inputAge" placeholder="Age">
+            </div>
+          </div>
+          <ngx-gender
+          (data)="isChecked($event)"
+          ></ngx-gender>
+          <div class="form-group row">
+            <div class="offset-sm-3 col-sm-9">
+              <button type="submit" class="btn btn-primary" (click)="submit()">Submit</button>
+            </div>
+          </div>
+        </form>
+      </nb-card-body>
+    </nb-card>
+  </div>
+</div>
+<!-- <div class="row">
+  <div class="col-md-12">
+    <nb-card>
+      <nb-card-header>
+        Latihan [Day-2]
+      </nb-card-header>
+      <nb-card-body>
+          <div class="form-group row">
+            <label for="inputID" class="col-sm-3 col-form-label">ID</label>
+            <div class="col-sm-9">
+              <input [(ngModel)]="id" type="text" class="form-control" id="inputID" placeholder="ID">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="inputName" class="col-sm-3 col-form-label">Name</label>
+            <div class="col-sm-9">
+              <input [(ngModel)]="name" type="text" class="form-control" id="inputName" placeholder="Name">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="inputAge" class="col-sm-3 col-form-label">Age</label>
+            <div class="col-sm-9">
+              <input [(ngModel)]="age" type="text" class="form-control" id="inputAge" placeholder="Age">
+            </div>
+          </div>
+          <div class="form-group row">
+            <div class="offset-sm-3 col-sm-9">
+              <button type="submit" class="btn btn-primary" (click)="submit()">Submit</button>
+            </div>
+          </div>
+      </nb-card-body>
+    </nb-card>
+  </div>
+</div> -->
+<!-- 
+<div class="row">
+  <div class="col-md-12">
+    <nb-card>
+      <nb-card-header>
+        Result
+      </nb-card-header>
+      <nb-card-body>
+          <div class="form-group row">
+            <label for="inputID" class="col-sm-3 col-form-label">ID</label>
+            <div class="col-sm-9">
+              {{id}}
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="inputName" class="col-sm-3 col-form-label">Name</label>
+            <div class="col-sm-9">
+              {{name}}
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="inputAge" class="col-sm-3 col-form-label">Age</label>
+            <div class="col-sm-9">
+              {{age}}
+            </div>
+          </div>
+      </nb-card-body>
+    </nb-card>
+  </div>
+</div> -->
+
+<div class="row">
+  <div class="col-md-12">
+    <nb-card>
+      <nb-card-header>
+        For & Conditional
+      </nb-card-header>
+      <nb-card-body>
+        <ngx-day-two-a [tabs]="dataTabs"></ngx-day-two-a>
+      </nb-card-body>
+    </nb-card>
+  </div>
+</div>
+
+<!-- <div class="row">
+  <div class="col-md-12">
+    <nb-card>
+      <nb-card-header>
+        For & Conditional
+      </nb-card-header>
+      <nb-card-body>
+        <ngx-day-two-b></ngx-day-two-b>
+      </nb-card-body>
+    </nb-card>
+  </div>
+</div> -->
