@@ -5,7 +5,7 @@ import { HttpHeaders, HttpParams } from "@angular/common/http";
 
 export abstract class HttpAbstractService implements HttpFactoryService {
   
-  public abstract HTTP_REQUEST(api:HttpBaseModel, body?: any, headers?: HttpHeaders, params?: HttpParams):Observable<any>
+  public abstract HTTP_REQUEST(api:HttpBaseModel, body?: any, headers?: HttpHeaders, params?: HttpParams, pathVariable?: string[]):Observable<any>
   public abstract HTTP_GET(url: string, headers?: HttpHeaders): Observable<any>;
   public abstract HTTP_POST(url: string, body: any, headers?: HttpHeaders): Observable<any>;
   public abstract HTTP_PUT(url: string, body: any, headers?: HttpHeaders): Observable<any>;

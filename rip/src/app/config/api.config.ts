@@ -1,11 +1,12 @@
 import { APIModel } from "../@common/models/api.model";
+import { HttpMethod } from "../@common/models/http-base.model";
 
 export const API: APIModel = {
     auth: {
         token: {
             protocol: "https",
             host: "118.97.82.222",
-            method: "POST",
+            method: HttpMethod.POST,
             path: "/telkomsigma-security/oauth/token"
         }
     },
@@ -13,6 +14,7 @@ export const API: APIModel = {
         test: {
             protocol: "http",
             host: "localhost",
+            method: HttpMethod.POST,
             path: ""
         }
     },
@@ -21,20 +23,21 @@ export const API: APIModel = {
             protocol: "http",
             host: "localhost",
             path: "/assets/json/data.json",
+            method: HttpMethod.GET,
             port: 69
         },
         post: {
             protocol: "http",
             host: "10.10.123.132",
             path: "/http-post",
-            method: "POST",
+            method: HttpMethod.POST,
             port: 8080
         },
         upload: {
             protocol: "http",
             host: "10.10.123.132",
             path: "/upload",
-            method: "POST",
+            method: HttpMethod.POST,
             port: 8080
         }
     }

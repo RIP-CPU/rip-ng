@@ -3,5 +3,12 @@ export interface HttpBaseModel {
     host: string;
     port?: number | null;
     path?: string;
-    method?: string | 'GET';
+    method?: HttpMethod;
+}
+
+export enum HttpMethod {
+    POST = "POST",
+    GET = "GET",
+    PUT = "PUT",
+    DELETE = "DELETE"
 }
