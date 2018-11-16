@@ -1,5 +1,5 @@
 import { Component } from "@angular/core";
-import { AuthTokenService } from "../services/auth-token.service";
+import { AuthTokenService } from "../../services/auth-token.service";
 
 @Component({
     selector: "logout-component",
