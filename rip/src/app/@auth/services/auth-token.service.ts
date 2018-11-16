@@ -19,7 +19,7 @@ export class AuthTokenService {
         HTTP_REQUEST(API["auth"]["token"], this.getAuthBody(username,password).toString(), this.getAuthHeader()).
         subscribe((response:Response)=>{
             localStorage.setItem("access_token",response["access_token"]);
-            this.router.navigate(["/"]);
+            this.router.navigate(["/dashboard"]);
         })
     }
 
