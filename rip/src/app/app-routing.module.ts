@@ -8,10 +8,10 @@ import {
   NbRequestPasswordComponent,
   NbResetPasswordComponent,
 } from '@nebular/auth';
-import { AuthGuardService } from './test/latihan/service/auth-guard.service';
-import { Day4LoginComponent } from './test/latihan/day4/login.component';
-import { AuthGuardLoginService } from './test/latihan/service/auth-guard-login.service';
-import { Day4LogoutComponent } from './test/latihan/day4/logout.component';
+import { AuthGuardService } from './@auth/services/auth-guard.service';
+import { LoginComponent } from './@auth/component/login.component';
+import { UnauthorizeGuardService } from './@auth/services/unauth-guard.service';
+import { LogoutComponent } from './@auth/component/logout.component';
 
 const routes: Routes = [
   {  
@@ -25,12 +25,13 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        component: Day4LoginComponent,
-        canActivate: [AuthGuardLoginService]
+        component: LoginComponent,
+        canActivate: [UnauthorizeGuardService]
       },
       {
         path: 'login',
-        component: NbLoginComponent,
+        component: LoginComponent,
+        canActivate: [UnauthorizeGuardService]
       },
       {
         path: 'register',
@@ -38,7 +39,8 @@ const routes: Routes = [
       },
       {
         path: 'logout',
-        component: Day4LogoutComponent,
+        component: LogoutComponent,
+        canActivate: [AuthGuardService],
       },
       {
         path: 'request-password',

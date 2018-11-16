@@ -1,7 +1,6 @@
 import { Component } from "@angular/core";
 import { FormGroup, FormControl } from "@angular/forms";
-import { RequestTokenModel } from "./request-token.model";
-import { AuthTokenService } from "../service/auth-token.service";
+import { AuthTokenService } from "../services/auth-token.service";
 import { Router } from "@angular/router";
 
 @Component({
@@ -9,7 +8,7 @@ import { Router } from "@angular/router";
     styleUrls: ["login.component.scss"],
     templateUrl: "login.component.html"
 })
-export class Day4LoginComponent {
+export class LoginComponent {
 
 
     form: FormGroup = new FormGroup({

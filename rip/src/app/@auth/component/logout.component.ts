@@ -1,12 +1,11 @@
-
 import { Component } from "@angular/core";
-import { AuthTokenService } from "../service/auth-token.service";
+import { AuthTokenService } from "../services/auth-token.service";
 
 @Component({
     selector: "logout-component",
     template: ""
 })
-export class Day4LogoutComponent {
+export class LogoutComponent {
 
     constructor(private authTokenService:AuthTokenService){
         this.authTokenService.logout();

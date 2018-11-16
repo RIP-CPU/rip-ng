@@ -15,17 +15,17 @@ import { AppRoutingModule } from './app-routing.module';
 import { ThemeModule } from './@theme/theme.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { TestComponent } from './test/sample/test.component';
-import { HttpInterceptorService } from './test/latihan/service/http-interceptor.service';
-import { AuthGuardService } from './test/latihan/service/auth-guard.service';
-import { Day4LoginComponent } from './test/latihan/day4/login.component';
-import { AuthTokenService } from './test/latihan/service/auth-token.service';
-import { AuthGuardLoginService } from './test/latihan/service/auth-guard-login.service';
-import { Day4LogoutComponent } from './test/latihan/day4/logout.component';
+import { HttpInterceptorService } from './@common/services/http-interceptor.service';
+import { AuthGuardService } from './@auth/services/auth-guard.service';
+import { LoginComponent } from './@auth/component/login.component';
+import { AuthTokenService } from './@auth/services/auth-token.service';
+import { UnauthorizeGuardService } from './@auth/services/unauth-guard.service';
+import { LogoutComponent } from './@auth/component/logout.component';
 import { HttpCommonService } from './@common/services/http-common.service';
 import { HTTP_SERVICE } from './app.provider';
 
 @NgModule({
-  declarations: [AppComponent, TestComponent, Day4LoginComponent, Day4LogoutComponent],
+  declarations: [AppComponent, TestComponent, LoginComponent, LogoutComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -42,7 +42,7 @@ import { HTTP_SERVICE } from './app.provider';
     { provide: HTTP_SERVICE, useClass: HttpCommonService}, 
     { provide: LocationStrategy, useClass: PathLocationStrategy },
     { provide: HTTP_INTERCEPTORS, useClass: HttpInterceptorService, multi: true},
-    AuthGuardService, AuthGuardLoginService, AuthTokenService
+    AuthGuardService, UnauthorizeGuardService, AuthTokenService
   ],
 })
 export class AppModule {
