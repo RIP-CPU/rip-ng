@@ -3,17 +3,18 @@ import { NgModule } from '@angular/core';
 import { AuthGuardService } from './@auth/services/auth-guard.service';
 
 const routes: Routes = [
-  {  
-    path: 'test', 
-    loadChildren: 'app/test/pages.module#PagesModule',
-    canActivate: [AuthGuardService],
-  },
   {
     path: 'auth',
     loadChildren: 'app/@auth/auth.module#AuthModule'
   },
+  {
+    path: 'app',
+    /* loadChildren: 'app/@pages/pages.module#PagesModule', */
+    loadChildren: 'app/test/test.module#TestModule',
+    canActivate: [AuthGuardService],
+  },
   { path: '', redirectTo: 'auth', pathMatch: 'full' },
-  { path: '**', redirectTo: 'test/miscellaneous/404' },
+  { path: '**', redirectTo: 'app/miscellaneous/404' },
 ];
 
 const config: ExtraOptions = {

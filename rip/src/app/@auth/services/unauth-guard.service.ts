@@ -8,7 +8,7 @@ export class UnauthorizeGuardService implements CanActivate {
 
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot){
         if(this.authTokenService.isLogin()){
-            this.router.navigate(['/dashboard'])
+            this.router.navigate(['/app/dashboard'])
             return false;
         }
         return true;
