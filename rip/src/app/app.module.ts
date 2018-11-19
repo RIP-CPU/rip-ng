@@ -20,6 +20,7 @@ import { AuthTokenService } from './@auth/services/auth-token.service';
 import { UnauthorizeGuardService } from './@auth/services/unauth-guard.service';
 import { HttpCommonService } from './@common/services/http-common.service';
 import { HTTP_SERVICE } from './app.provider';
+import { AuthGuardChildService } from './@auth/services/auth-guard-child.service';
 
 @NgModule({
   declarations: [AppComponent],
@@ -39,7 +40,7 @@ import { HTTP_SERVICE } from './app.provider';
     { provide: HTTP_SERVICE, useClass: HttpCommonService}, 
     { provide: LocationStrategy, useClass: PathLocationStrategy },
     { provide: HTTP_INTERCEPTORS, useClass: HttpInterceptorService, multi: true},
-    AuthGuardService, UnauthorizeGuardService, AuthTokenService
+    AuthGuardService, AuthGuardChildService, UnauthorizeGuardService, AuthTokenService
   ],
 })
 export class AppModule {
