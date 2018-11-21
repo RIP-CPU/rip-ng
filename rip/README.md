@@ -2,13 +2,13 @@
 
 - https://nodejs.org/en/download/
 - https://code.visualstudio.com/download
-- https://github.com/akveo/ngx-admin
+- https://github.com/RIP-CPU/rip-ng
   - cd rip
   - npm install
   - npm install @angular/cli -g
   - ng version
   - ng serve
-  - http://localhost:4200
+  - http://localhost:69
 - https://akveo.github.io/nebular/docs/auth/introduction
   - https://akveo.github.io/nebular/docs/auth/introduction
   - npm i @nebular/auth
