@@ -15,6 +15,18 @@ import { FormLayoutsComponent } from './form-layouts/form-layouts.component';
 import { NotificationsComponent } from './notifications/notifications.component';
 import { TreeComponent } from './tree/tree.component';
 import { TestDashboardComponent } from './dashboard/test-dashboard.component';
+import { AccordionComponent } from './accordion/accordion.component';
+import { AlertComponent } from './alert/alert.component';
+import { CalendarComponent } from './calendar/calendar.component';
+import { CalendarKitFullCalendarShowcaseComponent } from './calendar-kit/calendar-kit.component';
+import { ChatComponent } from './chat/chat.component';
+import { DatepickerComponent } from './datepicker/datepicker.component';
+import { NebularFormInputsComponent } from './form-inputs/nebular-form-inputs.component';
+import { InfiniteListComponent } from './infinite-list/infinite-list.component';
+import { ListComponent } from './list/list.component';
+import { ProgressBarComponent } from './progress-bar/progress-bar.component';
+import { SpinnerComponent } from './spinner/spinner.component';
+import { StepperComponent } from './stepper/stepper.component';
 
 const routes: Routes = [{
   path: '',
@@ -23,8 +35,35 @@ const routes: Routes = [{
     path: '',
     component: TestDashboardComponent,
   }, {
+    path: 'accordion',
+    component: AccordionComponent,
+  }, {
+    path: 'alert',
+    component: AlertComponent,
+  }, {
     path: 'buttons',
     component: ButtonsComponent,
+  }, {
+    path: 'calendar',
+    component: CalendarComponent,
+  }, {
+    path: 'calendar-kit',
+    component: CalendarKitFullCalendarShowcaseComponent,
+  }, {
+    path: 'chat',
+    component: ChatComponent,
+  }, {
+    path: 'datepicker',
+    component: DatepickerComponent,
+  }, {
+    path: 'select',
+    component: NebularFormInputsComponent,
+  }, {
+    path: 'inputs',
+    component: FormInputsComponent,
+  }, {
+    path: 'layouts',
+    component: FormLayoutsComponent
   }, {
     path: 'grid',
     component: GridComponent,
@@ -32,17 +71,32 @@ const routes: Routes = [{
     path: 'icons',
     component: IconsComponent,
   }, {
+    path: 'infinite-list',
+    component: InfiniteListComponent,
+  }, {
+    path: 'list',
+    component: ListComponent,
+  }, {
     path: 'modals',
     component: ModalsComponent,
+  }, {
+    path: 'notifications',
+    component: NotificationsComponent,
   }, {
     path: 'popovers',
     component: PopoversComponent,
   }, {
-    path: 'typography',
-    component: TypographyComponent,
+    path: 'progress-bar',
+    component: ProgressBarComponent,
   }, {
     path: 'search-fields',
     component: SearchComponent,
+  }, {
+    path: 'spinner',
+    component: SpinnerComponent,
+  }, {
+    path: 'stepper',
+    component: StepperComponent,
   }, {
     path: 'tabs',
     component: TabsComponent,
@@ -61,14 +115,8 @@ const routes: Routes = [{
     path: 'tree',
     component: TreeComponent,
   }, {
-    path: 'notifications',
-    component: NotificationsComponent,
-  }, {
-    path: 'inputs',
-    component: FormInputsComponent,
-  }, {
-    path: 'layouts',
-    component: FormLayoutsComponent
+    path: 'typography',
+    component: TypographyComponent,
   }],
 }];
 

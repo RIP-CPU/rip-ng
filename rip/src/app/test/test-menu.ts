@@ -21,8 +21,44 @@ export const MENU_ITEMS: NbMenuItem[] = [
         link: '/app/features',
       },
       {
+        title: 'Accordion',
+        link: '/app/features/accordion',
+      },
+      {
+        title: 'Alert',
+        link: '/app/features/alert',
+      },
+      {
         title: 'Buttons',
         link: '/app/features/buttons',
+      },
+      {
+        title: 'Calendar',
+        link: '/app/features/calendar',
+      },
+      {
+        title: 'Calendar Kit',
+        link: '/app/features/calendar-kit',
+      },
+      {
+        title: 'Chat',
+        link: '/app/features/chat',
+      },
+      {
+        title: 'Datepicker',
+        link: '/app/features/datepicker',
+      },
+      {
+        title: 'Select',
+        link: '/app/features/select',
+      },
+      {
+        title: 'Form Inputs',
+        link: '/app/features/inputs',
+      },
+      {
+        title: 'Form Layouts',
+        link: '/app/features/layouts',
       },
       {
         title: 'Grid',
@@ -33,20 +69,40 @@ export const MENU_ITEMS: NbMenuItem[] = [
         link: '/app/features/icons',
       },
       {
+        title: 'Infinite List',
+        link: '/app/features/infinite-list',
+      },
+      {
+        title: 'List',
+        link: '/app/features/list',
+      },
+      {
         title: 'Modals',
         link: '/app/features/modals',
+      },
+      {
+        title: 'Notifications',
+        link: '/app/features/notifications',
       },
       {
         title: 'Popovers',
         link: '/app/features/popovers',
       },
       {
-        title: 'Typography',
-        link: '/app/features/typography',
+        title: 'Progress Bar',
+        link: '/app/features/progress-bar',
       },
       {
         title: 'Animated Searches',
         link: '/app/features/search-fields',
+      },
+      {
+        title: 'Spinner',
+        link: '/app/features/spinner',
+      },
+      {
+        title: 'Stepper',
+        link: '/app/features/stepper',
       },
       {
         title: 'Tabs',
@@ -55,18 +111,11 @@ export const MENU_ITEMS: NbMenuItem[] = [
       {
         title: 'Tree',
         link: '/app/features/tree',
-      }, {
-        title: 'Notifications',
-        link: '/app/features/notifications',
       },
       {
-        title: 'Form Inputs',
-        link: '/app/features/inputs',
-      },
-      {
-        title: 'Form Layouts',
-        link: '/app/features/layouts',
-      },
+        title: 'Typography',
+        link: '/app/features/typography',
+      }
     ],
   },
   {

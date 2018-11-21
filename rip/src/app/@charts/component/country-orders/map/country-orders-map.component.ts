@@ -2,10 +2,10 @@ import { Component, EventEmitter, Input, OnDestroy, Output } from '@angular/core
 
 import * as L from 'leaflet';
 
-import { CountryOrdersMapService } from '../../../services/country-orders-map.service';
 import { NbThemeService } from '@nebular/theme';
 import { combineLatest } from 'rxjs';
 import { takeWhile } from 'rxjs/operators';
+import { CountryOrdersMapService } from '../../../services/country-orders-map.service';
 
 
 @Component({
