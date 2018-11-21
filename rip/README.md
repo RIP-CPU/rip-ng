@@ -9,10 +9,7 @@
   - ng version
   - ng serve
   - http://localhost:69
-- https://akveo.github.io/nebular/docs/auth/introduction
-  - https://akveo.github.io/nebular/docs/auth/introduction
-  - npm i @nebular/auth
-  - https://console.developers.google.com/apis/credentials
+- https://akveo.github.io/nebular/docs/getting-started/what-is-nebular
 
 ### What's included:
 
@@ -42,8 +39,7 @@ And many more!
 
 ### Demo
 
-<a target="_blank" href="http://akveo.com/ngx-admin/">Live Demo</a>
+<a target="_blank" href="http://akveo.com/ngx-admin/">Reference Live Demo (ngx-admin)</a>
 
 ### From Akveo
-Made with :heart: by [Akveo team](http://akveo.com/). Follow us on [Twitter](https://twitter.com/akveo_inc) to get the latest news first!
-We're always happy to receive your feedback!
+Reference framework angular with :heart: by [Akveo team](http://akveo.com/).
