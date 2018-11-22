@@ -23,7 +23,12 @@ const routes: Routes = [{
   children: [{
     path: 'dashboard',
     loadChildren: 'app/@dashboard/dashboard.module#DashboardModule',
-  }, {
+  },
+  {
+    path: 'dicom',
+    loadChildren: 'app/test/dicom/dicom-viewer.module#TestDicomViewerModule',
+  }, 
+  {
     path: 'charts',
     component: ChartsComponent,
     children:[
@@ -76,6 +81,9 @@ const routes: Routes = [{
       path: 'smart-table',
       component: SmartTableComponent,
     }],
+  }, {
+    path: 'modals',
+    loadChildren: 'app/test/modal-overlays/modal-overlays.module#ModalOverlaysModule',
   }, {
     path: '',
     redirectTo: 'dashboard',

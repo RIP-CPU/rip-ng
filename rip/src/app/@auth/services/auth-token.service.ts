@@ -14,6 +14,7 @@ export class AuthTokenService {
     constructor(@Inject(HTTP_SERVICE)private httpBaseService:HttpFactoryService, private router: Router){}
 
     public login(username: string, password: string){
+        this.clearStorage();
         this.httpBaseService.
         HTTP_REQUEST(API["auth"]["token"], this.getAuthBody(username,password).toString(), this.getAuthHeader()).
         subscribe((response:Response)=>{
@@ -43,9 +44,15 @@ export class AuthTokenService {
 
     public isLogin():boolean{
         var key = this.getHmacSha256(SEC_RES["secret"], this.getKeyDate("access_token"));  
-        if(localStorage.getItem(key))
+        if(localStorage.getItem(key)){
             return true;
+        }
+        this.clearStorage();
         return false;
+    }
+
+    public clearStorage(){
+        localStorage.clear();
     }
 
     private getAuthHeader(): HttpHeaders{

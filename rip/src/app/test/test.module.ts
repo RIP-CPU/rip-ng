@@ -14,7 +14,6 @@ import { EditorsModule } from '../@editors/editors.module';
 import { TestEditorsComponent } from './editors/test-editors.component';
 import { TablesModule } from '../@tables/tables.module';
 import { TestTablesComponent } from './tables/test-tables.component';
-
 @NgModule({
   imports: [
     ThemeModule,
@@ -22,7 +21,7 @@ import { TestTablesComponent } from './tables/test-tables.component';
     ChartSharedModule,
     MapsModule,
     EditorsModule,
-    TablesModule
+    TablesModule,
   ],
   declarations: [
     TestComponent,

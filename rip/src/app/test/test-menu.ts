@@ -12,6 +12,16 @@ export const MENU_ITEMS: NbMenuItem[] = [
     group: true,
   },
   {
+    title: 'Module Dicom',
+    icon: 'nb-star',
+    children: [
+      {
+        title: 'Dicom Viewer',
+        link: '/app/dicom',
+      },
+    ],
+  },
+  {
     title: 'Module Features',
     icon: 'nb-keypad',
     link: '/app/features',
@@ -179,6 +189,32 @@ export const MENU_ITEMS: NbMenuItem[] = [
       {
         title: 'Smart Table',
         link: '/app/tables/smart-table',
+      },
+    ],
+  },
+  {
+    title: 'Module Modals',
+    icon: 'nb-gear',
+    children: [
+      {
+        title: 'Dialog',
+        link: '/app/modals/dialog',
+      },
+      {
+        title: 'Window',
+        link: '/app/modals/window',
+      },
+      {
+        title: 'Popover',
+        link: '/app/modals/popover',
+      },
+      {
+        title: 'Tooltip',
+        link: '/app/modals/tooltip',
+      },
+      {
+        title: 'Toastr',
+        link: '/app/modals/toastr',
       },
     ],
   },

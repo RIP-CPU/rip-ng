@@ -6,7 +6,8 @@
     "baseUrl": "./",
     "types": [
 		"node",
-		"googlemaps"
+		"googlemaps",
+		"jquery"
 	],
     "paths": {
       "@angular/*": [
