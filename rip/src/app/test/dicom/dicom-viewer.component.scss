@@ -1,4 +1,18 @@
-#dwv {
+@import '../../@theme/styles/themes';
+
+@include nb-install-component() {
+  nb-select {
+    display: block;
+    width: 15rem;
+  }
+
+  .select-group {
+    nb-select {
+      margin-right: 0.75rem;
+      margin-bottom: 1rem;
+    }
+  }
+  #dwv {
     font-family: Arial, Helvetica, sans-serif;
     height: 90%; }
   
@@ -74,4 +88,4 @@
   
   /* help */
   .ui-icon { zoom: 125%; }
-  
+}

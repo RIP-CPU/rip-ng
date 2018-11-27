@@ -12,13 +12,17 @@ export const MENU_ITEMS: NbMenuItem[] = [
     group: true,
   },
   {
-    title: 'Module Dicom',
+    title: 'Module Dicom Viewer',
     icon: 'nb-star',
     children: [
       {
-        title: 'Dicom Viewer',
-        link: '/app/dicom',
+        title: 'Upload Dicom',
+        link: '/app/dicom/pacs',
       },
+      {
+        title: 'PACS Image',
+        link: '/app/dicom/upload',
+      }
     ],
   },
   {

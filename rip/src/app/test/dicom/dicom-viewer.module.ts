@@ -16,6 +16,16 @@ import { ThemeModule } from '../../@theme/theme.module';
 const routes: Routes = [{
   path: '',
   component: TestDicomViewerComponent,
+  children: [
+    {
+      path: 'upload',
+      component: TestDicomViewerComponent,
+    },
+    {
+      path: 'pacs',
+      component: TestDicomViewerComponent,
+    }
+  ]
 }];
 
 @NgModule({

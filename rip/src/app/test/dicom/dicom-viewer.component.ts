@@ -106,11 +106,40 @@ dwv.gui.plot = function (div, data, options)
 @Component({
   selector: 'test-dicom-viewer',
   templateUrl: './dicom-viewer.component.html',
-  styleUrls: ['./dicom-viewer.component.css']
+  styleUrls: ['./dicom-viewer.component.scss']
 })
 export class TestDicomViewerComponent implements OnInit {
   public versions: any;
-  public tools = ["Scroll", "WindowLevel", "ZoomAndPan", "Draw", "Livewire", "Filter", "Floodfill"];
+  public tools = 
+    [
+      {
+        key: "Scroll",
+        value: "Scroll"
+      },
+      {
+        key: "WindowLevel",
+        value: "Window Level"
+      },
+      {
+        key: "ZoomAndPan",
+        value: "Zoom And Pan"
+      },
+      {
+        key: "Draw",
+        value: "Draw"
+      },
+      {
+        key: "Livewire",
+        value: "Livewire"
+      },
+      {
+        key: "Filter",
+        value: "Filter"
+      },{
+        key: "Flood Fill",
+        value: "Flood Fill"
+      }
+    ];
   public selectedTool = 'Select Tool';
   public loadProgress = 0;
   public dataLoaded = false;
@@ -125,13 +154,15 @@ export class TestDicomViewerComponent implements OnInit {
   }
 
   ngOnInit() {
+    var tools = [];
+    this.tools.forEach(tool => { tools.push(tool.key); });
     // create app
     this.dwvApp = new dwv.App();
     // initialise app
     this.dwvApp.init({
       'containerDivId': 'dwv',
       "loaders": ["File", "Url"],
-      'tools': this.tools,
+      'tools': tools,
       "shapes": ["Arrow", "Ruler", "Protractor", "Rectangle", "Roi", "Ellipse", "FreeHand"],
       "isMobile": true,
       "helpResourcesPath": "resources/help"
