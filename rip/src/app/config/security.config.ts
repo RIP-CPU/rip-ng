@@ -4,5 +4,6 @@ export const SEC_RES: SecurityResourceModel = {
     client_id: "rip-core",
     client_secret: "secretrip01",
     grant_type: "password",
-    private_key: "UHVsYW5nQjNuNHI="
+    private_key: "UHU3NG42QjNuNHI=",
+    aes_key: "UHVsYW5nQjNuNHI="
 }

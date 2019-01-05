@@ -21,6 +21,8 @@ import { UnauthorizeGuardService } from './@auth/services/unauth-guard.service';
 import { HttpCommonService } from './@common/services/http-common.service';
 import { HTTP_SERVICE } from './app.provider';
 import { AuthGuardChildService } from './@auth/services/auth-guard-child.service';
+import { EncryptionService } from './@auth/services/encryption.service';
+import { AuthStorageService } from './@auth/services/auth-storage.service';
 
 @NgModule({
   declarations: [AppComponent],
@@ -40,7 +42,8 @@ import { AuthGuardChildService } from './@auth/services/auth-guard-child.service
     { provide: HTTP_SERVICE, useClass: HttpCommonService}, 
     { provide: LocationStrategy, useClass: PathLocationStrategy },
     { provide: HTTP_INTERCEPTORS, useClass: HttpInterceptorService, multi: true},
-    AuthGuardService, AuthGuardChildService, UnauthorizeGuardService, AuthTokenService
+    AuthGuardService, AuthGuardChildService, UnauthorizeGuardService, AuthTokenService,
+    EncryptionService, AuthStorageService
   ],
 })
 export class AppModule {
