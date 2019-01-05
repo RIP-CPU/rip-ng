@@ -1,8 +1,8 @@
 import { SecurityResourceModel } from "../@common/models/security-resource.model";
 
 export const SEC_RES: SecurityResourceModel = { 
-    client_id: "web-core",
-    client_secret: "sigma123",
+    client_id: "rip-core",
+    client_secret: "secretrip01",
     grant_type: "password",
-    secret: "r1PuL4n6b3N412"
+    private_key: "UHVsYW5nQjNuNHI="
 }

@@ -1,4 +1,4 @@
-import { Injectable, Inject, LOCALE_ID } from "@angular/core";
+import { Injectable, Inject } from "@angular/core";
 import { HttpHeaders } from "@angular/common/http";
 import { Router } from "@angular/router";
 import { API } from "../../config/api.config";
@@ -18,33 +18,50 @@ export class AuthTokenService {
         this.httpBaseService.
         HTTP_REQUEST(API["auth"]["token"], this.getAuthBody(username,password).toString(), this.getAuthHeader()).
         subscribe((response:Response)=>{
-            var key = this.getHmacSha256(SEC_RES["secret"], this.getKeyDate("access_token"));
-            console.log(key);
-            localStorage.setItem(key, response["access_token"]);
+            let accessTokenKey = this.getHmacSha256(SEC_RES["private_key"], this.getKeyDate("access_token"), true);
+            let refreshTokenKey = this.getHmacSha256(SEC_RES["private_key"], this.getKeyDate("refresh_token"), true);
+            let publicKey = this.getHmacSha256(SEC_RES["private_key"], this.getKeyDate("xrkey"), true);
+            let expiresInKey = this.getHmacSha256(SEC_RES["private_key"], this.getKeyDate("expires_in"), true);
+            let authorityKey = this.getHmacSha256(SEC_RES["private_key"], this.getKeyDate("authority"), true);
+            let emailKey = this.getHmacSha256(SEC_RES["private_key"], this.getKeyDate("email"), true);
+            let menusKey = this.getHmacSha256(SEC_RES["private_key"], this.getKeyDate("menus"), true);
+            let serverDateKey = this.getHmacSha256(SEC_RES["private_key"], this.getKeyDate("server_date"), true);
+            let localeKey = this.getHmacSha256(SEC_RES["private_key"], this.getKeyDate("menus"), true);
+            let fullnameKey = this.getHmacSha256(SEC_RES["private_key"], this.getKeyDate("name"), true);
+            sessionStorage.setItem(accessTokenKey, response["access_token"]);
+            sessionStorage.setItem(refreshTokenKey, response["refresh_token"]);
+            sessionStorage.setItem(publicKey, response["xrkey"]);
+            sessionStorage.setItem(expiresInKey, response["expires_in"]);
+            sessionStorage.setItem(authorityKey, response["authority"]);
+            sessionStorage.setItem(emailKey, response["email"]);
+            sessionStorage.setItem(menusKey, response["menus"]);
+            sessionStorage.setItem(serverDateKey, response["server_date"]);
+            localStorage.setItem(localeKey, response["locale"]);
+            localStorage.setItem(fullnameKey, response["name"]);
             this.router.navigate(["/app/dashboard"]);
         })
     }
 
     public getKeyDate(key:string): string {
-        return key + formatDate(new Date(), "dd/MM/yyyy", "en-US");
+        return (key + formatDate(new Date(), "dd/MM/yyyy", "en-US"));
     }
 
-    public getHmacSha256(secret:string, message:string, enc?:string): string {
-        var hash = CryptoJS.HmacSHA256(message, secret); 
-        if(enc == "Hex")
-            return CryptoJS.enc.Hex.stringify(hash);
-        return CryptoJS.enc.Base64.stringify(hash);
+    public getHmacSha256(secret:string, message:string, hex?:boolean): string {
+        let hash = CryptoJS.HmacSHA256(message, secret); 
+        if(hex)
+            return CryptoJS.enc.Hex.stringify(hash).toUpperCase();
+        return CryptoJS.enc.Base64.stringify(hash).toUpperCase();
     }
 
     public logout(){
-        var key = this.getHmacSha256(SEC_RES["secret"], this.getKeyDate("access_token"));
-        localStorage.removeItem(key);
+        let accessTokenKey = this.getHmacSha256(SEC_RES["private_key"], this.getKeyDate("access_token"), true);
+        sessionStorage.removeItem(accessTokenKey);
         this.router.navigate(["/auth"]);
     }
 
     public isLogin():boolean{
-        var key = this.getHmacSha256(SEC_RES["secret"], this.getKeyDate("access_token"));  
-        if(localStorage.getItem(key)){
+        let accessTokenKey = this.getHmacSha256(SEC_RES["private_key"], this.getKeyDate("access_token"), true);  
+        if(sessionStorage.getItem(accessTokenKey)){
             return true;
         }
         this.clearStorage();
@@ -52,7 +69,7 @@ export class AuthTokenService {
     }
 
     public clearStorage(){
-        localStorage.clear();
+        sessionStorage.clear();
     }
 
     private getAuthHeader(): HttpHeaders{
@@ -66,7 +83,6 @@ export class AuthTokenService {
     private getAuthBody(username:string, password:string): URLSearchParams{
         const body = new URLSearchParams();
         body.append("client_id", SEC_RES["client_id"]);
-        body.append("client_secret", SEC_RES["client_secret"]);
         body.append("grant_type", SEC_RES["grant_type"]);
         body.append("username", username);
         body.append("password", password);
