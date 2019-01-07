@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 
-import { MENU_ITEMS } from '../models/pages-menu';
+import { NbMenuItem } from '@nebular/theme';
+import { AuthStorageService } from '../../@auth/services/auth-storage.service';
 
 @Component({
   selector: 'base-pages',
@@ -14,5 +15,10 @@ import { MENU_ITEMS } from '../models/pages-menu';
 })
 export class PagesComponent {
 
-  menu = MENU_ITEMS;
+  public menu: NbMenuItem;
+
+  constructor(private storage:AuthStorageService){
+    this.menu = JSON.parse(this.storage.getSessionStorage("menus"));
+  }
+
 }

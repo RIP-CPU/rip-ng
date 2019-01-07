@@ -49,8 +49,8 @@ export class AuthStorageService {
     }
 
     public logout():void {
-        let accessTokenKey = this.enc.getHmacSha256(SEC_RES["private_key"], "access_token", true);
-        sessionStorage.removeItem(accessTokenKey);
+        sessionStorage.clear();
+        localStorage.removeItem(this.enc.getHmacSha256(SEC_RES["private_key"], "name", true));
     }
 
     public isLogin():boolean {

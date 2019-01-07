@@ -4,4 +4,6 @@ export interface SecurityResourceModel {
     grant_type: string;
     private_key?: string;
     aes_key?: string;
+    session_idle?: number;
+    session_timeout?: number;
 }

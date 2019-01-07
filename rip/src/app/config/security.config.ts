@@ -5,5 +5,7 @@ export const SEC_RES: SecurityResourceModel = {
     client_secret: "secretrip01",
     grant_type: "password",
     private_key: "UHU3NG42QjNuNHI=",
-    aes_key: "UHVsYW5nQjNuNHI="
+    aes_key: "UHVsYW5nQjNuNHI=",
+    session_idle: 5,
+    session_timeout: 10
 }
