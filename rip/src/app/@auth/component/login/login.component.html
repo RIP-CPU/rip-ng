@@ -6,21 +6,33 @@
   <div class="form-control-group">
     <label class="label">Username :</label>
     <input [formControlName]="'username'"
-           name="username"
-           id="inputUsername"
-           placeholder="Username"
-           class="form-control"
-           autofocus>
+          [required]="true"
+          name="username"
+          id="inputUsername"
+          placeholder="Username"
+          class="form-control"
+          autofocus>
+    <ng-container *ngIf="username">
+      <p class="error-message">
+        Email is required!
+      </p>
+    </ng-container>
   </div>
 
   <div class="form-control-group">
     <label class="label">Password:</label>
     <input [formControlName]="'password'"
-           class="form-control"
-           name="password"
-           type="password"
-           id="inputPassword"
-           placeholder="Password">
+          [required]="true"
+          class="form-control"
+          name="password"
+          type="password"
+          id="inputPassword"
+          placeholder="Password">
+      <ng-container *ngIf="password">
+        <p class="error-message">
+          Password is required!
+        </p>
+      </ng-container>
   </div>
 
   <button [disabled]="buttonLogin"
