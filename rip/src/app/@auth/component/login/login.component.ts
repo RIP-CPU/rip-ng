@@ -17,14 +17,14 @@ export class LoginComponent {
     public username:string;
     public password:string;
 
-    form: FormGroup = new FormGroup({
+    public form: FormGroup = new FormGroup({
       username: new FormControl(),
       password: new FormControl(),
     })
 
-    constructor(private router: Router, private authTokenService:AuthTokenService){}
+    constructor(private router: Router, private authTokenService: AuthTokenService){}
 
-    login(){
+    public login() {
       this.username = this.form.get('username').value;
       this.password = this.form.get('password').value;
       if(this.username && this.password){
@@ -65,7 +65,6 @@ export class LoginComponent {
               $('.pace').addClass('pace-inactive');
               this.progressBar = 0;
               this.buttonLogin = false;
-              console.log(error);
           });
           if(this.progressBar >= 35 && this.progressBar<65){
               this.progressBar = 65;

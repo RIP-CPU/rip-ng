@@ -12,29 +12,29 @@ export class AuthStorageService {
     }
 
     public loginStorage(response:any):void {
-        let accessTokenKey = this.enc.getHmacSha256(SEC_RES["private_key"], "access_token", true);
-        let accessTokenValue = this.enc.encryptAES(SEC_RES["aes_key"], response["access_token"]);
+        const accessTokenKey = this.enc.getHmacSha256(SEC_RES['private_key'], 'access_token', true);
+        const accessTokenValue = this.enc.encryptAES(SEC_RES['aes_key'], response['access_token']);
 
-        let refreshTokenKey = this.enc.getHmacSha256(SEC_RES["private_key"], "refresh_token", true);
-        let refreshTokenValue = this.enc.encryptAES(SEC_RES["aes_key"], response["refresh_token"]);
+        const refreshTokenKey = this.enc.getHmacSha256(SEC_RES['private_key'], 'refresh_token', true);
+        const refreshTokenValue = this.enc.encryptAES(SEC_RES['aes_key'], response['refresh_token']);
 
-        let publicKey = this.enc.getHmacSha256(SEC_RES["private_key"], "xrkey", true);
-        let publicValue = this.enc.encryptAES(SEC_RES["aes_key"], response["xrkey"]);
+        const publicKey = this.enc.getHmacSha256(SEC_RES['private_key'], 'xrkey', true);
+        const publicValue = this.enc.encryptAES(SEC_RES['aes_key'], response['xrkey']);
 
-        let expiresInKey = this.enc.getHmacSha256(SEC_RES["private_key"], "expires_in", true);
-        let expiresInValue = this.enc.encryptAES(SEC_RES["aes_key"], JSON.stringify(response["expires_in"]));
+        const expiresInKey = this.enc.getHmacSha256(SEC_RES['private_key'], 'expires_in', true);
+        const expiresInValue = this.enc.encryptAES(SEC_RES['aes_key'], JSON.stringify(response['expires_in']));
 
-        let authorityKey = this.enc.getHmacSha256(SEC_RES["private_key"], "authority", true);
-        let authorityValue = this.enc.encryptAES(SEC_RES["aes_key"], JSON.stringify(response["authority"]));
+        const authorityKey = this.enc.getHmacSha256(SEC_RES['private_key'], 'authority', true);
+        const authorityValue = this.enc.encryptAES(SEC_RES['aes_key'], JSON.stringify(response['authority']));
 
-        let emailKey = this.enc.getHmacSha256(SEC_RES["private_key"], "email", true);
-        let emailValue = this.enc.encryptAES(SEC_RES["aes_key"], response["email"]);
+        const emailKey = this.enc.getHmacSha256(SEC_RES['private_key'], 'email', true);
+        const emailValue = this.enc.encryptAES(SEC_RES['aes_key'], response['email']);
 
-        let menusKey = this.enc.getHmacSha256(SEC_RES["private_key"], "menus", true);
-        let menusValue = this.enc.encryptAES(SEC_RES["aes_key"], JSON.stringify(response["menus"]));
+        const menusKey = this.enc.getHmacSha256(SEC_RES['private_key'], 'menus', true);
+        const menusValue = this.enc.encryptAES(SEC_RES['aes_key'], JSON.stringify(response['menus']));
 
-        let serverDateKey = this.enc.getHmacSha256(SEC_RES["private_key"], "server_date", true);
-        let serverDateValue = this.enc.encryptAES(SEC_RES["aes_key"], response["server_date"]);
+        const serverDateKey = this.enc.getHmacSha256(SEC_RES['private_key'], 'server_date', true);
+        const serverDateValue = this.enc.encryptAES(SEC_RES['aes_key'], response['server_date']);
         
         sessionStorage.setItem(accessTokenKey, accessTokenValue);
         sessionStorage.setItem(refreshTokenKey, refreshTokenValue);
@@ -44,17 +44,17 @@ export class AuthStorageService {
         sessionStorage.setItem(emailKey, emailValue);
         sessionStorage.setItem(menusKey, menusValue);
         sessionStorage.setItem(serverDateKey, serverDateValue);
-        localStorage.setItem("locale", response["locale"]);
-        localStorage.setItem("name", response["name"]);
+        localStorage.setItem('locale', response['locale']);
+        localStorage.setItem('name', response['name']);
     }
 
     public logout():void {
         sessionStorage.clear();
-        localStorage.removeItem(this.enc.getHmacSha256(SEC_RES["private_key"], "name", true));
+        localStorage.removeItem(this.enc.getHmacSha256(SEC_RES['private_key'], 'name', true));
     }
 
     public isLogin():boolean {
-        let accessTokenKey = this.enc.getHmacSha256(SEC_RES["private_key"], "access_token", true);  
+        let accessTokenKey = this.enc.getHmacSha256(SEC_RES['private_key'], 'access_token', true);  
         if(sessionStorage.getItem(accessTokenKey))
             return true;
         sessionStorage.clear();
@@ -62,17 +62,17 @@ export class AuthStorageService {
     }
 
     public getSessionStorage(key:string):string {
-        let keyEncrypted = this.enc.getHmacSha256(SEC_RES["private_key"], key, true);
-        return (keyEncrypted)?this.enc.decryptAES(SEC_RES["aes_key"], sessionStorage.getItem(keyEncrypted)):null;
+        let keyEncrypted = this.enc.getHmacSha256(SEC_RES['private_key'], key, true);
+        return (keyEncrypted)?this.enc.decryptAES(SEC_RES['aes_key'], sessionStorage.getItem(keyEncrypted)) : null;
     }
 
     public getLocalStorageEnc(key:string):string {
-        let keyEncrypted = this.enc.getHmacSha256(SEC_RES["private_key"], key, true);
-        return (keyEncrypted)?this.enc.decryptAES(SEC_RES["aes_key"], localStorage.getItem(keyEncrypted)):null;
+        let keyEncrypted = this.enc.getHmacSha256(SEC_RES['private_key'], key, true);
+        return (keyEncrypted)?this.enc.decryptAES(SEC_RES['aes_key'], localStorage.getItem(keyEncrypted)) : null;
     }
 
     public getLocalStorage(key:string):string {
-        let keyEncrypted = this.enc.getHmacSha256(SEC_RES["private_key"], key, true);
+        let keyEncrypted = this.enc.getHmacSha256(SEC_RES['private_key'], key, true);
         return (keyEncrypted)?localStorage.getItem(keyEncrypted):null;
     }
 

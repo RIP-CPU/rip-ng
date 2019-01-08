@@ -13,7 +13,11 @@ export class HttpCommonService extends HttpAbstractService {
     super();
   }
 
-  public HTTP_REQUEST(api:HttpBaseModel, body?: any, headers?: HttpHeaders, params?: HttpParams, pathVariable?: string[]):Observable<any>{
+  public HTTP_REQUEST(api:HttpBaseModel,
+                      body?: any,
+                      headers?: HttpHeaders,
+                      params?: HttpParams,
+                      pathVariable?: string[]):Observable<any>{
     let response:Observable<any> = null;
     switch(api.method){
       case HttpMethod.POST:
