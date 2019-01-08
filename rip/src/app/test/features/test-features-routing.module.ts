@@ -63,7 +63,7 @@ const routes: Routes = [{
     component: FormInputsComponent,
   }, {
     path: 'layouts',
-    component: FormLayoutsComponent
+    component: FormLayoutsComponent,
   }, {
     path: 'grid',
     component: GridComponent,

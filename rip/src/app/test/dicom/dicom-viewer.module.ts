@@ -5,7 +5,13 @@ import { MatDialogModule } from '@angular/material';
 import { MatIconModule } from '@angular/material';
 import { MatMenuModule } from '@angular/material';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
-import { MatTableModule, MatPaginatorModule, MatSortModule, MatFormFieldModule, MatInputModule } from '@angular/material';
+import { 
+  MatTableModule,
+  MatPaginatorModule,
+  MatSortModule,
+  MatFormFieldModule,
+  MatInputModule
+} from '@angular/material';
 
 import { TagsDialogComponent } from './tags-dialog/tags-dialog.component';
 import { TagsTableComponent } from './tags-table/tags-table.component';
@@ -52,7 +58,7 @@ const routes: Routes = [{
     TagsDialogComponent
   ],
   exports : [
-    RouterModule
-  ]
+    RouterModule,
+  ],
 })
 export class TestDicomViewerModule { }

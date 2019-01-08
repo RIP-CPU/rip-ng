@@ -9,24 +9,24 @@ declare var $: any;
 // gui overrides
 
 dwv.tool.colourMaps = {
-  "plain": dwv.image.lut.plain,
-  "invplain": dwv.image.lut.invPlain,
-  "rainbow": dwv.image.lut.rainbow,
-  "hot": dwv.image.lut.hot,
-  "hotiron": dwv.image.lut.hot_iron,
-  "pet": dwv.image.lut.pet,
-  "hotmetalblue": dwv.image.lut.hot_metal_blue,
-  "pet20step": dwv.image.lut.pet_20step,
+  'plain': dwv.image.lut.plain,
+  'invplain': dwv.image.lut.invPlain,
+  'rainbow': dwv.image.lut.rainbow,
+  'hot': dwv.image.lut.hot,
+  'hotiron': dwv.image.lut.hot_iron,
+  'pet': dwv.image.lut.pet,
+  'hotmetalblue': dwv.image.lut.hot_metal_blue,
+  'pet20step': dwv.image.lut.pet_20step,
 };
 
 dwv.tool.defaultpresets = {};
 // Default window level presets for CT.
 dwv.tool.defaultpresets.CT = {
-    "mediastinum": {"center": 40, "width": 400},
-    "lung": {"center": -500, "width": 1500},
-    "bone": {"center": 500, "width": 2000},
-    "brain": {"center": 40, "width": 80},
-    "head": {"center": 90, "width": 350},
+    'mediastinum': {'center': 40, 'width': 400},
+    'lung': {'center': -500, 'width': 1500},
+    'bone': {'center': 500, 'width': 2000},
+    'brain': {'center': 40, 'width': 80},
+    'head': {'center': 90, 'width': 350},
 };
 // decode query
 dwv.utils.decodeQuery = dwv.utils.base.decodeQuery;
@@ -90,14 +90,14 @@ dwv.image.decoderScripts = {
 dwv.gui.info.overlayMaps = overlays.default;
 dwv.gui.plot = function (div, data, options)
 {
-    var plotOptions = {
-        "bars": { "show": true },
-        "grid": { "backgroundcolor": null, "markings": null },
-        "xaxis": { "show": true },
-        "yaxis": { "show": false },
+    let plotOptions = {
+        'bars': { 'show': true },
+        'grid': { 'backgroundcolor': null, 'markings': null },
+        'xaxis': { 'show': true },
+        'yaxis': { 'show': false },
     };
-    if (typeof options !== "undefined" &&
-        typeof options.markings !== "undefined") {
+    if (typeof options !== 'undefined' &&
+        typeof options.markings !== 'undefined') {
         plotOptions.grid.markings = options.markings;
     }
     $.plot(div, [ data ], plotOptions);
@@ -113,31 +113,31 @@ export class TestDicomViewerComponent implements OnInit {
   public tools = 
     [
       {
-        key: "Scroll",
-        value: "Scroll"
+        key: 'Scroll',
+        value: 'Scroll'
       },
       {
-        key: "WindowLevel",
-        value: "Window Level"
+        key: 'WindowLevel',
+        value: 'Window Level'
       },
       {
-        key: "ZoomAndPan",
-        value: "Zoom And Pan"
+        key: 'ZoomAndPan',
+        value: 'Zoom And Pan'
       },
       {
-        key: "Draw",
-        value: "Draw"
+        key: 'Draw',
+        value: 'Draw'
       },
       {
-        key: "Livewire",
-        value: "Livewire"
+        key: 'Livewire',
+        value: 'Livewire'
       },
       {
-        key: "Filter",
-        value: "Filter"
+        key: 'Filter',
+        value: 'Filter'
       },{
-        key: "Flood Fill",
-        value: "Flood Fill"
+        key: 'Flood Fill',
+        value: 'Flood Fill'
       },
     ];
   public selectedTool = 'Select Tool';
@@ -154,18 +154,18 @@ export class TestDicomViewerComponent implements OnInit {
   }
 
   ngOnInit() {
-    var tools = [];
+    let tools = [];
     this.tools.forEach(tool => { tools.push(tool.key); });
     // create app
     this.dwvApp = new dwv.App();
     // initialise app
     this.dwvApp.init({
       'containerDivId': 'dwv',
-      "loaders": ["File", "Url"],
+      'loaders': ['File', 'Url'],
       'tools': tools,
-      "shapes": ["Arrow", "Ruler", "Protractor", "Rectangle", "Roi", "Ellipse", "FreeHand"],
-      "isMobile": true,
-      "helpResourcesPath": "resources/help",
+      'shapes': ['Arrow', 'Ruler', 'Protractor', 'Rectangle', 'Roi', 'Ellipse', 'FreeHand'],
+      'isMobile': true,
+      'helpResourcesPath': 'resources/help',
     });
     // progress
     const self = this;

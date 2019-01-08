@@ -39,7 +39,9 @@ import { NewsPostComponent } from './infinite-list/news-post/news-post.component
 import { NewsPostPlaceholderComponent } from './infinite-list/news-post-placeholder/news-post-placeholder.component';
 import { ListComponent } from './list/list.component';
 import { ProgressBarComponent } from './progress-bar/progress-bar.component';
-import { InteractiveProgressBarComponent } from './progress-bar/interactive-progress-bar/interactive-progress-bar.component';
+import { 
+  InteractiveProgressBarComponent 
+} from './progress-bar/interactive-progress-bar/interactive-progress-bar.component';
 import { SpinnerComponent } from './spinner/spinner.component';
 import { SpinnerColorComponent } from './spinner/spinner-color/spinner-color.component';
 import { SpinnerInButtonsComponent } from './spinner/spinner-in-buttons/spinner-in-buttons.component';
@@ -52,7 +54,7 @@ const components = [
   TestFeaturesComponent,
   AccordionComponent,
   AlertComponent,
-  DayCellComponent, CalendarComponent, 
+  DayCellComponent, CalendarComponent,
   CalendarKitMonthCellComponent, CalendarKitFullCalendarShowcaseComponent,
   ChatComponent,
   TestDashboardComponent,
@@ -72,7 +74,7 @@ const components = [
   StepperComponent,
   TabsComponent, Tab1Component, Tab2Component,
   TreeComponent,
-  TypographyComponent
+  TypographyComponent,
 ];
 
 @NgModule({
@@ -94,7 +96,7 @@ const components = [
     NgxPopoverTabsComponent,
   ],
   providers: [
-    NewsService
-  ]
+    NewsService,
+  ],
 })
 export class TestFeaturesModule { }

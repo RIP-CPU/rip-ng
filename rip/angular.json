@@ -173,11 +173,7 @@
   "defaultProject": "rip",
   "schematics": {
     "@schematics/angular:component": {
-      "prefix": "ngx",
       "styleext": "scss"
-    },
-    "@schematics/angular:directive": {
-      "prefix": "ngx"
     }
   }
 }

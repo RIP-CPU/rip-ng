@@ -9,7 +9,7 @@ interface CardSettings {
 }
 
 @Component({
-  selector: 'test-dashboard',
+  selector: 'ngx-test-dashboard',
   styleUrls: ['./test-dashboard.component.scss'],
   templateUrl: './test-dashboard.component.html',
 })

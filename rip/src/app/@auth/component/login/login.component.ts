@@ -6,9 +6,9 @@ import { Router } from '@angular/router';
 declare var $: any;
 
 @Component({
-    selector: "login-component",
-    styleUrls: ["login.component.scss"],
-    templateUrl: "login.component.html"
+    selector: 'login-component',
+    styleUrls: ['login.component.scss'],
+    templateUrl: 'login.component.html'
 })
 export class LoginComponent {
 
@@ -19,14 +19,14 @@ export class LoginComponent {
 
     form: FormGroup = new FormGroup({
       username: new FormControl(),
-      password: new FormControl()
+      password: new FormControl(),
     })
 
     constructor(private router: Router, private authTokenService:AuthTokenService){}
 
     login(){
-      this.username = this.form.get("username").value;
-      this.password = this.form.get("password").value;
+      this.username = this.form.get('username').value;
+      this.password = this.form.get('password').value;
       if(this.username && this.password){
         $('body').removeClass('pace-done');
         $('body').addClass('pace-running');
@@ -40,8 +40,8 @@ export class LoginComponent {
         }
         this.buttonLogin = true;
         this.authTokenService.login(
-          this.form.get("username").value,
-          this.form.get("password").value)
+          this.form.get('username').value,
+          this.form.get('password').value)
           .then(()=>{
               this.progressBar = 90;
               $('.pace-progress').attr('data-progress-text', this.progressBar+'%');
@@ -50,7 +50,7 @@ export class LoginComponent {
               this.progressBar = 0;
               this.username = null;
               this.password = null;
-              this.router.navigate(["/app/dashboard"]);
+              this.router.navigate(['/app/dashboard']);
           })
           .catch(error=>{
               this.username = null;
