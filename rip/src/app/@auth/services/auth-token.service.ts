@@ -3,10 +3,12 @@ import {Idle, DEFAULT_INTERRUPTSOURCES} from '@ng-idle/core';
 import { HttpHeaders } from "@angular/common/http";
 import { Router } from "@angular/router";
 import { API } from "../../config/api.config";
-import { HttpFactoryService } from "../../@common/services/http-factory.service";
-import { HTTP_SERVICE } from "../../app.provider";
+import { HttpFactoryService } from "../../@core/utils/http-factory.service";
 import { SEC_RES } from "../../config/security.config";
 import { AuthStorageService } from "./auth-storage.service";
+import { HTTP_SERVICE } from "../../@core/core.provider";
+import { Observable } from 'rxjs/Observable';
+import { toObservable } from "@angular/forms/src/validators";
 
 @Injectable()
 export class AuthTokenService {
@@ -27,18 +29,18 @@ export class AuthTokenService {
         });
     }
 
-    public login(username: string, password: string){
+    public login(username: string, password: string): Promise<any> {
         this.storage.clear();
-        this.httpBaseService.
-        HTTP_REQUEST(API["auth"]["token"], this.getAuthBody(username,password).toString(), this.getAuthHeader()).
-        subscribe((response:Response)=>{
+        return this.httpBaseService.
+        HTTP_REQUEST(API["auth"]["token"], this.getAuthBody(username,password).toString(), this.getAuthHeader())
+        .toPromise()
+        .then((response)=>{
             this.idle.setIdle(response["expires_in"]);
             this.idle.watch();
             console.log("[RIP] Session Idle Start");
             console.log("[RIP] Session Timeout in "+response["expires_in"]+" seconds");
             this.storage.loginStorage(response);
-            this.router.navigate(["/app/dashboard"]);
-        })
+        });
     }
 
     public logout(){

@@ -11,7 +11,7 @@ export class AuthStorageService {
         sessionStorage.clear();
     }
 
-    public loginStorage(response:Response):void {
+    public loginStorage(response:any):void {
         let accessTokenKey = this.enc.getHmacSha256(SEC_RES["private_key"], "access_token", true);
         let accessTokenValue = this.enc.encryptAES(SEC_RES["aes_key"], response["access_token"]);
 

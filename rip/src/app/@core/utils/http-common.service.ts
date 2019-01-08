@@ -17,16 +17,16 @@ export class HttpCommonService extends HttpAbstractService {
     let response:Observable<any> = null;
     switch(api.method){
       case HttpMethod.POST:
-        response = this.HTTP_POST(this.getAPI(api, pathVariable), body,headers, params).catch(this.errorHandler);
+        response = this.HTTP_POST(this.getAPI(api, pathVariable), body,headers, params);
         break;
       case HttpMethod.PUT:
-        response = this.HTTP_PUT(this.getAPI(api, pathVariable), body, headers, params).catch(this.errorHandler);
+        response = this.HTTP_PUT(this.getAPI(api, pathVariable), body, headers, params);
         break;
       case HttpMethod.DELETE:
-        response = this.HTTP_DELETE(this.getAPI(api, pathVariable), headers, params).catch(this.errorHandler);
+        response = this.HTTP_DELETE(this.getAPI(api, pathVariable), headers, params);
         break;
       default:
-        response = this.HTTP_GET(this.getAPI(api, pathVariable), headers, params).catch(this.errorHandler);
+        response = this.HTTP_GET(this.getAPI(api, pathVariable), headers, params);
         break;
     }
     return response;

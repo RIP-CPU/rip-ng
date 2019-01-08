@@ -1,5 +1,5 @@
-import { APIModel } from "../@common/models/api.model";
-import { HttpMethod } from "../@common/models/http-base.model";
+import { APIModel } from "../@core/models/api.model";
+import { HttpMethod } from "../@core/models/http-base.model";
 
 export const API: APIModel = {
     auth: {

@@ -25,10 +25,16 @@ export abstract class HttpAbstractService implements HttpFactoryService {
   }
 
   protected errorHandler = (error) => {
-    var errorMsg = "Internal Server Error";
+    let errorMsg:string = "Internal Server Error";
     switch(error.status){
-      case "404":
+      case 404:
         errorMsg = "Page Not Found";
+        break;
+      case 400:
+        errorMsg = "Bad Credentials";
+        break;
+      case 401:
+        errorMsg = "Unauthorized";
         break;
       default:
         break;

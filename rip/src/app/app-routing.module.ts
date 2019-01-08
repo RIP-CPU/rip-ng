@@ -6,11 +6,17 @@ import { UnauthorizeGuardService } from './@auth/services/unauth-guard.service';
 const routes: Routes = [
   {
     path: 'auth',
-    loadChildren: 'app/@auth/auth.module#AuthModule'
+    loadChildren: 'app/@auth/auth.module#AuthModule',
+    data: {
+      preload: true
+    },
   },
   {
     path: 'miscellaneous',
     loadChildren: 'app/miscellaneous/miscellaneous.module#MiscellaneousModule',
+    data: {
+      preload: true
+    },
     canActivate: [UnauthorizeGuardService]
   },
   {

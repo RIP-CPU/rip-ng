@@ -1,84 +1,27 @@
 import { ModuleWithProviders, NgModule, Optional, SkipSelf } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { NbAuthModule, NbDummyAuthStrategy } from '@nebular/auth';
-import { NbSecurityModule, NbRoleProvider } from '@nebular/security';
-import { of as observableOf } from 'rxjs';
-
 import { throwIfAlreadyLoaded } from './module-import-guard';
 import { DataModule } from './data/data.module';
 import { AnalyticsService } from './utils/analytics.service';
+import { HTTP_SERVICE } from './core.provider';
+import { HttpCommonService } from './utils/http-common.service';
+import { HttpInterceptorService } from './utils/http-interceptor.service';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { CustomPreloadingStrategy } from './utils/preloading-strategy.service';
 
-const socialLinks = [
-  {
-    url: 'https://github.com/akveo/nebular',
-    target: '_blank',
-    icon: 'socicon-github',
-  },
-  {
-    url: 'https://www.facebook.com/akveo/',
-    target: '_blank',
-    icon: 'socicon-facebook',
-  },
-  {
-    url: 'https://twitter.com/akveo_inc',
-    target: '_blank',
-    icon: 'socicon-twitter',
-  },
+export const SAMPLE_PROVIDERS = [
+  ...DataModule.forRoot().providers
 ];
-
-export class NbSimpleRoleProvider extends NbRoleProvider {
-  getRole() {
-    // here you could provide any role based on any auth flow
-    return observableOf('guest');
-  }
-}
-
-export const NB_CORE_PROVIDERS = [
-  ...DataModule.forRoot().providers,
-  ...NbAuthModule.forRoot({
-
-    strategies: [
-      NbDummyAuthStrategy.setup({
-        name: 'email',
-        delay: 3000,
-      }),
-    ],
-    forms: {
-      login: {
-        socialLinks: socialLinks,
-      },
-      register: {
-        socialLinks: socialLinks,
-      },
-    },
-  }).providers,
-
-  NbSecurityModule.forRoot({
-    accessControl: {
-      guest: {
-        view: '*',
-      },
-      user: {
-        parent: 'guest',
-        create: '*',
-        edit: '*',
-        remove: '*',
-      },
-    },
-  }).providers,
-
-  {
-    provide: NbRoleProvider, useClass: NbSimpleRoleProvider,
-  },
-  AnalyticsService,
+export const core_providers = [
+  { provide: HTTP_SERVICE, useClass: HttpCommonService}, 
+  { provide: HTTP_INTERCEPTORS, useClass: HttpInterceptorService, multi: true},
+  CustomPreloadingStrategy,
+  AnalyticsService
 ];
 
 @NgModule({
   imports: [
     CommonModule,
-  ],
-  exports: [
-    NbAuthModule,
   ],
   declarations: [],
 })
@@ -91,7 +34,8 @@ export class CoreModule {
     return <ModuleWithProviders>{
       ngModule: CoreModule,
       providers: [
-        ...NB_CORE_PROVIDERS,
+        ...core_providers,
+        ...SAMPLE_PROVIDERS,
       ],
     };
   }
