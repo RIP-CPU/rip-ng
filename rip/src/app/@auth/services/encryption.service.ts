@@ -4,9 +4,9 @@ import * as CryptoJS from 'crypto-js';
 @Injectable()
 export class EncryptionService {
 
-    private keySize:number = 256;
-    private ivSize:number = 128;
-    private iterations:number = 100;
+    private keySize: number = 256;
+    private ivSize: number = 128;
+    private iterations: number = 100;
 
     public getHmacSha256(secret: string, message: string, hex?: boolean): string {
         const hash = CryptoJS.HmacSHA256(message, secret);
@@ -16,12 +16,12 @@ export class EncryptionService {
     }
 
     public encryptAES(secretKey: string, message: string, hex?: boolean): string {
-        const salt = CryptoJS.lib.WordArray.random(128/8);
+        const salt = CryptoJS.lib.WordArray.random(128 / 8);
         const key = CryptoJS.PBKDF2(secretKey, salt, {
             keySize: this.keySize/32,
             iterations: this.iterations,
         });
-        const iv = CryptoJS.lib.WordArray.random(this.ivSize/8);
+        const iv = CryptoJS.lib.WordArray.random(this.ivSize / 8);
         const encrypted = CryptoJS.AES.encrypt(message, key, {
             iv: iv,
             padding: CryptoJS.pad.Pkcs7,
@@ -33,7 +33,7 @@ export class EncryptionService {
 
     public decryptAES(secretKey: string, encryptMessage: string): string {
         const salt = CryptoJS.enc.Hex.parse(encryptMessage.substr(0, 32));
-        let iv = CryptoJS.enc.Hex.parse(encryptMessage.substr(32, 32))
+        const iv = CryptoJS.enc.Hex.parse(encryptMessage.substr(32, 32));
         const encrypted = encryptMessage.substring(64);
         const key = CryptoJS.PBKDF2(secretKey, salt, {
             keySize: this.keySize/32,
@@ -43,7 +43,7 @@ export class EncryptionService {
           iv: iv,
           padding: CryptoJS.pad.Pkcs7,
           mode: CryptoJS.mode.CBC,
-        })
+        });
         return decrypted.toString(CryptoJS.enc.Utf8);
     }
 

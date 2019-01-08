@@ -5,10 +5,10 @@ import { HttpBaseModel } from '../models/http-base.model';
 export interface HttpFactoryService {
 
     HTTP_REQUEST(
-        api:HttpBaseModel, 
+        api: HttpBaseModel,
         body?: any,
         headers?: HttpHeaders,
         params?: HttpParams,
-        pathVariable?: string[]) : Observable<any>;
+        pathVariable?: string[]): Observable<any>;
 
 }

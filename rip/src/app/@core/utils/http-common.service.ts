@@ -5,11 +5,11 @@ import { HttpAbstractService } from './http-abstract.service';
 import { HttpBaseModel, HttpMethod } from '../models/http-base.model';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class HttpCommonService extends HttpAbstractService {
 
-  constructor(protected http: HttpClient){
+  constructor(protected http: HttpClient) {
     super();
   }
 
@@ -17,11 +17,11 @@ export class HttpCommonService extends HttpAbstractService {
                       body?: any,
                       headers?: HttpHeaders,
                       params?: HttpParams,
-                      pathVariable?: string[]):Observable<any>{
-    let response:Observable<any> = null;
-    switch(api.method){
+                      pathVariable?: string[]):Observable<any> {
+    let response: Observable<any> = null;
+    switch(api.method) {
       case HttpMethod.POST:
-        response = this.HTTP_POST(this.getAPI(api, pathVariable), body,headers, params);
+        response = this.HTTP_POST(this.getAPI(api, pathVariable), body, headers, params);
         break;
       case HttpMethod.PUT:
         response = this.HTTP_PUT(this.getAPI(api, pathVariable), body, headers, params);
@@ -35,19 +35,19 @@ export class HttpCommonService extends HttpAbstractService {
     }
     return response;
   }
-  
+
   public HTTP_GET(url: string, headers?: HttpHeaders, params?: HttpParams):Observable<any>{
       return this.http.get(url, {headers: headers, params: params}).catch(this.errorHandler);
   }
-  
+
   public HTTP_POST(url: string, body: any, headers?: HttpHeaders, params?: HttpParams):Observable<any>{
       return this.http.post(url, body, {headers: headers, params: params}).catch(this.errorHandler);
   }
-  
+
   public HTTP_PUT(url: string, body: any, headers?: HttpHeaders, params?: HttpParams):Observable<any>{
       return this.http.put(url, body, {headers: headers, params: params}).catch(this.errorHandler);
   }
-  
+
   public HTTP_DELETE(url: string, headers?: HttpHeaders, params?: HttpParams):Observable<any>{
       return this.http.delete(url, {headers: headers, params: params}).catch(this.errorHandler);
   }

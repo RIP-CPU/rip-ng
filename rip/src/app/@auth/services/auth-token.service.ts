@@ -11,10 +11,10 @@ import { HTTP_SERVICE } from '../../@core/core.provider';
 @Injectable()
 export class AuthTokenService {
 
-    constructor(@Inject(HTTP_SERVICE)private httpBaseService:HttpFactoryService, 
+    constructor(@Inject(HTTP_SERVICE)private httpBaseService: HttpFactoryService, 
                 private router: Router,
                 private storage: AuthStorageService,
-                private idle: Idle){
+                private idle: Idle) {
         idle.setIdle(SEC_RES['session_idle']);
         idle.setTimeout(SEC_RES['session_timeout']);
         idle.setInterrupts(DEFAULT_INTERRUPTSOURCES); 
@@ -32,7 +32,7 @@ export class AuthTokenService {
         return this.httpBaseService.
         HTTP_REQUEST(API['auth']['token'], this.getAuthBody(username,password).toString(), this.getAuthHeader())
         .toPromise()
-        .then((response)=>{
+        .then((response)=> {
             this.idle.setIdle(response['expires_in']);
             this.idle.watch();
             /* console.log('[RIP] Session Idle Start'); */
@@ -41,25 +41,25 @@ export class AuthTokenService {
         });
     }
 
-    public logout(){
+    public logout() {
         this.idle.stop();
         this.storage.logout();
         this.router.navigate(['/auth']);
     }
 
-    public isLogin():boolean {
+    public isLogin(): boolean {
         return this.storage.isLogin();
     }
 
-    private getAuthHeader(): HttpHeaders{
+    private getAuthHeader(): HttpHeaders {
         return new HttpHeaders({
             'Content-Type': 'application/x-www-form-urlencoded',
             'Authorization': 'Basic '+btoa(SEC_RES['client_id'] + ':' +SEC_RES['client_secret']),
-            'Accept': 'application/json'
+            'Accept': 'application/json',
         });
     }
 
-    private getAuthBody(username:string, password:string): URLSearchParams{
+    private getAuthBody(username: string, password: string): URLSearchParams {
         const body = new URLSearchParams();
         body.append('client_id', SEC_RES['client_id']);
         body.append('grant_type', SEC_RES['grant_type']);

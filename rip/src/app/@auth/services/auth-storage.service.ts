@@ -7,11 +7,11 @@ export class AuthStorageService {
 
     constructor(private enc: EncryptionService){}
 
-    public clear():void {
+    public clear(): void {
         sessionStorage.clear();
     }
 
-    public loginStorage(response:any):void {
+    public loginStorage(response: any): void {
         const accessTokenKey = this.enc.getHmacSha256(SEC_RES['private_key'], 'access_token', true);
         const accessTokenValue = this.enc.encryptAES(SEC_RES['aes_key'], response['access_token']);
 
@@ -48,31 +48,31 @@ export class AuthStorageService {
         localStorage.setItem('name', response['name']);
     }
 
-    public logout():void {
+    public logout(): void {
         sessionStorage.clear();
         localStorage.removeItem(this.enc.getHmacSha256(SEC_RES['private_key'], 'name', true));
     }
 
-    public isLogin():boolean {
-        let accessTokenKey = this.enc.getHmacSha256(SEC_RES['private_key'], 'access_token', true);  
+    public isLogin(): boolean {
+        const accessTokenKey = this.enc.getHmacSha256(SEC_RES['private_key'], 'access_token', true);  
         if(sessionStorage.getItem(accessTokenKey))
             return true;
         sessionStorage.clear();
         return false;
     }
 
-    public getSessionStorage(key:string):string {
-        let keyEncrypted = this.enc.getHmacSha256(SEC_RES['private_key'], key, true);
+    public getSessionStorage(key: string): string {
+        const keyEncrypted = this.enc.getHmacSha256(SEC_RES['private_key'], key, true);
         return (keyEncrypted)?this.enc.decryptAES(SEC_RES['aes_key'], sessionStorage.getItem(keyEncrypted)) : null;
     }
 
-    public getLocalStorageEnc(key:string):string {
-        let keyEncrypted = this.enc.getHmacSha256(SEC_RES['private_key'], key, true);
+    public getLocalStorageEnc(key: string): string {
+        const keyEncrypted = this.enc.getHmacSha256(SEC_RES['private_key'], key, true);
         return (keyEncrypted)?this.enc.decryptAES(SEC_RES['aes_key'], localStorage.getItem(keyEncrypted)) : null;
     }
 
-    public getLocalStorage(key:string):string {
-        let keyEncrypted = this.enc.getHmacSha256(SEC_RES['private_key'], key, true);
+    public getLocalStorage(key: string): string {
+        const keyEncrypted = this.enc.getHmacSha256(SEC_RES['private_key'], key, true);
         return (keyEncrypted)?localStorage.getItem(keyEncrypted):null;
     }
 
