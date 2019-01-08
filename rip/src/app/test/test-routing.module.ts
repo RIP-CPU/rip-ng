@@ -33,7 +33,7 @@ const routes: Routes = [{
     component: ChartsComponent,
     children: [{
         path: 'echarts',
-        component: EchartsComponent
+        component: EchartsComponent,
       },
       {
         path: 'd3',
@@ -43,7 +43,7 @@ const routes: Routes = [{
         path: 'chartjs',
         component: ChartjsComponent,
       },
-    ]
+    ],
   }, {
     path: 'features',
     loadChildren: 'app/test/features/test-features.module#TestFeaturesModule',
@@ -72,7 +72,7 @@ const routes: Routes = [{
     }, {
       path: 'ckeditor',
       component: CKEditorComponent,
-    }]
+    }],
   }, {
     path: 'tables',
     component: TestTablesComponent,

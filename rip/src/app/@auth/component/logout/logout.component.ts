@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { AuthTokenService } from '../../services/auth-token.service';
 
 @Component({
-    selector: "logout-component",
+    selector: 'logout-component',
     template: '',
 })
 export class LogoutComponent {

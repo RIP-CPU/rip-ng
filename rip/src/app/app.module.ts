@@ -33,7 +33,7 @@ import { AuthModule } from './@auth/auth.module';
   ],
   bootstrap: [AppComponent],
   providers: [
-    { provide: APP_BASE_HREF, useValue: '/' }, 
+    { provide: APP_BASE_HREF, useValue: '/' },
     { provide: LocationStrategy, useClass: PathLocationStrategy },
   ],
 })

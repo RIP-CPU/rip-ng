@@ -9,7 +9,7 @@ import { ChartSharedModule } from '../@charts/chart-shared.module';
 
 const components = [
     DashboardComponent,
-    DashboardPageComponent
+    DashboardPageComponent,
 ];
 
 const routes: Routes = [{
@@ -29,7 +29,7 @@ const routes: Routes = [{
     NgxEchartsModule,
     CommonSharedModule,
     ChartSharedModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
   ],
   declarations: [
     ...components,

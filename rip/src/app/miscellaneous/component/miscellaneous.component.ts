@@ -4,7 +4,7 @@ import { Location } from '@angular/common';
 @Component({
   selector: 'ngx-miscellaneous',
   styleUrls: ['miscellaneous.component.scss'],
-  templateUrl: './miscellaneous.component.html'
+  templateUrl: './miscellaneous.component.html',
 })
 export class MiscellaneousComponent implements OnDestroy {
 

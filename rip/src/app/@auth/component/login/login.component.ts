@@ -27,12 +27,12 @@ export class LoginComponent {
     public login() {
       this.username = this.form.get('username').value;
       this.password = this.form.get('password').value;
-      if(this.username && this.password) {
+      if (this.username && this.password) {
         $('body').removeClass('pace-done');
         $('body').addClass('pace-running');
         $('.pace').removeClass('pace-inactive');
         $('.pace').addClass('pace-active');
-        if(this.progressBar < 35) {
+        if (this.progressBar < 35) {
           this.progressBar = 35;
           $('.pace-progress').attr('data-progress-text', this.progressBar + '%');
           $('.pace-progress').attr('data-progress', this.progressBar);
@@ -66,7 +66,7 @@ export class LoginComponent {
               this.progressBar = 0;
               this.buttonLogin = false;
           });
-          if(this.progressBar >= 35 && this.progressBar < 65) {
+          if (this.progressBar >= 35 && this.progressBar < 65) {
               this.progressBar = 65;
               $('.pace-progress').attr('data-progress-text', this.progressBar + '%');
               $('.pace-progress').attr('data-progress', this.progressBar);

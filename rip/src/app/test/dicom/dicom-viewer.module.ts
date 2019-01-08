@@ -10,7 +10,7 @@ import {
   MatPaginatorModule,
   MatSortModule,
   MatFormFieldModule,
-  MatInputModule
+  MatInputModule,
 } from '@angular/material';
 
 import { TagsDialogComponent } from './tags-dialog/tags-dialog.component';
@@ -30,8 +30,8 @@ const routes: Routes = [{
     {
       path: 'pacs',
       component: TestDicomViewerComponent,
-    }
-  ]
+    },
+  ],
 }];
 
 @NgModule({

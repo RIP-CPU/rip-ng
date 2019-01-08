@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 @Injectable()
 export class HttpInterceptorService implements HttpInterceptor {
 
-    public intercept(req: HttpRequest<any>, next: HttpHandler):Observable<HttpEvent<any>> {
+    public intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         /* req = req.clone({
             setHeaders:{
                 "X-Authorization": "Bearer xkjEJ23kjbhdklaetb"

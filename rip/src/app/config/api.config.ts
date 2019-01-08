@@ -9,7 +9,7 @@ export const API: APIModel = {
             port: 8085,
             method: HttpMethod.POST,
             path: '/oauth/token',
-        }
+        },
     },
     master: {
         test: {
@@ -17,7 +17,7 @@ export const API: APIModel = {
             host: 'localhost',
             method: HttpMethod.POST,
             path: '',
-        }
+        },
     },
     sample: {
         get: {
@@ -42,4 +42,4 @@ export const API: APIModel = {
             method: HttpMethod.POST,
         },
     },
-}
+};

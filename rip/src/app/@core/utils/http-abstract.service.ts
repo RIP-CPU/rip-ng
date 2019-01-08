@@ -4,7 +4,7 @@ import { HttpFactoryService } from './http-factory.service';
 import { HttpHeaders, HttpParams } from '@angular/common/http';
 
 export abstract class HttpAbstractService implements HttpFactoryService {
-  
+
   public abstract HTTP_REQUEST(
     api: HttpBaseModel,
     body?: any,
@@ -16,22 +16,22 @@ export abstract class HttpAbstractService implements HttpFactoryService {
   public abstract HTTP_PUT(url: string, body: any, headers?: HttpHeaders): Observable<any>;
   public abstract HTTP_DELETE(url: string, headers?: HttpHeaders): Observable<any>;
 
-  protected getAPI(api: HttpBaseModel, pathVariable?: string[]):string{
-    let url:string = api.protocol +
+  protected getAPI(api: HttpBaseModel, pathVariable?: string[]): string {
+    let url: string = api.protocol +
                     '://' +
                     api.host +
-                    ((api.port)? ':' + api.port : '') +
+                    ((api.port) ? ':' + api.port : '') +
                     api.path;
-    if(pathVariable)
+    if (pathVariable)
       pathVariable.forEach(path => {
         url = url + '/' + path;
-      });  
+      });
     return url;
   }
 
   protected errorHandler = (error) => {
     let errorMsg: string = 'Internal Server Error';
-    switch(error.status) {
+    switch (error.status) {
       case 404:
         errorMsg = 'Page Not Found';
         break;

@@ -40,7 +40,7 @@ import { NewsPostPlaceholderComponent } from './infinite-list/news-post-placehol
 import { ListComponent } from './list/list.component';
 import { ProgressBarComponent } from './progress-bar/progress-bar.component';
 import {
-  InteractiveProgressBarComponent
+  InteractiveProgressBarComponent,
 } from './progress-bar/interactive-progress-bar/interactive-progress-bar.component';
 import { SpinnerComponent } from './spinner/spinner.component';
 import { SpinnerColorComponent } from './spinner/spinner-color/spinner-color.component';

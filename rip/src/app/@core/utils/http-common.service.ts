@@ -13,13 +13,13 @@ export class HttpCommonService extends HttpAbstractService {
     super();
   }
 
-  public HTTP_REQUEST(api:HttpBaseModel,
+  public HTTP_REQUEST(api: HttpBaseModel,
                       body?: any,
                       headers?: HttpHeaders,
                       params?: HttpParams,
-                      pathVariable?: string[]):Observable<any> {
+                      pathVariable?: string[]): Observable<any> {
     let response: Observable<any> = null;
-    switch(api.method) {
+    switch( api.method ) {
       case HttpMethod.POST:
         response = this.HTTP_POST(this.getAPI(api, pathVariable), body, headers, params);
         break;
@@ -36,19 +36,19 @@ export class HttpCommonService extends HttpAbstractService {
     return response;
   }
 
-  public HTTP_GET(url: string, headers?: HttpHeaders, params?: HttpParams):Observable<any>{
+  public HTTP_GET(url: string, headers?: HttpHeaders, params?: HttpParams): Observable<any> {
       return this.http.get(url, {headers: headers, params: params}).catch(this.errorHandler);
   }
 
-  public HTTP_POST(url: string, body: any, headers?: HttpHeaders, params?: HttpParams):Observable<any>{
+  public HTTP_POST(url: string, body: any, headers?: HttpHeaders, params?: HttpParams): Observable<any> {
       return this.http.post(url, body, {headers: headers, params: params}).catch(this.errorHandler);
   }
 
-  public HTTP_PUT(url: string, body: any, headers?: HttpHeaders, params?: HttpParams):Observable<any>{
+  public HTTP_PUT(url: string, body: any, headers?: HttpHeaders, params?: HttpParams): Observable<any> {
       return this.http.put(url, body, {headers: headers, params: params}).catch(this.errorHandler);
   }
 
-  public HTTP_DELETE(url: string, headers?: HttpHeaders, params?: HttpParams):Observable<any>{
+  public HTTP_DELETE(url: string, headers?: HttpHeaders, params?: HttpParams): Observable<any> {
       return this.http.delete(url, {headers: headers, params: params}).catch(this.errorHandler);
   }
 

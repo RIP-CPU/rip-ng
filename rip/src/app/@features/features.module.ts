@@ -57,7 +57,7 @@ import { TrafficChartComponent } from './component/traffic/traffic-chart.compone
     PlayerComponent,
     SolarComponent,
     TrafficComponent,
-    TrafficChartComponent,    
-  ]
+    TrafficChartComponent,
+  ],
 })
 export class FeaturesModule { }

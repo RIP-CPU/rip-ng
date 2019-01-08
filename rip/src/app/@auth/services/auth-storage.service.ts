@@ -5,7 +5,7 @@ import { SEC_RES } from '../../config/security.config';
 @Injectable()
 export class AuthStorageService {
 
-    constructor(private enc: EncryptionService){}
+    constructor(private enc: EncryptionService) {}
 
     public clear(): void {
         sessionStorage.clear();
@@ -55,7 +55,7 @@ export class AuthStorageService {
 
     public isLogin(): boolean {
         const accessTokenKey = this.enc.getHmacSha256(SEC_RES['private_key'], 'access_token', true);
-        if(sessionStorage.getItem(accessTokenKey))
+        if (sessionStorage.getItem(accessTokenKey))
             return true;
         sessionStorage.clear();
         return false;

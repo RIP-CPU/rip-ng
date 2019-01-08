@@ -10,7 +10,7 @@ export class EncryptionService {
 
     public getHmacSha256(secret: string, message: string, hex?: boolean): string {
         const hash = CryptoJS.HmacSHA256(message, secret);
-        if(hex) 
+        if (hex)
             return CryptoJS.enc.Hex.stringify(hash).toUpperCase();
         return CryptoJS.enc.Base64.stringify(hash);
     }

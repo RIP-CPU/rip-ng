@@ -106,11 +106,11 @@ dwv.gui.plot = function (div, data, options)
 @Component({
   selector: 'test-dicom-viewer',
   templateUrl: './dicom-viewer.component.html',
-  styleUrls: ['./dicom-viewer.component.scss']
+  styleUrls: ['./dicom-viewer.component.scss'],
 })
 export class TestDicomViewerComponent implements OnInit {
   public versions: any;
-  public tools = 
+  public tools =
     [
       {
         key: 'Scroll',
@@ -155,7 +155,7 @@ export class TestDicomViewerComponent implements OnInit {
   }
 
   ngOnInit() {
-    let tools = [];
+    const tools = [];
     this.tools.forEach(tool => { tools.push(tool.key); });
     // create app
     this.dwvApp = new dwv.App();
@@ -206,7 +206,7 @@ export class TestDicomViewerComponent implements OnInit {
         width: '80%',
         height: '90%',
         data: { title: 'DICOM Tags', value: this.tags },
-      }
+      },
     );
   }
 }
