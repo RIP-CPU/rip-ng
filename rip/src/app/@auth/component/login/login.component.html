@@ -12,7 +12,7 @@
           placeholder="Username"
           class="form-control"
           autofocus>
-    <ng-container *ngIf="username">
+    <ng-container *ngIf="!username">
       <p class="error-message">
         Email is required!
       </p>
@@ -28,7 +28,7 @@
           type="password"
           id="inputPassword"
           placeholder="Password">
-      <ng-container *ngIf="password">
+      <ng-container *ngIf="!password">
         <p class="error-message">
           Password is required!
         </p>
