@@ -1,6 +1,6 @@
-import { ActivatedRouteSnapshot, RouterStateSnapshot, Router, CanActivateChild } from "@angular/router";
-import { Injectable } from "@angular/core";
-import { AuthTokenService } from "./auth-token.service";
+import { ActivatedRouteSnapshot, RouterStateSnapshot, Router, CanActivateChild } from '@angular/router';
+import { Injectable } from '@angular/core';
+import { AuthTokenService } from './auth-token.service';
 
 @Injectable()
 export class AuthGuardChildService implements CanActivateChild {

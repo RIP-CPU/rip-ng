@@ -1,4 +1,4 @@
-import { SecurityResourceModel } from "../@core/models/security-resource.model";
+import { SecurityResourceModel } from '../@core/models/security-resource.model';
 
 export const SEC_RES: SecurityResourceModel = { 
     client_id: "rip-core",

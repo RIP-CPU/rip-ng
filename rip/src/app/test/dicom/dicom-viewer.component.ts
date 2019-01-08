@@ -16,7 +16,7 @@ dwv.tool.colourMaps = {
   "hotiron": dwv.image.lut.hot_iron,
   "pet": dwv.image.lut.pet,
   "hotmetalblue": dwv.image.lut.hot_metal_blue,
-  "pet20step": dwv.image.lut.pet_20step
+  "pet20step": dwv.image.lut.pet_20step,
 };
 
 dwv.tool.defaultpresets = {};
@@ -26,7 +26,7 @@ dwv.tool.defaultpresets.CT = {
     "lung": {"center": -500, "width": 1500},
     "bone": {"center": 500, "width": 2000},
     "brain": {"center": 40, "width": 80},
-    "head": {"center": 90, "width": 350}
+    "head": {"center": 90, "width": 350},
 };
 // decode query
 dwv.utils.decodeQuery = dwv.utils.base.decodeQuery;
@@ -85,7 +85,7 @@ dwv.gui.appendVersionHtml = dwv.gui.base.appendVersionHtml;
 dwv.image.decoderScripts = {
     'jpeg2000': '/assets/dwv/decoders/pdfjs/decode-jpeg2000.js',
     'jpeg-lossless': '/assets/dwv/decoders/rii-mango/decode-jpegloss.js',
-    'jpeg-baseline': '/assets/dwv/decoders/pdfjs/decode-jpegbaseline.js'
+    'jpeg-baseline': '/assets/dwv/decoders/pdfjs/decode-jpegbaseline.js',
 };
 dwv.gui.info.overlayMaps = overlays.default;
 dwv.gui.plot = function (div, data, options)
@@ -94,7 +94,7 @@ dwv.gui.plot = function (div, data, options)
         "bars": { "show": true },
         "grid": { "backgroundcolor": null, "markings": null },
         "xaxis": { "show": true },
-        "yaxis": { "show": false }
+        "yaxis": { "show": false },
     };
     if (typeof options !== "undefined" &&
         typeof options.markings !== "undefined") {
@@ -138,7 +138,7 @@ export class TestDicomViewerComponent implements OnInit {
       },{
         key: "Flood Fill",
         value: "Flood Fill"
-      }
+      },
     ];
   public selectedTool = 'Select Tool';
   public loadProgress = 0;
@@ -149,7 +149,7 @@ export class TestDicomViewerComponent implements OnInit {
   constructor(public dialog: MatDialog) {
     this.versions = {
       'dwv': dwv.getVersion(),
-      'angular': VERSION.full
+      'angular': VERSION.full,
     };
   }
 
@@ -165,7 +165,7 @@ export class TestDicomViewerComponent implements OnInit {
       'tools': tools,
       "shapes": ["Arrow", "Ruler", "Protractor", "Rectangle", "Roi", "Ellipse", "FreeHand"],
       "isMobile": true,
-      "helpResourcesPath": "resources/help"
+      "helpResourcesPath": "resources/help",
     });
     // progress
     const self = this;
@@ -204,7 +204,7 @@ export class TestDicomViewerComponent implements OnInit {
       {
         width: '80%',
         height: '90%',
-        data: { title: 'DICOM Tags', value: this.tags }
+        data: { title: 'DICOM Tags', value: this.tags },
       }
     );
   }

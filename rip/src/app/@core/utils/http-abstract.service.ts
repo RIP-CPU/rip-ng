@@ -1,7 +1,7 @@
-import { Observable } from "rxjs/Rx";
-import { HttpBaseModel } from "../models/http-base.model";
-import { HttpFactoryService } from "./http-factory.service";
-import { HttpHeaders, HttpParams } from "@angular/common/http";
+import { Observable } from 'rxjs/Rx';
+import { HttpBaseModel } from '../models/http-base.model';
+import { HttpFactoryService } from './http-factory.service';
+import { HttpHeaders, HttpParams } from '@angular/common/http';
 
 export abstract class HttpAbstractService implements HttpFactoryService {
   
@@ -25,16 +25,16 @@ export abstract class HttpAbstractService implements HttpFactoryService {
   }
 
   protected errorHandler = (error) => {
-    let errorMsg:string = "Internal Server Error";
+    let errorMsg:string = "Internal Server Error';
     switch(error.status){
       case 404:
-        errorMsg = "Page Not Found";
+        errorMsg = "Page Not Found';
         break;
       case 400:
-        errorMsg = "Bad Credentials";
+        errorMsg = "Bad Credentials';
         break;
       case 401:
-        errorMsg = "Unauthorized";
+        errorMsg = "Unauthorized';
         break;
       default:
         break;

@@ -1,8 +1,8 @@
-import { Injectable } from "@angular/core";
-import { HttpHeaders, HttpClient, HttpParams } from "@angular/common/http";
-import { Observable } from "rxjs/Rx";
-import { HttpAbstractService } from "./http-abstract.service";
-import { HttpBaseModel, HttpMethod } from "../models/http-base.model";
+import { Injectable } from '@angular/core';
+import { HttpHeaders, HttpClient, HttpParams } from '@angular/common/http';
+import { Observable } from 'rxjs/Rx';
+import { HttpAbstractService } from './http-abstract.service';
+import { HttpBaseModel, HttpMethod } from '../models/http-base.model';
 
 @Injectable({
   providedIn: 'root'

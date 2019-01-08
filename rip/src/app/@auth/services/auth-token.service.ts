@@ -1,14 +1,14 @@
-import { Injectable, Inject } from "@angular/core";
+import { Injectable, Inject } from '@angular/core';
 import {Idle, DEFAULT_INTERRUPTSOURCES} from '@ng-idle/core';
-import { HttpHeaders } from "@angular/common/http";
-import { Router } from "@angular/router";
-import { API } from "../../config/api.config";
-import { HttpFactoryService } from "../../@core/utils/http-factory.service";
-import { SEC_RES } from "../../config/security.config";
-import { AuthStorageService } from "./auth-storage.service";
-import { HTTP_SERVICE } from "../../@core/core.provider";
+import { HttpHeaders } from '@angular/common/http';
+import { Router } from '@angular/router';
+import { API } from '../../config/api.config';
+import { HttpFactoryService } from '../../@core/utils/http-factory.service';
+import { SEC_RES } from '../../config/security.config';
+import { AuthStorageService } from './auth-storage.service';
+import { HTTP_SERVICE } from '../../@core/core.provider';
 import { Observable } from 'rxjs/Observable';
-import { toObservable } from "@angular/forms/src/validators";
+import { toObservable } from '@angular/forms/src/validators';
 
 @Injectable()
 export class AuthTokenService {

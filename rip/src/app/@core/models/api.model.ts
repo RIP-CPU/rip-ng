@@ -1,4 +1,4 @@
-import { HttpBaseModel } from "./http-base.model";
+import { HttpBaseModel } from './http-base.model';
 
 export interface APIModel {
     [name: string]: {

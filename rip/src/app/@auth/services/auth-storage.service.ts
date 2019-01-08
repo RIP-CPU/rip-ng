@@ -1,6 +1,6 @@
-import { Injectable } from "@angular/core";
-import { EncryptionService } from "./encryption.service";
-import { SEC_RES } from "../../config/security.config";
+import { Injectable } from '@angular/core';
+import { EncryptionService } from './encryption.service';
+import { SEC_RES } from '../../config/security.config';
 
 @Injectable()
 export class AuthStorageService {
