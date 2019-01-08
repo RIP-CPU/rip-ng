@@ -171,9 +171,4 @@
     }
   },
   "defaultProject": "rip",
-  "schematics": {
-    "@schematics/angular:component": {
-      "styleext": "scss"
-    }
-  }
 }
