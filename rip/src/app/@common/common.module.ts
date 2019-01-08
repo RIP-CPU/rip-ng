@@ -9,7 +9,7 @@ const components_export = [
 
 @NgModule({
   imports: [
-    ThemeModule
+    ThemeModule,
   ],
   declarations: [
     ...components,

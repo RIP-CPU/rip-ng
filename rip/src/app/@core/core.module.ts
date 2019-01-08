@@ -10,13 +10,13 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { CustomPreloadingStrategy } from './utils/preloading-strategy.service';
 
 export const SAMPLE_PROVIDERS = [
-  ...DataModule.forRoot().providers
+  ...DataModule.forRoot().providers,
 ];
 export const core_providers = [
-  { provide: HTTP_SERVICE, useClass: HttpCommonService}, 
+  { provide: HTTP_SERVICE, useClass: HttpCommonService},
   { provide: HTTP_INTERCEPTORS, useClass: HttpInterceptorService, multi: true},
   CustomPreloadingStrategy,
-  AnalyticsService
+  AnalyticsService,
 ];
 
 @NgModule({

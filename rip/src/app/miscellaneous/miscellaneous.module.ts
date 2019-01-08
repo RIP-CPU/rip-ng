@@ -8,7 +8,7 @@ import {
   NbCheckboxModule,
   NbAlertModule,
   NbInputModule,
-  NbButtonModule
+  NbButtonModule,
 } from '@nebular/theme';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';

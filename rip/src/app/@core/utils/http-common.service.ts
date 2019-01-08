@@ -19,7 +19,7 @@ export class HttpCommonService extends HttpAbstractService {
                       params?: HttpParams,
                       pathVariable?: string[]): Observable<any> {
     let response: Observable<any> = null;
-    switch( api.method ) {
+    switch (api.method) {
       case HttpMethod.POST:
         response = this.HTTP_POST(this.getAPI(api, pathVariable), body, headers, params);
         break;

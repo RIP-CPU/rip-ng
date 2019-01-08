@@ -39,7 +39,7 @@ import { CountryOrdersMapComponent } from './component/country-orders/map/countr
 import {
   ECommerceVisitorsAnalyticsComponent,
 } from './component/visitors-analytics/visitors-analytics.component';
-import { 
+import {
   ECommerceVisitorsAnalyticsChartComponent,
 } from './component/visitors-analytics/visitors-analytics-chart/visitors-analytics-chart.component';
 import { EarningCardComponent } from './component/earning-card/earning-card.component';

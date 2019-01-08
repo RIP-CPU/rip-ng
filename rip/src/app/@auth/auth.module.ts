@@ -78,7 +78,7 @@ const routes: Routes = [{
   declarations: [
     ...components,
   ],
-  providers:[
+  providers: [
     ...services,
   ],
 })
