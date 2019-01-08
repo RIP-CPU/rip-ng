@@ -39,8 +39,8 @@ import { NewsPostComponent } from './infinite-list/news-post/news-post.component
 import { NewsPostPlaceholderComponent } from './infinite-list/news-post-placeholder/news-post-placeholder.component';
 import { ListComponent } from './list/list.component';
 import { ProgressBarComponent } from './progress-bar/progress-bar.component';
-import { 
-  InteractiveProgressBarComponent 
+import {
+  InteractiveProgressBarComponent
 } from './progress-bar/interactive-progress-bar/interactive-progress-bar.component';
 import { SpinnerComponent } from './spinner/spinner.component';
 import { SpinnerColorComponent } from './spinner/spinner-color/spinner-color.component';

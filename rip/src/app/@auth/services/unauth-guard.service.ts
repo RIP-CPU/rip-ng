@@ -4,11 +4,11 @@ import { AuthTokenService } from './auth-token.service';
 
 @Injectable()
 export class UnauthorizeGuardService implements CanActivate {
-    constructor(private router: Router, private authTokenService:AuthTokenService){}
+    constructor(private router: Router, private authTokenService: AuthTokenService) {}
 
-    canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot){
+    canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
         if(this.authTokenService.isLogin()){
-            this.router.navigate(['/app/dashboard'])
+            this.router.navigate(['/app/dashboard']);
             return false;
         }
         return true;

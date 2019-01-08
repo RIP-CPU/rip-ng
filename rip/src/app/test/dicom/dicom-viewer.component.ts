@@ -55,7 +55,7 @@ dwv.gui.FolderLoad = dwv.gui.base.FolderLoad;
 // Url loader
 dwv.gui.UrlLoad =  dwv.gui.base.UrlLoad;
 
-//Window/level
+// Window/level
 dwv.gui.WindowLevel = dwv.gui.base.WindowLevel;
 // Draw
 dwv.gui.Draw = dwv.gui.base.Draw;
@@ -90,7 +90,7 @@ dwv.image.decoderScripts = {
 dwv.gui.info.overlayMaps = overlays.default;
 dwv.gui.plot = function (div, data, options)
 {
-    let plotOptions = {
+    const plotOptions = {
         'bars': { 'show': true },
         'grid': { 'backgroundcolor': null, 'markings': null },
         'xaxis': { 'show': true },
@@ -114,30 +114,31 @@ export class TestDicomViewerComponent implements OnInit {
     [
       {
         key: 'Scroll',
-        value: 'Scroll'
+        value: 'Scroll',
       },
       {
         key: 'WindowLevel',
-        value: 'Window Level'
+        value: 'Window Level',
       },
       {
         key: 'ZoomAndPan',
-        value: 'Zoom And Pan'
+        value: 'Zoom And Pan',
       },
       {
         key: 'Draw',
-        value: 'Draw'
+        value: 'Draw',
       },
       {
         key: 'Livewire',
-        value: 'Livewire'
+        value: 'Livewire',
       },
       {
         key: 'Filter',
-        value: 'Filter'
-      },{
+        value: 'Filter',
+      },
+      {
         key: 'Flood Fill',
-        value: 'Flood Fill'
+        value: 'Flood Fill',
       },
     ];
   public selectedTool = 'Select Tool';

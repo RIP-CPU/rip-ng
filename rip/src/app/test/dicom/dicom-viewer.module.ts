@@ -5,7 +5,7 @@ import { MatDialogModule } from '@angular/material';
 import { MatIconModule } from '@angular/material';
 import { MatMenuModule } from '@angular/material';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
-import { 
+import {
   MatTableModule,
   MatPaginatorModule,
   MatSortModule,
@@ -38,7 +38,7 @@ const routes: Routes = [{
   declarations: [
     TestDicomViewerComponent,
     TagsDialogComponent,
-    TagsTableComponent
+    TagsTableComponent,
   ],
   imports: [
     ThemeModule,
@@ -52,13 +52,13 @@ const routes: Routes = [{
     MatPaginatorModule,
     MatSortModule,
     MatFormFieldModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
   ],
   entryComponents: [
-    TagsDialogComponent
+    TagsDialogComponent,
   ],
   exports : [
     RouterModule,
   ],
 })
-export class TestDicomViewerModule { }
+export class TestDicomViewerModule {}

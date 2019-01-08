@@ -3,9 +3,8 @@ import { MatPaginator, MatTableDataSource, MatSort } from '@angular/material';
 
 @Component({
     selector: 'app-dwv-tags-table',
-    templateUrl: './tags-table.component.html'
+    templateUrl: './tags-table.component.html',
 })
-
 export class TagsTableComponent implements OnInit {
 
     @Input() data: any;

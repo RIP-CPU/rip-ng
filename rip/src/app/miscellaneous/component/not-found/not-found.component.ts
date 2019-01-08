@@ -8,9 +8,9 @@ import { Router } from '@angular/router';
 })
 export class NotFoundComponent {
 
-  constructor(private router: Router){}
+  constructor(private router: Router) {}
 
-  back(){
+  back() {
       this.router.navigate(['/']);
   }
 

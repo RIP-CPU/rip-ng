@@ -15,7 +15,9 @@ import { TrafficFrontCardComponent } from './component/traffic-reveal-card/front
 import { TrafficBackCardComponent } from './component/traffic-reveal-card/back-side/traffic-back-card.component';
 import { TrafficBarComponent } from './component/traffic-reveal-card/front-side/traffic-bar/traffic-bar.component';
 import { CountryOrdersChartComponent } from './component/country-orders/chart/country-orders-chart.component';
-import { ECommerceVisitorsStatisticsComponent } from './component/visitors-analytics/visitors-statistics/visitors-statistics.component';
+import {
+  ECommerceVisitorsStatisticsComponent
+} from './component/visitors-analytics/visitors-statistics/visitors-statistics.component';
 import { ECommerceLegendChartComponent } from './component/legend-chart/legend-chart.component';
 import { ECommerceUserActivityComponent } from './component/user-activity/user-activity.component';
 import { ECommerceProgressSectionComponent } from './component/progress-section/progress-section.component';
@@ -25,11 +27,15 @@ import { EarningLiveUpdateChartComponent } from './component/earning-card/front-
 import { CountryOrdersMapService } from './services/country-orders-map.service';
 import { TrafficRevealCardComponent } from './component/traffic-reveal-card/traffic-reveal-card.component';
 import { TrafficBarChartComponent } from './component/traffic-reveal-card/back-side/traffic-bar-chart.component';
-import { TrafficCardsHeaderComponent } from './component/traffic-reveal-card/traffic-cards-header/traffic-cards-header.component';
+import {
+  TrafficCardsHeaderComponent
+} from './component/traffic-reveal-card/traffic-cards-header/traffic-cards-header.component';
 import { CountryOrdersComponent } from './component/country-orders/country-orders.component';
 import { CountryOrdersMapComponent } from './component/country-orders/map/country-orders-map.component';
 import { ECommerceVisitorsAnalyticsComponent } from './component/visitors-analytics/visitors-analytics.component';
-import { ECommerceVisitorsAnalyticsChartComponent } from './component/visitors-analytics/visitors-analytics-chart/visitors-analytics-chart.component';
+import { 
+  ECommerceVisitorsAnalyticsChartComponent
+} from './component/visitors-analytics/visitors-analytics-chart/visitors-analytics-chart.component';
 import { EarningCardComponent } from './component/earning-card/earning-card.component';
 import { EarningCardFrontComponent } from './component/earning-card/front-side/earning-card-front.component';
 import { EarningCardBackComponent } from './component/earning-card/back-side/earning-card-back.component';
@@ -88,7 +94,7 @@ const components = [
   EarningCardBackComponent,
   EarningPieChartComponent,
   EarningLiveUpdateChartComponent,
-  
+
   ChartjsBarComponent,
   ChartjsLineComponent,
   ChartjsPieComponent,
@@ -107,7 +113,7 @@ const components = [
   EchartsMultipleXaxisComponent,
   EchartsAreaStackComponent,
   EchartsBarAnimationComponent,
-  EchartsRadarComponent
+  EchartsRadarComponent,
 ];
 
 const components_export = [
@@ -138,7 +144,7 @@ const components_export = [
   EchartsMultipleXaxisComponent,
   EchartsAreaStackComponent,
   EchartsBarAnimationComponent,
-  EchartsRadarComponent
+  EchartsRadarComponent,
 ];
 
 @NgModule({
@@ -147,7 +153,7 @@ const components_export = [
     ChartModule,
     NgxEchartsModule,
     NgxChartsModule,
-    LeafletModule
+    LeafletModule,
   ],
   declarations: [
     ...components,
@@ -156,7 +162,7 @@ const components_export = [
     ...components_export,
   ],
   providers: [
-    CountryOrdersMapService
-  ]
+    CountryOrdersMapService,
+  ],
 })
 export class ChartSharedModule { }

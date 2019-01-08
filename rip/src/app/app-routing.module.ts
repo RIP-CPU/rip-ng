@@ -8,16 +8,16 @@ const routes: Routes = [
     path: 'auth',
     loadChildren: 'app/@auth/auth.module#AuthModule',
     data: {
-      preload: true
+      preload: true,
     },
   },
   {
     path: 'miscellaneous',
     loadChildren: 'app/miscellaneous/miscellaneous.module#MiscellaneousModule',
     data: {
-      preload: true
+      preload: true,
     },
-    canActivate: [UnauthorizeGuardService]
+    canActivate: [UnauthorizeGuardService],
   },
   {
     path: 'app',

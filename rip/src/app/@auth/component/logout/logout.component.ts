@@ -3,11 +3,11 @@ import { AuthTokenService } from '../../services/auth-token.service';
 
 @Component({
     selector: "logout-component",
-    template: ""
+    template: '',
 })
 export class LogoutComponent {
 
-    constructor(private authTokenService:AuthTokenService){
+    constructor(private authTokenService: AuthTokenService) {
         this.authTokenService.logout();
     }
 }

@@ -27,23 +27,22 @@ const routes: Routes = [{
   {
     path: 'dicom',
     loadChildren: 'app/test/dicom/dicom-viewer.module#TestDicomViewerModule',
-  }, 
+  },
   {
     path: 'charts',
     component: ChartsComponent,
-    children:[
-      {
+    children: [{
         path: 'echarts',
         component: EchartsComponent
       },
       {
         path: 'd3',
         component: D3Component,
-      }, 
+      },
       {
         path: 'chartjs',
         component: ChartjsComponent,
-      }
+      },
     ]
   }, {
     path: 'features',
@@ -63,7 +62,7 @@ const routes: Routes = [{
     }, {
       path: 'searchmap',
       component: SearchMapComponent,
-    }]
+    }],
   }, {
     path: 'editors',
     component: TestEditorsComponent,

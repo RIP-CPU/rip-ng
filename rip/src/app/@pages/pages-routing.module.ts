@@ -5,7 +5,7 @@ import { NotFoundComponent } from './component/not-found/not-found.component';
 
 export const PAGES_COMPONENTS = [
   PagesComponent,
-  NotFoundComponent
+  NotFoundComponent,
 ];
 
 const routes: Routes = [{

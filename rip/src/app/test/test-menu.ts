@@ -22,7 +22,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
       {
         title: 'PACS Image',
         link: '/app/dicom/upload',
-      }
+      },
     ],
   },
   {
@@ -129,7 +129,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
       {
         title: 'Typography',
         link: '/app/features/typography',
-      }
+      },
     ],
   },
   {

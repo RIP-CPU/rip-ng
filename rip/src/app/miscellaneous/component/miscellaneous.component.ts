@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { Location } from '@angular/common';
 
 @Component({
@@ -6,21 +6,22 @@ import { Location } from '@angular/common';
   styleUrls: ['miscellaneous.component.scss'],
   templateUrl: './miscellaneous.component.html'
 })
-export class MiscellaneousComponent {
+export class MiscellaneousComponent implements OnDestroy {
 
-  private alive;
+  alive: boolean;
   subscription: any;
   authenticated: boolean;
   token: string;
 
-  constructor(private location: Location){}
+  constructor(private location: Location) {}
 
-  back(): boolean{
+  back(): boolean {
       this.location.back();
       return false;
   }
 
-  ngOnDestroy(): void{
+  ngOnDestroy(): void {
       this.alive = false;
   }
+
 }

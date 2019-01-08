@@ -32,7 +32,7 @@ export class LoginComponent {
         $('body').addClass('pace-running');
         $('.pace').removeClass('pace-inactive');
         $('.pace').addClass('pace-active');
-        if(this.progressBar<35) {
+        if(this.progressBar < 35) {
           this.progressBar = 35;
           $('.pace-progress').attr('data-progress-text', this.progressBar + '%');
           $('.pace-progress').attr('data-progress', this.progressBar);
@@ -42,7 +42,7 @@ export class LoginComponent {
         this.authTokenService.login(
           this.form.get('username').value,
           this.form.get('password').value)
-          .then(()=> {
+          .then(() => {
               this.progressBar = 90;
               $('.pace-progress').attr('data-progress-text', this.progressBar + '%');
               $('.pace-progress').attr('data-progress', this.progressBar);
@@ -52,7 +52,7 @@ export class LoginComponent {
               this.password = null;
               this.router.navigate(['/app/dashboard']);
           })
-          .catch(error=> {
+          .catch(error => {
               this.username = null;
               this.password = null;
               this.progressBar = 85;
@@ -66,7 +66,7 @@ export class LoginComponent {
               this.progressBar = 0;
               this.buttonLogin = false;
           });
-          if(this.progressBar >= 35 && this.progressBar<65) {
+          if(this.progressBar >= 35 && this.progressBar < 65) {
               this.progressBar = 65;
               $('.pace-progress').attr('data-progress-text', this.progressBar + '%');
               $('.pace-progress').attr('data-progress', this.progressBar);

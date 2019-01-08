@@ -3,24 +3,24 @@ import { Location } from '@angular/common';
 
 @Component({
   selector: 'ngx-auth',
-  styleUrls: ["auth.component.scss"],
+  styleUrls: ['auth.component.scss'],
   templateUrl: 'auth.component.html',
 })
 export class AuthComponent implements OnDestroy {
 
-    private alive;
+    alive: boolean;
     subscription: any;
     authenticated: boolean;
     token: string;
 
-    constructor(private location: Location){}
+    constructor(private location: Location) {}
 
-    back(): boolean{
+    back(): boolean {
         this.location.back();
         return false;
     }
 
-    ngOnDestroy(): void{
+    ngOnDestroy(): void {
         this.alive = false;
     }
 

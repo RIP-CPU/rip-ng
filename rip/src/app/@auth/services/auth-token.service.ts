@@ -11,17 +11,17 @@ import { HTTP_SERVICE } from '../../@core/core.provider';
 @Injectable()
 export class AuthTokenService {
 
-    constructor(@Inject(HTTP_SERVICE)private httpBaseService: HttpFactoryService, 
+    constructor(@Inject(HTTP_SERVICE)private httpBaseService: HttpFactoryService,
                 private router: Router,
                 private storage: AuthStorageService,
                 private idle: Idle) {
         idle.setIdle(SEC_RES['session_idle']);
         idle.setTimeout(SEC_RES['session_timeout']);
-        idle.setInterrupts(DEFAULT_INTERRUPTSOURCES); 
+        idle.setInterrupts(DEFAULT_INTERRUPTSOURCES);
         idle.onTimeout.subscribe(() => {
             /* console.log('[RIP] Session Timeout'); */
             this.logout();
-        });        
+        });
         idle.onIdleEnd.subscribe(() => {
             /* console.log('[RIP] Session Idle End'); */
         });
@@ -30,9 +30,9 @@ export class AuthTokenService {
     public login(username: string, password: string): Promise<any> {
         this.storage.clear();
         return this.httpBaseService.
-        HTTP_REQUEST(API['auth']['token'], this.getAuthBody(username,password).toString(), this.getAuthHeader())
+        HTTP_REQUEST(API['auth']['token'], this.getAuthBody(username, password).toString(), this.getAuthHeader())
         .toPromise()
-        .then((response)=> {
+        .then((response) => {
             this.idle.setIdle(response['expires_in']);
             this.idle.watch();
             /* console.log('[RIP] Session Idle Start'); */
@@ -54,7 +54,7 @@ export class AuthTokenService {
     private getAuthHeader(): HttpHeaders {
         return new HttpHeaders({
             'Content-Type': 'application/x-www-form-urlencoded',
-            'Authorization': 'Basic '+btoa(SEC_RES['client_id'] + ':' +SEC_RES['client_secret']),
+            'Authorization': 'Basic ' + btoa(SEC_RES['client_id'] + ':' + SEC_RES['client_secret']),
             'Accept': 'application/json',
         });
     }

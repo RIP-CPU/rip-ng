@@ -27,7 +27,7 @@ const components = [
   AuthComponent,
   NbAuthBlockComponent,
   LoginComponent,
-  LogoutComponent
+  LogoutComponent,
 ];
 
 const services = [
@@ -36,7 +36,7 @@ const services = [
   AuthTokenService,
   AuthGuardChildService,
   AuthStorageService,
-  EncryptionService
+  EncryptionService,
 ];
 
 const routes: Routes = [{
@@ -46,12 +46,12 @@ const routes: Routes = [{
     {
       path: '',
       component: LoginComponent,
-      canActivate: [UnauthorizeGuardService]
+      canActivate: [UnauthorizeGuardService],
     },
     {
       path: 'login',
       component: LoginComponent,
-      canActivate: [UnauthorizeGuardService]
+      canActivate: [UnauthorizeGuardService],
     },
     {
       path: 'logout',
@@ -73,18 +73,18 @@ const routes: Routes = [{
     NbButtonModule,
     FormsModule,
     HttpClientModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
   ],
   declarations: [
-    ...components
+    ...components,
   ],
   providers:[
-    ...services
-  ]
+    ...services,
+  ],
 })
 export class AuthModule {
   static forRoot(): ModuleWithProviders {
-    return <ModuleWithProviders>{
+    return <ModuleWithProviders> {
       ngModule: AuthModule,
       providers: [
         ...services,

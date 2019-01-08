@@ -3,9 +3,8 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
 
 @Component({
     selector: 'app-dwv-tags-dialog',
-    templateUrl: './tags-dialog.component.html'
+    templateUrl: './tags-dialog.component.html',
 })
-
 export class TagsDialogComponent {
 
     constructor(

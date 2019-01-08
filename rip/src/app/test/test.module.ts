@@ -31,7 +31,7 @@ import { TestTablesComponent } from './tables/test-tables.component';
     D3Component,
     TestMapsComponent,
     TestEditorsComponent,
-    TestTablesComponent
+    TestTablesComponent,
   ],
 })
 export class TestModule {

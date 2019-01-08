@@ -35,7 +35,7 @@ export class AuthStorageService {
 
         const serverDateKey = this.enc.getHmacSha256(SEC_RES['private_key'], 'server_date', true);
         const serverDateValue = this.enc.encryptAES(SEC_RES['aes_key'], response['server_date']);
-        
+
         sessionStorage.setItem(accessTokenKey, accessTokenValue);
         sessionStorage.setItem(refreshTokenKey, refreshTokenValue);
         sessionStorage.setItem(publicKey, publicValue);
@@ -54,7 +54,7 @@ export class AuthStorageService {
     }
 
     public isLogin(): boolean {
-        const accessTokenKey = this.enc.getHmacSha256(SEC_RES['private_key'], 'access_token', true);  
+        const accessTokenKey = this.enc.getHmacSha256(SEC_RES['private_key'], 'access_token', true);
         if(sessionStorage.getItem(accessTokenKey))
             return true;
         sessionStorage.clear();
@@ -63,17 +63,17 @@ export class AuthStorageService {
 
     public getSessionStorage(key: string): string {
         const keyEncrypted = this.enc.getHmacSha256(SEC_RES['private_key'], key, true);
-        return (keyEncrypted)?this.enc.decryptAES(SEC_RES['aes_key'], sessionStorage.getItem(keyEncrypted)) : null;
+        return (keyEncrypted) ? this.enc.decryptAES(SEC_RES['aes_key'], sessionStorage.getItem(keyEncrypted)) : null;
     }
 
     public getLocalStorageEnc(key: string): string {
         const keyEncrypted = this.enc.getHmacSha256(SEC_RES['private_key'], key, true);
-        return (keyEncrypted)?this.enc.decryptAES(SEC_RES['aes_key'], localStorage.getItem(keyEncrypted)) : null;
+        return (keyEncrypted) ? this.enc.decryptAES(SEC_RES['aes_key'], localStorage.getItem(keyEncrypted)) : null;
     }
 
     public getLocalStorage(key: string): string {
         const keyEncrypted = this.enc.getHmacSha256(SEC_RES['private_key'], key, true);
-        return (keyEncrypted)?localStorage.getItem(keyEncrypted):null;
+        return (keyEncrypted) ? localStorage.getItem(keyEncrypted) : null;
     }
 
 }

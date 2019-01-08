@@ -17,8 +17,8 @@ export class PagesComponent {
 
   public menu: NbMenuItem;
 
-  constructor(private storage:AuthStorageService){
-    this.menu = JSON.parse(this.storage.getSessionStorage("menus"));
+  constructor(private storage: AuthStorageService) {
+    this.menu = JSON.parse(this.storage.getSessionStorage('menus'));
   }
 
 }

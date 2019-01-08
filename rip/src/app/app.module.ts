@@ -29,12 +29,12 @@ import { AuthModule } from './@auth/auth.module';
     NgbModule.forRoot(),
     ThemeModule.forRoot(),
     CoreModule.forRoot(),
-    AuthModule.forRoot()
+    AuthModule.forRoot(),
   ],
   bootstrap: [AppComponent],
   providers: [
     { provide: APP_BASE_HREF, useValue: '/' }, 
-    { provide: LocationStrategy, useClass: PathLocationStrategy }
+    { provide: LocationStrategy, useClass: PathLocationStrategy },
   ],
 })
 export class AppModule {
