@@ -12,8 +12,8 @@ export class LoginComponent {
 
     public buttonLogin: boolean = false;
     private progressBar: number = 25;
-    public usernameRequired: boolean = false;
-    public passwordRequired: boolean = false;
+    public usernameError: boolean = false;
+    public passwordError: boolean = false;
 
     public form: FormGroup = new FormGroup({
       username: new FormControl(),
@@ -24,10 +24,10 @@ export class LoginComponent {
 
     public login() {
       if (!this.form.get('username').value)
-        this.usernameRequired = true;
+        this.usernameError = true;
       if (!this.form.get('password').value)
-        this.passwordRequired = true;
-      if (!this.usernameRequired && !this.passwordRequired) {
+        this.passwordError = true;
+      if (!this.usernameError && !this.passwordError) {
         document.querySelector('.pace-done').className =
         document.querySelector('.pace-done').className.replace('pace-done', 'pace-running');
         document.querySelector('.pace-inactive').className =
@@ -49,13 +49,13 @@ export class LoginComponent {
               progressDOM.getAttributeNode('data-progress-text').value = this.progressBar + '%';
               progressDOM.getAttributeNode('data-progress').value = this.progressBar.toString();
               this.progressBar = 0;
-              this.usernameRequired = false;
-              this.passwordRequired = false;
+              this.usernameError = false;
+              this.passwordError = false;
               this.router.navigate(['/app/dashboard']);
           })
           .catch(error => {
-              this.usernameRequired = false;
-              this.passwordRequired = false;
+              this.usernameError = false;
+              this.passwordError = false;
               this.progressBar = 85;
               progressDOM.style.transform = 'translate3d(' + this.progressBar + '%, 0px, 0px)';
               progressDOM.getAttributeNode('data-progress-text').value = this.progressBar + '%';

@@ -14,8 +14,8 @@
   }
   #dwv {
     font-family: Arial, Helvetica, sans-serif;
-    height: 90%; }
-  
+    height: 90%;
+  }
   .button-row {
     text-align: center;
     padding: 5px;;
@@ -28,18 +28,20 @@
     font-size: 8pt;
     margin: 1em;
   }
-  
+
   /* Layers */
   .layerContainer {
       width: 60% !important;
       padding: 0;
-      margin: auto; text-align: center; }
+      margin: auto; text-align: center;
+  }
   .imageLayer {
       width: 60% !important;
       left: 0px; }
   .drawDiv {
-      position: absolute; pointer-events: none; }
-  
+      position: absolute; pointer-events: none;
+  }
+
   /* drag&drop */
   .dropBox {
       width: 100% !important;
@@ -48,7 +50,7 @@
       margin: auto;
       text-align: center; vertical-align: middle;
       background: white; color: grey;  }
-  .dropBox.hover { border: 5px dashed #cc0; }
+  .dropBox.hover { border: 5px dashed #cc0;}
   /* toolbar */
   .toolList ul { padding: 0; }
   .toolList li { list-style-type: none; }
