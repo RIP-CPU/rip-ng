@@ -10,9 +10,10 @@
     nb-select {
       margin-right: 0.75rem;
       margin-bottom: 1rem;
-    }
   }
-  #dwv {
+ 
+  }
+  .dwv {
     font-family: Arial, Helvetica, sans-serif;
     height: 90%;
   }
@@ -38,7 +39,8 @@
   }
   .imageLayer {
       width: 60% !important;
-      left: 0; }
+      left: 0;
+  }
   .drawDiv {
       position: absolute;
       pointer-events: none;
@@ -53,96 +55,124 @@
       text-align: center;
       vertical-align: middle;
       background: white;
-      color: grey;  }
+      color: grey; 
+  }
   .dropBox.hover { border: 5px dashed #cc0;}
   /* toolbar */
-  .toolList ul { padding: 0; }
-  .toolList li { list-style-type: none; }
+  .toolList ul { padding: 0;
+  }
+  .toolList li { list-style-type: none;
+  }
   
   /* info */
   .infoLayer ul {
     margin: 0;
     padding: 2px;
-    list-style-type: none; }
-  .infoLayer li { margin-top: 0; }
+    list-style-type: none;
+  }
+  .infoLayer li { margin-top: 0;
+  }
   .infoLayer canvas {
     margin: 0;
-    padding: 2px; }
+    padding: 2px;
+  }
   .info {
     color: #cde;
-    font-size: 80%; }
+    font-size: 80%;
+  }
   .infoc {
     color: #ff0;
-    font-size: 120%; }
+    font-size: 120%;
+  }
   .infotl {
     position: absolute;
     top: 0;
     left: 0;
-    text-align: left; }
+    text-align: left;
+  }
   .infotc {
     position: absolute;
     top: 0;
     left: 50%;
     right: 50%;
-    text-align: center; }
+    text-align: center;
+  }
   .infotr {
     position: absolute;
     top: 0;
     right: 0;
-    text-align: right; }
+    text-align: right;
+  }
   .infocl {
     position: absolute;
     bottom: 50%;
     left: 0;
-    text-align: left; }
+    text-align: left;
+  }
   .infocr {
     position: absolute;
     bottom: 50%;
     right: 2px;
-    text-align: right; }
+    text-align: right;
+  }
   .infobl {
     position: absolute;
     bottom: 0;
     left: 0;
-    text-align: left; }
+    text-align: left;
+  }
   .infobc {
     position: absolute;
     bottom: 0;
     left: 50%;
     right: 50%;
-    text-align: center; }
+    text-align: center;
+  }
   .infobr {
     position: absolute;
     bottom: 0;
     right: 0;
-    text-align: right; }
+    text-align: right;
+  }
 
   .plot {
     position: absolute;
     width: 100px;
     height: 50px;
     bottom: 15px;
-    right: 0; }
+    right: 0;
+  }
   /* tag list */
-  table.tagsTable { border-collapse: collapse; }
+  table.tagsTable { border-collapse: collapse;
+  }
   table.tagsTable thead th {
     text-transform: uppercase;
     font-weight: bold;
     opacity: 0.5;}
-  table.tagsTable tr:nth-child(even) { background-color: #333; }
-  table.drawsTable { border-collapse: collapse; }
-  table.drawsTable td { vertical-align: middle; }
+  table.tagsTable tr:nth-child(even) { background-color: #333;
+  }
+  table.drawsTable { border-collapse: collapse;
+  }
+  table.drawsTable td { vertical-align: middle;
+  }
   table.drawsTable thead th {
     text-transform: uppercase;
-    font-weight: bold; opacity: 0.5; }
-  .highlighted { background: #f87217; }
-  .tags form { width: 50%; }
+    font-weight: bold;
+    opacity: 0.5;
+  }
+  .highlighted { background: #f87217;
+  }
+  .tags form { width: 50%;
+  }
   
   /* draw list */
-  .drawList tr:nth-child(even) { background-color: #333; }
+  .drawList tr:nth-child(even) { background-color: #333;
+  }
   /* history list */
-  .history_list { width: 100%; }
+  .history_list { width: 100%;
+  }
   
   /* help */
-  .ui-icon { zoom: 125%; }
+  .ui-icon { zoom: 125%;
+  }
 }
