@@ -27,6 +27,9 @@ const routes: Routes = [{
   {
     path: 'dicom',
     loadChildren: 'app/test/dicom/dicom-viewer.module#TestDicomViewerModule',
+    data: {
+      preload: true,
+    },
   },
   {
     path: 'charts',

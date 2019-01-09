@@ -28,10 +28,14 @@ export class LoginComponent {
       if (!this.form.get('password').value)
         this.passwordError = true;
       if (!this.usernameError && !this.passwordError) {
-        document.querySelector('.pace-done').className =
-        document.querySelector('.pace-done').className.replace('pace-done', 'pace-running');
-        document.querySelector('.pace-inactive').className =
-        document.querySelector('.pace-inactive').className.replace('pace-inactive', 'pace-active');
+        document.querySelectorAll('.pace-done').forEach(pace => {
+          pace.className = pace.className.replace('pace-done pace-done', 'pace-running');
+          pace.className = pace.className.replace('pace-done', 'pace-running');
+        });
+        document.querySelectorAll('.pace-inactive').forEach(pace => {
+          pace.className = pace.className.replace('pace-inactive pace-inactive', 'pace-active');
+          pace.className = pace.className.replace('pace-inactive', 'pace-active');
+        });
         const progressDOM = document.getElementsByClassName('pace-progress').item(0) as HTMLElement;
         if (this.progressBar < 35) {
           this.progressBar = 35;
@@ -60,10 +64,12 @@ export class LoginComponent {
               progressDOM.style.transform = 'translate3d(' + this.progressBar + '%, 0px, 0px)';
               progressDOM.getAttributeNode('data-progress-text').value = this.progressBar + '%';
               progressDOM.getAttributeNode('data-progress').value = this.progressBar.toString();
-              document.querySelector('.pace-running').className =
-              document.querySelector('.pace-running').className.replace('pace-running', 'pace-done');
-              document.querySelector('.pace-active').className =
-              document.querySelector('.pace-active').className.replace('pace-active', 'pace-inactive');
+              document.querySelectorAll('.pace-running').forEach(pace => {
+                pace.className = pace.className.replace('pace-running', 'pace-done');
+              });
+              document.querySelectorAll('.pace-active').forEach(pace => {
+                pace.className = pace.className.replace('pace-active', 'pace-inactive');
+              });
               this.progressBar = 0;
               this.buttonLogin = false;
           });
