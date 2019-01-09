@@ -90,7 +90,7 @@ dwv.image.decoderScripts = {
 dwv.gui.info.overlayMaps = overlays.default;
 dwv.gui.plot = function (div, data, options)
 {
-    let plotOptions = {
+    const plotOptions = {
         'bars': { 'show': true },
         'grid': { 'backgroundcolor': null, 'markings': null },
         'xaxis': { 'show': true },
@@ -137,7 +137,7 @@ export class TestDicomViewerComponent implements OnInit {
         value: 'Filter',
       },
       {
-        key: 'Flood Fill',
+        key: 'Floodfill',
         value: 'Flood Fill',
       },
     ];
@@ -165,6 +165,7 @@ export class TestDicomViewerComponent implements OnInit {
       'loaders': ['File', 'Url'],
       'tools': tools,
       'shapes': ['Arrow', 'Ruler', 'Protractor', 'Rectangle', 'Roi', 'Ellipse', 'FreeHand'],
+      'filters': ['Sharpen'],
       'isMobile': true,
       'helpResourcesPath': 'resources/help',
     });
@@ -211,7 +212,7 @@ export class TestDicomViewerComponent implements OnInit {
         width: '80%',
         height: '90%',
         data: { title: 'DICOM Tags', value: this.tags },
-      }
+      },
     );
   }
 }
