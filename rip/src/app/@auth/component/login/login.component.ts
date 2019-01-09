@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { AuthTokenService } from '../../services/auth-token.service';
 import { Router } from '@angular/router';
+import * as $ from 'jquery';
 
 @Component({
     selector: 'login-component',
