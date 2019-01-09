@@ -55,13 +55,15 @@
       text-align: center;
       vertical-align: middle;
       background: white;
-      color: grey; 
+      color: grey;
   }
   .dropBox.hover { border: 5px dashed #cc0;}
   /* toolbar */
-  .toolList ul { padding: 0;
+  .toolList ul {
+    padding: 0;
   }
-  .toolList li { list-style-type: none;
+  .toolList li {
+    list-style-type: none;
   }
   
   /* info */
@@ -70,7 +72,8 @@
     padding: 2px;
     list-style-type: none;
   }
-  .infoLayer li { margin-top: 0;
+  .infoLayer li {
+    margin-top: 0;
   }
   .infoLayer canvas {
     margin: 0;
@@ -143,36 +146,44 @@
     right: 0;
   }
   /* tag list */
-  table.tagsTable { border-collapse: collapse;
+  table.tagsTable {
+    border-collapse: collapse;
   }
   table.tagsTable thead th {
     text-transform: uppercase;
     font-weight: bold;
     opacity: 0.5;}
-  table.tagsTable tr:nth-child(even) { background-color: #333;
+  table.tagsTable tr:nth-child(even) {
+    background-color: #333;
   }
-  table.drawsTable { border-collapse: collapse;
+  table.drawsTable {
+    border-collapse: collapse;
   }
-  table.drawsTable td { vertical-align: middle;
+  table.drawsTable td {
+    vertical-align: middle;
   }
   table.drawsTable thead th {
     text-transform: uppercase;
     font-weight: bold;
     opacity: 0.5;
   }
-  .highlighted { background: #f87217;
+  .highlighted {
+    background: #f87217;
   }
-  .tags form { width: 50%;
+  .tags form {
+    width: 50%;
   }
-  
+
   /* draw list */
-  .drawList tr:nth-child(even) { background-color: #333;
+  .drawList tr:nth-child(even) {
+    background-color: #333;
   }
   /* history list */
-  .history_list { width: 100%;
+  .history_list {
+    width: 100%;
   }
-  
   /* help */
-  .ui-icon { zoom: 125%;
+  .ui-icon {
+    zoom: 125%;
   }
 }
