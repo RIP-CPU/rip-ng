@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { AuthTokenService } from '../../services/auth-token.service';
 import { Router } from '@angular/router';
-import * as $ from 'jquery';
 
 @Component({
     selector: 'login-component',
@@ -13,8 +12,8 @@ export class LoginComponent {
 
     public buttonLogin: boolean = false;
     private progressBar: number = 25;
-    public username: string;
-    public password: string;
+    public usernameRequired: boolean = false;
+    public passwordRequired: boolean = false;
 
     public form: FormGroup = new FormGroup({
       username: new FormControl(),
@@ -24,18 +23,21 @@ export class LoginComponent {
     constructor(private router: Router, private authTokenService: AuthTokenService) {}
 
     public login() {
-      this.username = this.form.get('username').value;
-      this.password = this.form.get('password').value;
-      if (this.username && this.password) {
-        $('body').removeClass('pace-done');
-        $('body').addClass('pace-running');
-        $('.pace').removeClass('pace-inactive');
-        $('.pace').addClass('pace-active');
+      if (!this.form.get('username').value)
+        this.usernameRequired = true;
+      if (!this.form.get('password').value)
+        this.passwordRequired = true;
+      if (!this.usernameRequired && !this.passwordRequired) {
+        document.querySelector('.pace-done').className =
+        document.querySelector('.pace-done').className.replace('pace-done', 'pace-running');
+        document.querySelector('.pace-inactive').className =
+        document.querySelector('.pace-inactive').className.replace('pace-inactive', 'pace-active');
+        const progressDOM = document.getElementsByClassName('pace-progress').item(0) as HTMLElement;
         if (this.progressBar < 35) {
           this.progressBar = 35;
-          $('.pace-progress').attr('data-progress-text', this.progressBar + '%');
-          $('.pace-progress').attr('data-progress', this.progressBar);
-          $('.pace-progress').attr('style', 'transform: translate3d(' + this.progressBar + '%, 0px, 0px);');
+          progressDOM.style.transform = 'translate3d(' + this.progressBar + '%, 0px, 0px)';
+          progressDOM.getAttributeNode('data-progress-text').value = this.progressBar + '%';
+          progressDOM.getAttributeNode('data-progress').value = this.progressBar.toString();
         }
         this.buttonLogin = true;
         this.authTokenService.login(
@@ -43,33 +45,33 @@ export class LoginComponent {
           this.form.get('password').value)
           .then(() => {
               this.progressBar = 90;
-              $('.pace-progress').attr('data-progress-text', this.progressBar + '%');
-              $('.pace-progress').attr('data-progress', this.progressBar);
-              $('.pace-progress').attr('style', 'transform: translate3d(' + this.progressBar + '%, 0px, 0px);');
+              progressDOM.style.transform = 'translate3d(' + this.progressBar + '%, 0px, 0px)';
+              progressDOM.getAttributeNode('data-progress-text').value = this.progressBar + '%';
+              progressDOM.getAttributeNode('data-progress').value = this.progressBar.toString();
               this.progressBar = 0;
-              this.username = null;
-              this.password = null;
+              this.usernameRequired = false;
+              this.passwordRequired = false;
               this.router.navigate(['/app/dashboard']);
           })
           .catch(error => {
-              this.username = null;
-              this.password = null;
+              this.usernameRequired = false;
+              this.passwordRequired = false;
               this.progressBar = 85;
-              $('.pace-progress').attr('data-progress-text', this.progressBar + '%');
-              $('.pace-progress').attr('data-progress', this.progressBar);
-              $('.pace-progress').attr('style', 'transform: translate3d(' + this.progressBar + '%, 0px, 0px);');
-              $('body').removeClass('pace-running');
-              $('body').addClass('pace-done');
-              $('.pace').removeClass('pace-active');
-              $('.pace').addClass('pace-inactive');
+              progressDOM.style.transform = 'translate3d(' + this.progressBar + '%, 0px, 0px)';
+              progressDOM.getAttributeNode('data-progress-text').value = this.progressBar + '%';
+              progressDOM.getAttributeNode('data-progress').value = this.progressBar.toString();
+              document.querySelector('.pace-running').className =
+              document.querySelector('.pace-running').className.replace('pace-running', 'pace-done');
+              document.querySelector('.pace-active').className =
+              document.querySelector('.pace-active').className.replace('pace-active', 'pace-inactive');
               this.progressBar = 0;
               this.buttonLogin = false;
           });
           if (this.progressBar >= 35 && this.progressBar < 65) {
               this.progressBar = 65;
-              $('.pace-progress').attr('data-progress-text', this.progressBar + '%');
-              $('.pace-progress').attr('data-progress', this.progressBar);
-              $('.pace-progress').attr('style', 'transform: translate3d(' + this.progressBar + '%, 0px, 0px);');
+              progressDOM.style.transform = 'translate3d(' + this.progressBar + '%, 0px, 0px)';
+              progressDOM.getAttributeNode('data-progress-text').value = this.progressBar + '%';
+              progressDOM.getAttributeNode('data-progress').value = this.progressBar.toString();
           }
       }
     }
