@@ -7,8 +7,10 @@ export class StorageFactoryService {
 
     public getSessionStorage(key: string): string {
         const keyEncrypted = this.enc.getHmacSha256(SEC_RES['private_key'], key, true);
-        return (sessionStorage.getItem(keyEncrypted)) ?
-		     this.enc.decryptAES(SEC_RES['aes_key'], sessionStorage.getItem(keyEncrypted)) : null;
+        if (sessionStorage.getItem(keyEncrypted))
+            return this.enc.decryptAES(SEC_RES['aes_key'], sessionStorage.getItem(keyEncrypted));
+        else
+            return null;
     }
 
     public setSessionStorage(key: string, value: string): void {
@@ -24,8 +26,10 @@ export class StorageFactoryService {
 
     public getLocalStorageEnc(key: string): string {
         const keyEncrypted = this.enc.getHmacSha256(SEC_RES['private_key'], key, true);
-        return (localStorage.getItem(keyEncrypted)) ?
-		     this.enc.decryptAES(SEC_RES['aes_key'], localStorage.getItem(keyEncrypted)) : null;
+        if (localStorage.getItem(keyEncrypted))
+            return this.enc.decryptAES(SEC_RES['aes_key'], localStorage.getItem(keyEncrypted));
+        else
+            return null;
     }
 
     public setLocalStorageEnc(key: string, value: string): void {
