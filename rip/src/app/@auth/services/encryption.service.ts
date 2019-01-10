@@ -15,7 +15,7 @@ export class EncryptionService {
         return CryptoJS.enc.Base64.stringify(hash);
     }
 
-    public encryptAES(secretKey: string, message: string, hex?: boolean): string {
+    public encryptAES(secretKey: string, message: string): string {
         const salt = CryptoJS.lib.WordArray.random(128 / 8);
         const key = CryptoJS.PBKDF2(secretKey, salt, {
             keySize: this.keySize / 32,

@@ -25,8 +25,12 @@ export class LoginComponent {
     public login() {
       if (!this.form.get('username').value)
         this.usernameError = true;
+      else
+        this.usernameError = false;
       if (!this.form.get('password').value)
         this.passwordError = true;
+      else
+        this.passwordError = false;
       if (!this.usernameError && !this.passwordError) {
         document.querySelectorAll('.pace-done').forEach(pace => {
           pace.className = pace.className.replace('pace-done pace-done', 'pace-running');

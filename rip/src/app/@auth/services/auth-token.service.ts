@@ -28,7 +28,7 @@ export class AuthTokenService {
     }
 
     public login(username: string, password: string): Promise<any> {
-        this.storage.clear();
+        this.storage.clearSessionStorage();
         return this.httpBaseService.
         HTTP_REQUEST(API['auth']['token'], this.getAuthBody(username, password).toString(), this.getAuthHeader())
         .toPromise()
