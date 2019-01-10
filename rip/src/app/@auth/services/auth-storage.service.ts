@@ -12,7 +12,7 @@ export class AuthStorageService extends StorageFactoryService {
     public loginStorage(response: any): void {
         const accessTokenKey = 'access_token';
         const accessTokenValue = response['access_token'];
-        const refreshTokenKey = 'refresh_token'
+        const refreshTokenKey = 'refresh_token';
         const refreshTokenValue = response['refresh_token'];
         const publicKey = 'xrkey';
         const publicValue = response['xrkey'];

@@ -15,6 +15,12 @@ const routes: Routes = [{
     path: 'dashboard',
     loadChildren: 'app/@dashboard/dashboard.module#DashboardModule',
   }, {
+    path: 'pacs',
+    loadChildren: 'app/@pacs/pacs.module#PACSSharedModule',
+    data: {
+      preload: true,
+    },
+  }, {
     path: '',
     redirectTo: 'dashboard',
     pathMatch: 'full',

@@ -21,8 +21,8 @@ const routes: Routes = [
   },
   {
     path: 'app',
-    /* loadChildren: 'app/@pages/pages.module#PagesModule', */
-    loadChildren: 'app/test/test.module#TestModule',
+    loadChildren: 'app/@pages/pages.module#PagesModule',
+    /* loadChildren: 'app/test/test.module#TestModule', */
     canActivate: [AuthGuardService],
   },
   { path: '', redirectTo: 'auth', pathMatch: 'full' },
