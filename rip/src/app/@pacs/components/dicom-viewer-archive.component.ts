@@ -221,7 +221,6 @@ export class DicomViewerArchiveComponent implements OnInit {
   }
 
   onChangeTool(tool): void {
-    console.log(tool);
     if (this.dwvApp) {
       this.selectedTool = tool.key;
       this.dwvApp.onChangeTool(
@@ -234,7 +233,6 @@ export class DicomViewerArchiveComponent implements OnInit {
   }
 
   onChangeShape(shape): void {
-    console.log(shape);
     if (this.dwvApp) {
       this.selectedTool = shape.key;
       this.dwvApp.onChangeShape(
