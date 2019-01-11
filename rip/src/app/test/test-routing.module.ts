@@ -50,6 +50,9 @@ const routes: Routes = [{
   }, {
     path: 'features',
     loadChildren: 'app/test/features/test-features.module#TestFeaturesModule',
+    data: {
+      preload: true,
+    },
   }, {
     path: 'maps',
     component: TestMapsComponent,

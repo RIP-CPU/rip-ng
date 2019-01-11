@@ -141,7 +141,39 @@ export class DicomViewerArchiveComponent implements OnInit {
         value: 'Flood Fill',
       },
     ];
-  public selectedTool = 'Select Tool';
+  public shapes =
+    [
+      {
+        key: 'Arrow',
+        value: 'Arrow',
+      },
+      {
+        key: 'Ruler',
+        value: 'Ruler',
+      },
+      {
+        key: 'Protractor',
+        value: 'Protractor',
+      },
+      {
+        key: 'Rectangle',
+        value: 'Rectangle',
+      },
+      {
+        key: 'Roi',
+        value: 'Roi',
+      },
+      {
+        key: 'Ellipse',
+        value: 'Ellipse',
+      },
+      {
+        key: 'FreeHand',
+        value: 'Free Hand',
+      },
+    ];
+  public selectedTool = '- Select Tool -';
+  public selectedShape = '- Select Shape -';
   public loadProgress = 0;
   public dataLoaded = false;
   private dwvApp: any;
@@ -189,12 +221,26 @@ export class DicomViewerArchiveComponent implements OnInit {
   }
 
   onChangeTool(tool): void {
+    console.log(tool);
     if (this.dwvApp) {
-      this.selectedTool = tool;
+      this.selectedTool = tool.key;
       this.dwvApp.onChangeTool(
         {
           currentTarget: {
-            value: tool,
+            value: tool.key,
+          },
+        });
+    }
+  }
+
+  onChangeShape(shape): void {
+    console.log(shape);
+    if (this.dwvApp) {
+      this.selectedTool = shape.key;
+      this.dwvApp.onChangeShape(
+        {
+          currentTarget: {
+            value: shape.key,
           },
         });
     }
