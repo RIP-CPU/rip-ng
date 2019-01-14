@@ -234,7 +234,7 @@ export class DicomViewerArchiveComponent implements OnInit {
         self.tools.shift();
         self.hasShift = true;
       } else {
-        if(self.hasShift){
+        if (self.hasShift) {
           self.tools.unshift({
             key: 'Scroll',
             value: 'Scroll',
