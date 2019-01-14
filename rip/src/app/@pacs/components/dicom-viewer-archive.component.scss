@@ -15,8 +15,9 @@
 
   .dwv {
     font-family: Arial, Helvetica, sans-serif;
-    height: 90%;
+    height: 450px;
   }
+  
   .button-row {
     text-align: center;
     padding: 5px;
@@ -32,14 +33,14 @@
 
   /* Layers */
   .layerContainer {
-      width: 60% !important;
-      padding: 0;
-      margin: auto;
-      text-align: center;
+    position:relative;
+    padding: 0;
+    margin: auto;
+    text-align: center;
   }
   .imageLayer {
-      width: 60% !important;
-      left: 0;
+    position:absolute;
+    left: 0;
   }
   .drawDiv {
       position: absolute;
@@ -48,14 +49,12 @@
 
   /* drag&drop */
   .dropBox {
-      width: 100% !important;
-      height: 100% !important;
-      border: 5px dashed #ccc;
-      margin: auto;
-      text-align: center;
-      vertical-align: middle;
-      background: white;
-      color: grey;
+    border: 5px dashed #ccc;
+    margin: auto;
+    text-align: center;
+    vertical-align: middle;
+    background: white;
+    color: grey;
   }
   .dropBox.hover { border: 5px dashed #cc0;}
   /* toolbar */
@@ -67,31 +66,32 @@
   }
   
   /* info */
-  .infoLayer ul {
+  .infoLayer {
     margin: 0;
-    padding: 2px;
-    list-style-type: none;
+    color: #ababab;
+    font-size: 75%;
   }
-  .infoLayer li {
-    margin-top: 0;
+  .infoLayer ul {
+    list-style-type: none;
   }
   .infoLayer canvas {
     margin: 0;
     padding: 2px;
   }
   .info {
-    color: #cde;
-    font-size: 80%;
+    color: #fff;
+    font-size: 70%;
   }
   .infoc {
     color: #ff0;
-    font-size: 120%;
+    font-size: 80%;
   }
   .infotl {
     position: absolute;
     top: 0;
     left: 0;
     text-align: left;
+    padding: 5px;
   }
   .infotc {
     position: absolute;
@@ -99,30 +99,35 @@
     left: 50%;
     right: 50%;
     text-align: center;
+    padding: 5px;
   }
   .infotr {
     position: absolute;
     top: 0;
     right: 0;
     text-align: right;
+    padding: 5px;
   }
   .infocl {
     position: absolute;
     bottom: 50%;
     left: 0;
     text-align: left;
+    padding: 5px;
   }
   .infocr {
     position: absolute;
     bottom: 50%;
     right: 2px;
     text-align: right;
+    padding: 5px;
   }
   .infobl {
     position: absolute;
     bottom: 0;
     left: 0;
     text-align: left;
+    padding: 5px;
   }
   .infobc {
     position: absolute;
@@ -130,19 +135,21 @@
     left: 50%;
     right: 50%;
     text-align: center;
+    padding: 5px;
   }
   .infobr {
     position: absolute;
-    bottom: 0;
+    bottom: 54px;
     right: 0;
     text-align: right;
+    padding: 5px;
   }
 
   .plot {
     position: absolute;
     width: 100px;
     height: 50px;
-    bottom: 15px;
+    bottom: 10px;
     right: 0;
   }
   /* tag list */
