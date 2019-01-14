@@ -2,12 +2,12 @@
     <div class="col-md-12 col-lg-4 col-xxxl-4">
         <nb-card>
             <nb-card-header>Toolbox</nb-card-header>
-            <nb-card-body class="select-group">
-                <nb-select placeholder="- Select Tool -" status="success" [(selected)]="selectedTool">
-                    <nb-option *ngFor="let tool of tools" value="tool.key" (selectionChange)="onChangeTool(tool)">{{tool.value}}</nb-option>
+            <nb-card-body class="select-group" *ngIf="dataLoaded">
+                <nb-select placeholder="- Select Tool -" status="success">
+                    <nb-option *ngFor="let tool of tools" value="tool.key" [disabled]="tool.disabled" (selectionChange)="onChangeTool(tool)">{{tool.value}}</nb-option>
                 </nb-select>
-                <nb-select placeholder="- Select Shape -" status="success" [(selected)]="selectedShape">
-                    <nb-option *ngFor="let shape of shapes" value="shape.key" (selectionChange)="onChangeShape(shape)">{{shape.value}}</nb-option>
+                <nb-select placeholder="- Select Shape -" status="success" *ngIf="isDraw">
+                    <nb-option *ngFor="let shape of shapes" value="shape.key" [disabled]="shape.disabled" (selectionChange)="onChangeShape(shape)">{{shape.value}}</nb-option>
                 </nb-select>
             </nb-card-body>
         </nb-card>

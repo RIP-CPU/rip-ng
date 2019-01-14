@@ -115,67 +115,83 @@ export class DicomViewerArchiveComponent implements OnInit {
       {
         key: 'Scroll',
         value: 'Scroll',
+        disabled: false,
       },
       {
         key: 'WindowLevel',
         value: 'Window Level',
+        disabled: false,
       },
       {
         key: 'ZoomAndPan',
         value: 'Zoom And Pan',
+        disabled: false,
       },
       {
         key: 'Draw',
         value: 'Draw',
+        disabled: false,
       },
       {
         key: 'Livewire',
         value: 'Livewire',
+        disabled: false,
       },
       {
         key: 'Filter',
         value: 'Filter',
+        disabled: false,
       },
       {
         key: 'Floodfill',
         value: 'Flood Fill',
+        disabled: false,
       },
     ];
   public shapes =
     [
       {
-        key: 'Arrow',
-        value: 'Arrow',
-      },
-      {
         key: 'Ruler',
         value: 'Ruler',
+        disabled: false,
+      },
+      {
+        key: 'Arrow',
+        value: 'Arrow',
+        disabled: false,
       },
       {
         key: 'Protractor',
         value: 'Protractor',
+        disabled: false,
       },
       {
         key: 'Rectangle',
         value: 'Rectangle',
+        disabled: false,
       },
       {
         key: 'Roi',
         value: 'Roi',
+        disabled: false,
       },
       {
         key: 'Ellipse',
         value: 'Ellipse',
+        disabled: false,
       },
       {
         key: 'FreeHand',
         value: 'Free Hand',
+        disabled: false,
       },
     ];
-  public selectedTool = '- Select Tool -';
-  public selectedShape = '- Select Shape -';
-  public loadProgress = 0;
-  public dataLoaded = false;
+  public selectedTool: string;
+  public selectedShape: string;
+  public hasShift: boolean = false;
+  public isDraw: boolean = false;
+  public loadProgress: number = 0;
+  public dataLoaded: boolean = false;
   private dwvApp: any;
   private tags: any[];
 
@@ -188,7 +204,9 @@ export class DicomViewerArchiveComponent implements OnInit {
 
   ngOnInit() {
     const tools = [];
+    const shapes = [];
     this.tools.forEach(tool => { tools.push(tool.key); });
+    this.shapes.forEach(shape => { shapes.push(shape.key); });
     // create app
     this.dwvApp = new dwv.App();
     // initialise app
@@ -196,7 +214,7 @@ export class DicomViewerArchiveComponent implements OnInit {
       'containerDivId': 'dwv',
       'loaders': ['File', 'Url'],
       'tools': tools,
-      'shapes': ['Arrow', 'Ruler', 'Protractor', 'Rectangle', 'Roi', 'Ellipse', 'FreeHand'],
+      'shapes': shapes,
       'filters': ['Sharpen'],
       'isMobile': true,
       'helpResourcesPath': 'resources/help',
@@ -213,9 +231,17 @@ export class DicomViewerArchiveComponent implements OnInit {
       self.tags = self.dwvApp.getTags();
       // set the selected tool
       if (self.dwvApp.isMonoSliceData() && self.dwvApp.getImage().getNumberOfFrames() === 1) {
-        self.selectedTool = 'ZoomAndPan';
+        self.tools.shift();
+        self.hasShift = true;
       } else {
-        self.selectedTool = 'Scroll';
+        if(self.hasShift){
+          self.tools.unshift({
+            key: 'Scroll',
+            value: 'Scroll',
+            disabled: false,
+          });
+          self.hasShift = false;
+        }
       }
     });
   }
@@ -223,6 +249,7 @@ export class DicomViewerArchiveComponent implements OnInit {
   onChangeTool(tool): void {
     if (this.dwvApp) {
       this.selectedTool = tool.key;
+      this.isDraw = this.selectedTool.includes('Draw');
       this.dwvApp.onChangeTool(
         {
           currentTarget: {
@@ -234,7 +261,7 @@ export class DicomViewerArchiveComponent implements OnInit {
 
   onChangeShape(shape): void {
     if (this.dwvApp) {
-      this.selectedTool = shape.key;
+      this.selectedShape = shape.key;
       this.dwvApp.onChangeShape(
         {
           currentTarget: {
