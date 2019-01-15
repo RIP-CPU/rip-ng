@@ -15,13 +15,17 @@ import {
 
 import { RouterModule, Routes } from '@angular/router';
 import { ThemeModule } from '../@theme/theme.module';
-import { DicomViewerArchiveComponent } from './components/dicom-viewer-archive.component';
 import { TagsDialogComponent } from './components/tags-dialog/tags-dialog.component';
 import { TagsTableComponent } from './components/tags-table/tags-table.component';
 import { DicomLayerComponent } from './components/dicom-layer/dicom-layer.component';
+import { DicomViewerUploadComponent } from './pages/upload/dicom-viewer-upload.component';
+import { DicomViewerArchiveComponent } from './pages/archive/dicom-viewer-archive.component';
+import { DicomViewerComponent } from './pages/dicom-viewer.component';
 
 const components = [
+  DicomViewerComponent,
   DicomViewerArchiveComponent,
+  DicomViewerUploadComponent,
   TagsDialogComponent,
   TagsTableComponent,
   DicomLayerComponent,
@@ -33,7 +37,7 @@ const components_export = [
 
 const routes: Routes = [{
   path: '',
-  component: DicomViewerArchiveComponent,
+  component: DicomViewerComponent,
   children: [
     {
       path: 'archive',
@@ -41,7 +45,7 @@ const routes: Routes = [{
     },
     {
       path: 'upload',
-      component: DicomViewerArchiveComponent,
+      component: DicomViewerUploadComponent,
     },
   ],
 }];
@@ -66,7 +70,6 @@ const routes: Routes = [{
   ],
   entryComponents: [
     TagsDialogComponent,
-    DicomLayerComponent,
   ],
   exports: [
     RouterModule,

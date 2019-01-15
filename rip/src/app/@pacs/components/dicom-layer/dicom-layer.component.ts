@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ChangeDetectorRef, OnDestroy } from '@angular/core';
+import { Component, OnInit, Input, ChangeDetectorRef, OnDestroy, Output, EventEmitter } from '@angular/core';
 import { VERSION } from '@angular/core';
 import { MatDialog } from '@angular/material';
 import * as dwv from 'dwv';
@@ -65,15 +65,6 @@ dwv.gui.ColourTool = dwv.gui.base.ColourTool;
 dwv.gui.ZoomAndPan = dwv.gui.base.ZoomAndPan;
 // Scroll
 dwv.gui.Scroll = dwv.gui.base.Scroll;
-// Filter
-dwv.gui.Filter = dwv.gui.base.Filter;
-
-// Filter: threshold
-dwv.gui.Threshold = dwv.gui.base.Threshold;
-// Filter: sharpen
-dwv.gui.Sharpen = dwv.gui.base.Sharpen;
-// Filter: sobel
-dwv.gui.Sobel = dwv.gui.base.Sobel;
 
 // Undo/redo
 dwv.gui.Undo = dwv.gui.base.Undo;
@@ -109,7 +100,6 @@ dwv.gui.plot = function (div, data, options)
   styleUrls: ['./dicom-layer.component.scss'],
 })
 export class DicomLayerComponent implements OnInit, OnDestroy {
-  public versions: any;
   @Input() public tools =
     [
       {
@@ -138,7 +128,7 @@ export class DicomLayerComponent implements OnInit, OnDestroy {
         disabled: false,
       },
     ];
-    @Input() public shapes =
+  @Input() public shapes =
     [
       {
         key: 'Ruler',
@@ -176,6 +166,13 @@ export class DicomLayerComponent implements OnInit, OnDestroy {
         disabled: false,
       },
     ];
+  @Input() public loaders: string[] =
+    [
+      "File", "Url",
+    ];
+  @Input() public urls: string[];
+  @Input() public headers: any;
+  @Output() public metadata: EventEmitter<any> = new EventEmitter();
   public selectedTool: string;
   public selectedShape: string;
   public hasShift: boolean = false;
@@ -183,6 +180,7 @@ export class DicomLayerComponent implements OnInit, OnDestroy {
   public isFilter: boolean = false;
   public loadProgress: number = 0;
   public dataLoaded: boolean = false;
+  public versions: any;
   private dwvApp: any;
   private tags: any[];
 
@@ -202,10 +200,11 @@ export class DicomLayerComponent implements OnInit, OnDestroy {
     this.shapes.forEach(shape => { shapes.push(shape.key); });
     // create app
     this.dwvApp = new dwv.App();
+    this.dwvApp.reset();
     // initialise app
     this.dwvApp.init({
       'containerDivId': 'dwv',
-      'loaders': ['File', 'Url'],
+      'loaders': this.loaders,
       'tools': tools,
       'shapes': shapes,
       'isMobile': true,
@@ -216,6 +215,8 @@ export class DicomLayerComponent implements OnInit, OnDestroy {
     this.dwvApp.addEventListener('load-progress', function (event) {
       self.loadProgress = event.loaded;
     });
+    if (this.urls)
+      this.dwvApp.loadURLs(this.urls, this.headers);
     this.dwvApp.addEventListener('load-end', function (event) {
       document.querySelectorAll('div.infoLayer > div > ul').forEach((info: HTMLElement) => {
         info.style.listStyleType = 'none';
@@ -226,6 +227,7 @@ export class DicomLayerComponent implements OnInit, OnDestroy {
       self.dataLoaded = true;
       // set dicom tags
       self.tags = self.dwvApp.getTags();
+      self.metadata.emit(self.tags);
       // set the selected tool
       if (self.dwvApp.isMonoSliceData() && self.dwvApp.getImage().getNumberOfFrames() === 1) {
         self.selectedTool = 'Zoom And Pan';

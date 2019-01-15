@@ -44,19 +44,6 @@
     height: 500px;
     margin: 1.25rem 0;
   }
-
-  @include media-breakpoint-down(sm) {
-    nb-card-body {
-      flex-direction: column;
-    }
-    .imageCard {
-      width: 100%;
-      height: 100%;
-    }
-    .dwv {
-      margin: 0;
-    }
-  }
   
   .button-row {
     text-align: center;
@@ -233,10 +220,29 @@
     zoom: 125%;
   }
 
+  @include media-breakpoint-down(sm) {
+    nb-card-body {
+      flex-direction: column;
+    }
+    .imageCard {
+      width: 100%;
+      height: 100%;
+    }
+    .dwv {
+      margin: 0;
+    }
+    .dropBox {
+      padding: 22% 0;
+    }
+  }
+
   @include media-breakpoint-down(xs) {
     .imageCard {
       width: 100%;
       height: 90%;
+    }
+    .dropBox {
+      padding: 28% 0;
     }
   }
 
@@ -244,6 +250,9 @@
     .imageCard {
       width: 100%;
       height: 73%;
+    }
+    .dropBox {
+      padding: 33% 0;
     }
   }
 }
