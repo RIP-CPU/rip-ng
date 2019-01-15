@@ -6,9 +6,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./dicom-viewer-upload.component.scss'],
 })
 export class DicomViewerUploadComponent implements OnInit {
-  
+
   public loaders: string[] = [
-      "File",
+      'File',
   ];
 
   ngOnInit() {

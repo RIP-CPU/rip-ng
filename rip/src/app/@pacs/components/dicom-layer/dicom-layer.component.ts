@@ -168,7 +168,7 @@ export class DicomLayerComponent implements OnInit, OnDestroy {
     ];
   @Input() public loaders: string[] =
     [
-      "File", "Url",
+      'File', 'Url',
     ];
   @Input() public urls: string[];
   @Input() public headers: any;
