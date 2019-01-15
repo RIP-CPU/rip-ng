@@ -225,6 +225,11 @@ export class DicomViewerArchiveComponent implements OnInit {
       self.loadProgress = event.loaded;
     });
     this.dwvApp.addEventListener('load-end', function (event) {
+      document.querySelectorAll('div.infoLayer > div > ul').forEach((info:HTMLElement) => {
+        info.style.listStyleType = 'none';
+        info.style.padding = '0';
+        info.style.margin = '0';
+      });
       // set data loaded flag
       self.dataLoaded = true;
       // set dicom tags
