@@ -7,7 +7,6 @@ import { TagsDialogComponent } from '../tags-dialog/tags-dialog.component';
 import { HTTP_SERVICE } from '../../../@core/core.provider';
 import { HttpFactoryService } from '../../../@core/utils/http-factory.service';
 import { HttpBaseModel } from '../../../@core/models/http-base.model';
-import { HttpHeaders } from '@angular/common/http';
 import { NotificationService } from '../../../@core/utils/notification.service';
 import { NbToastStatus } from '@nebular/theme/components/toastr/model';
 declare var $: any;
@@ -225,13 +224,11 @@ export class DicomLayerComponent implements OnInit, OnDestroy {
       self.progress = true;
       this.httpBaseService.DOWNLOAD(this.url).toPromise()
       .then((response) => {
-        let images = [{
-          name: this.url.file.filename,
+        self.dwvApp.loadImageObject([{
+          name: this.url.file.filename + this.url.file.extension,
           filename: this.url.file.filename + this.url.file.extension,
           data: response,
-        }];
-        this.dwvApp.loadImageObject(images);
-        self.progress = false;
+        }]);
       }).catch((error) => {
         if (error === 'Page Not Found')
           this.notification.show('DICOM', 'File Not Found', NbToastStatus.DANGER);
@@ -245,37 +242,7 @@ export class DicomLayerComponent implements OnInit, OnDestroy {
       self.loadProgress = event.loaded;
     });
     this.dwvApp.addEventListener('load-end', function () {
-      document.querySelectorAll('div.infoLayer > div > ul').forEach((info: HTMLElement) => {
-        info.style.listStyleType = 'none';
-        info.style.padding = '0';
-        info.style.margin = '0';
-      });
-      // set data loaded flag
-      self.dataLoaded = true;
-      self.progress = false;
-      // set dicom tags
-      self.tags = self.dwvApp.getTags();
-      self.metadata.emit(self.tags);
-      // set the selected tool
-      if (self.dwvApp.isMonoSliceData() && self.dwvApp.getImage().getNumberOfFrames() === 1) {
-        self.selectedTool = 'Zoom And Pan';
-        if (self.tools[0].key === 'Scroll') {
-          self.tools.shift();
-          self.hasShift = true;
-        }
-        self.cdRef.detectChanges();
-      } else {
-        if (self.hasShift) {
-          self.tools.unshift({
-            key: 'Scroll',
-            value: 'Scroll',
-            disabled: false,
-          });
-          self.hasShift = false;
-        }
-        self.cdRef.detectChanges();
-        self.selectedTool = 'Scroll';
-      }
+      self.onLoadEnd();
       const div = self.dwvApp.getElement('layerContainer');
       div.addEventListener('drop', function () {
         self.progress = false;
@@ -332,5 +299,39 @@ export class DicomLayerComponent implements OnInit, OnDestroy {
         data: { title: 'DICOM Tags', value: this.tags },
       },
     );
+  }
+
+  onLoadEnd(): void {
+    document.querySelectorAll('div.infoLayer > div > ul').forEach((info: HTMLElement) => {
+      info.style.listStyleType = 'none';
+      info.style.padding = '0';
+      info.style.margin = '0';
+    });
+    // set data loaded flag
+    this.dataLoaded = true;
+    this.progress = false;
+    // set dicom tags
+    this.tags = this.dwvApp.getTags();
+    this.metadata.emit(this.tags);
+    // set the selected tool
+    if (this.dwvApp.isMonoSliceData() && this.dwvApp.getImage().getNumberOfFrames() === 1) {
+      this.selectedTool = 'Zoom And Pan';
+      if (this.tools[0].key === 'Scroll') {
+        this.tools.shift();
+        this.hasShift = true;
+      }
+      this.cdRef.detectChanges();
+    } else {
+      if (this.hasShift) {
+        this.tools.unshift({
+          key: 'Scroll',
+          value: 'Scroll',
+          disabled: false,
+        });
+        this.hasShift = false;
+      }
+      this.cdRef.detectChanges();
+      this.selectedTool = 'Scroll';
+    }
   }
 }

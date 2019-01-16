@@ -35,8 +35,8 @@ export class PagesComponent implements OnInit {
         },
         404: () => {
           throw Observable.throw('Page Not Found');
-        }
-      }
+        },
+      },
     });
   }
 

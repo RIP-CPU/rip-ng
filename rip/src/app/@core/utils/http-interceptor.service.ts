@@ -17,10 +17,10 @@ export class HttpInterceptorService implements HttpInterceptor {
         return next.handle(req)
                     .catch(this.errorHandler);
     }
-    
+
     protected errorHandler = (error: HttpErrorResponse) => {
         let errorMsg: string = 'Internal Server Error';
-        if (error.status == 200 || error.status == 304)
+        if (error.status === 200 || error.status === 304)
             return Observable.empty();
         switch (error.status) {
             case 404:

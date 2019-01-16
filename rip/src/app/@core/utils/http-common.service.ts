@@ -58,7 +58,8 @@ export class HttpCommonService extends HttpAbstractService {
       return this.http.get(url, {headers: headers, params: params, responseType});
   }
 
-  public HTTP_POST(url: string, body: any, headers?: HttpHeaders, params?: HttpParams, responseType?: any): Observable<any> {
+  public HTTP_POST(url: string, body: any, headers?: HttpHeaders, params?: HttpParams, responseType?: any):
+      Observable<any> {
       return this.http.post(url, body, {headers: headers, params: params, responseType});
   }
 
