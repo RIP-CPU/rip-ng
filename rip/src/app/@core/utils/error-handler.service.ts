@@ -5,7 +5,7 @@ import { NbToastStatus } from '@nebular/theme/components/toastr/model';
 
 @Injectable()
 export class ErrorHandlerService implements ErrorHandler {
-  
+
   constructor(private notification: NotificationService) {}
 
   handleError(error: Error) {

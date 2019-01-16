@@ -239,7 +239,7 @@ export class DicomLayerComponent implements OnInit, OnDestroy {
       // set the selected tool
       if (self.dwvApp.isMonoSliceData() && self.dwvApp.getImage().getNumberOfFrames() === 1) {
         self.selectedTool = 'Zoom And Pan';
-        if (self.tools[0].key == 'Scroll') {
+        if (self.tools[0].key === 'Scroll') {
           self.tools.shift();
           self.hasShift = true;
         }
@@ -256,16 +256,16 @@ export class DicomLayerComponent implements OnInit, OnDestroy {
         self.cdRef.detectChanges();
         self.selectedTool = 'Scroll';
       }
-      const div = self.dwvApp.getElement("layerContainer");
+      const div = self.dwvApp.getElement('layerContainer');
       div.addEventListener('drop', function () {
         self.progress = false;
       });
       div.addEventListener('dragover', function () {
-        self.dwvApp.reset(()=>{});
+        self.dwvApp.reset(() => {});
       });
     });
-    if (self.dwvApp.getElement("dropBox")) {
-      self.dwvApp.getElement("dropBox").addEventListener('drop', function () {
+    if (self.dwvApp.getElement('dropBox')) {
+      self.dwvApp.getElement('dropBox').addEventListener('drop', function () {
         self.progress = false;
       });
     }

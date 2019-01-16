@@ -4,7 +4,7 @@ import { NbToastStatus } from '@nebular/theme/components/toastr/model';
 
 @Injectable()
 export class NotificationService {
-  
+
   constructor(private toastrService: NbToastrService) {}
 
   private destroyByClick: boolean = true;
@@ -13,7 +13,7 @@ export class NotificationService {
   private position: NbGlobalPosition = NbGlobalLogicalPosition.BOTTOM_END;
   private type: NbToastStatus = NbToastStatus.DEFAULT;
   private preventDuplicates: boolean = false;
-  
+
   show( title: string,
         message: string,
         type?: NbToastStatus,
@@ -23,12 +23,12 @@ export class NotificationService {
         preventDuplicates?: boolean,
         destroyByClick?: boolean) {
     const config = {
-      status: type ? type: this.type,
-      destroyByClick: destroyByClick ? destroyByClick: this.destroyByClick,
-      duration: duration ? duration: this.duration,
-      hasIcon: hasIcon ? hasIcon: this.hasIcon,
-      position: position ? position: this.position,
-      preventDuplicates: preventDuplicates ? preventDuplicates: this.preventDuplicates,
+      status: type ? type : this.type,
+      destroyByClick: destroyByClick ? destroyByClick : this.destroyByClick,
+      duration: duration ? duration : this.duration,
+      hasIcon: hasIcon ? hasIcon : this.hasIcon,
+      position: position ? position : this.position,
+      preventDuplicates: preventDuplicates ? preventDuplicates : this.preventDuplicates,
     };
     this.toastrService.show(message, title, config);
   }
