@@ -1,4 +1,4 @@
-import { ModuleWithProviders, NgModule, Optional, SkipSelf } from '@angular/core';
+import { ModuleWithProviders, NgModule, Optional, SkipSelf, ErrorHandler } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { throwIfAlreadyLoaded } from './module-import-guard';
 import { DataModule } from './data/data.module';
@@ -8,6 +8,8 @@ import { HttpCommonService } from './utils/http-common.service';
 import { HttpInterceptorService } from './utils/http-interceptor.service';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { CustomPreloadingStrategy } from './utils/preloading-strategy.service';
+import { ErrorHandlerService } from './utils/error-handler.service';
+import { NotificationService } from './utils/notification.service';
 
 export const SAMPLE_PROVIDERS = [
   ...DataModule.forRoot().providers,
@@ -15,7 +17,9 @@ export const SAMPLE_PROVIDERS = [
 export const core_providers = [
   { provide: HTTP_SERVICE, useClass: HttpCommonService},
   { provide: HTTP_INTERCEPTORS, useClass: HttpInterceptorService, multi: true},
+  { provide: ErrorHandler, useClass: ErrorHandlerService},
   CustomPreloadingStrategy,
+  NotificationService,
   AnalyticsService,
 ];
 

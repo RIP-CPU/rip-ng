@@ -11,7 +11,7 @@ export class DicomViewerArchiveComponent implements OnInit {
       'Url',
   ];
   public urls: string[] = [
-    'https://raw.githubusercontent.com/RIP-CPU/rip-pacs/master/data/sample-01/bbmri-53323131.dcm',
+    'https://raw.githubusercontent.com/RIP-CPU/rip-pacs/master/data/sample.zip',
   ];
   public headers: any;
 

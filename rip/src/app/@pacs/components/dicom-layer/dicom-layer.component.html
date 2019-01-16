@@ -1,7 +1,7 @@
-<nb-card [size]="'large'" >
+<nb-card [size]="'large'">
     <nb-card-header>{{'Dicom File'}}</nb-card-header>
     <nb-card-body>
-        <div class="imageCard">
+        <div class="imageCard" [nbSpinner]="progress" nbSpinnerStatus="success" nbSpinnerSize="xlarge" nbSpinnerMessage="">
             <div id="dwv" class="dwv">
                 <div class="layerContainer">
                     <div class="dropBox">{{(urls)?'':'Drag and drop file here.'}}</div>

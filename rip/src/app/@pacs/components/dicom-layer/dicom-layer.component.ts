@@ -179,6 +179,7 @@ export class DicomLayerComponent implements OnInit, OnDestroy {
   public isDraw: boolean = false;
   public isFilter: boolean = false;
   public loadProgress: number = 0;
+  public progress: boolean = false;
   public dataLoaded: boolean = false;
   public versions: any;
   private dwvApp: any;
@@ -196,11 +197,13 @@ export class DicomLayerComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     const tools = [];
     const shapes = [];
+    const self = this;
     this.tools.forEach(tool => { tools.push(tool.key); });
     this.shapes.forEach(shape => { shapes.push(shape.key); });
+    if (!this.loaders.includes('File'))
+      document.getElementsByClassName('dropBox').item(0).remove();
     // create app
     this.dwvApp = new dwv.App();
-    this.dwvApp.reset();
     // initialise app
     this.dwvApp.init({
       'containerDivId': 'dwv',
@@ -210,14 +213,18 @@ export class DicomLayerComponent implements OnInit, OnDestroy {
       'isMobile': true,
       'helpResourcesPath': 'resources/help',
     });
+    if (this.urls) {
+      this.dwvApp.onInputURLs(this.urls, this.headers);
+      self.progress = true;
+    }
     // progress
-    const self = this;
+    this.dwvApp.addEventListener('load-start', function () {
+      self.progress = true;
+    });
     this.dwvApp.addEventListener('load-progress', function (event) {
       self.loadProgress = event.loaded;
     });
-    if (this.urls)
-      this.dwvApp.loadURLs(this.urls, this.headers);
-    this.dwvApp.addEventListener('load-end', function (event) {
+    this.dwvApp.addEventListener('load-end', function () {
       document.querySelectorAll('div.infoLayer > div > ul').forEach((info: HTMLElement) => {
         info.style.listStyleType = 'none';
         info.style.padding = '0';
@@ -225,14 +232,17 @@ export class DicomLayerComponent implements OnInit, OnDestroy {
       });
       // set data loaded flag
       self.dataLoaded = true;
+      self.progress = false;
       // set dicom tags
       self.tags = self.dwvApp.getTags();
       self.metadata.emit(self.tags);
       // set the selected tool
       if (self.dwvApp.isMonoSliceData() && self.dwvApp.getImage().getNumberOfFrames() === 1) {
         self.selectedTool = 'Zoom And Pan';
-        self.tools.shift();
-        self.hasShift = true;
+        if (self.tools[0].key == 'Scroll') {
+          self.tools.shift();
+          self.hasShift = true;
+        }
         self.cdRef.detectChanges();
       } else {
         if (self.hasShift) {
@@ -246,7 +256,19 @@ export class DicomLayerComponent implements OnInit, OnDestroy {
         self.cdRef.detectChanges();
         self.selectedTool = 'Scroll';
       }
+      const div = self.dwvApp.getElement("layerContainer");
+      div.addEventListener('drop', function () {
+        self.progress = false;
+      });
+      div.addEventListener('dragover', function () {
+        self.dwvApp.reset(()=>{});
+      });
     });
+    if (self.dwvApp.getElement("dropBox")) {
+      self.dwvApp.getElement("dropBox").addEventListener('drop', function () {
+        self.progress = false;
+      });
+    }
   }
 
   onChangeTool(tool): void {
