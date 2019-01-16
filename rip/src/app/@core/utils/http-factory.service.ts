@@ -9,6 +9,14 @@ export interface HttpFactoryService {
         body?: any,
         headers?: HttpHeaders,
         params?: HttpParams,
+        pathVariable?: string[],
+        responseType?: any): Observable<any>;
+
+    DOWNLOAD(
+        api: HttpBaseModel,
+        body?: any,
+        headers?: HttpHeaders,
+        params?: HttpParams,
         pathVariable?: string[]): Observable<any>;
 
 }

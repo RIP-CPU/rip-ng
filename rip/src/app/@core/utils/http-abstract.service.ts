@@ -10,6 +10,13 @@ export abstract class HttpAbstractService implements HttpFactoryService {
     body?: any,
     headers?: HttpHeaders,
     params?: HttpParams,
+    pathVariable?: string[],
+    responseType?: any): Observable<any>;
+  public abstract DOWNLOAD(
+    api: HttpBaseModel,
+    body?: any,
+    headers?: HttpHeaders,
+    params?: HttpParams,
     pathVariable?: string[]): Observable<any>;
   public abstract HTTP_GET(url: string, headers?: HttpHeaders): Observable<any>;
   public abstract HTTP_POST(url: string, body: any, headers?: HttpHeaders): Observable<any>;
@@ -27,24 +34,6 @@ export abstract class HttpAbstractService implements HttpFactoryService {
         url = url + '/' + path;
       });
     return url;
-  }
-
-  protected errorHandler = (error) => {
-    let errorMsg: string = 'Internal Server Error';
-    switch (error.status) {
-      case 404:
-        errorMsg = 'Page Not Found';
-        break;
-      case 400:
-        errorMsg = 'Bad Credentials';
-        break;
-      case 401:
-        errorMsg = 'Unauthorized';
-        break;
-      default:
-        break;
-    }
-    return Observable.throw(errorMsg);
   }
 
 }

@@ -17,11 +17,12 @@ export class HttpCommonService extends HttpAbstractService {
                       body?: any,
                       headers?: HttpHeaders,
                       params?: HttpParams,
-                      pathVariable?: string[]): Observable<any> {
+                      pathVariable?: string[],
+                      responseType?: 'json'): Observable<any> {
     let response: Observable<any> = null;
     switch (api.method) {
       case HttpMethod.POST:
-        response = this.HTTP_POST(this.getAPI(api, pathVariable), body, headers, params);
+        response = this.HTTP_POST(this.getAPI(api, pathVariable), body, headers, params, responseType);
         break;
       case HttpMethod.PUT:
         response = this.HTTP_PUT(this.getAPI(api, pathVariable), body, headers, params);
@@ -30,26 +31,43 @@ export class HttpCommonService extends HttpAbstractService {
         response = this.HTTP_DELETE(this.getAPI(api, pathVariable), headers, params);
         break;
       default:
-        response = this.HTTP_GET(this.getAPI(api, pathVariable), headers, params);
+        response = this.HTTP_GET(this.getAPI(api, pathVariable), headers, params, responseType);
         break;
     }
     return response;
   }
 
-  public HTTP_GET(url: string, headers?: HttpHeaders, params?: HttpParams): Observable<any> {
-      return this.http.get(url, {headers: headers, params: params}).catch(this.errorHandler);
+  public DOWNLOAD(api: HttpBaseModel,
+    body?: any,
+    headers?: HttpHeaders,
+    params?: HttpParams,
+    pathVariable?: string[]): Observable<any> {
+    let response: Observable<any> = null;
+    switch (api.method) {
+      case HttpMethod.POST:
+        response = this.HTTP_POST(this.getAPI(api, pathVariable), body, headers, params, 'arraybuffer');
+        break;
+      default:
+        response = this.HTTP_GET(this.getAPI(api, pathVariable), headers, params, 'arraybuffer');
+        break;
+    }
+    return response;
   }
 
-  public HTTP_POST(url: string, body: any, headers?: HttpHeaders, params?: HttpParams): Observable<any> {
-      return this.http.post(url, body, {headers: headers, params: params}).catch(this.errorHandler);
+  public HTTP_GET(url: string, headers?: HttpHeaders, params?: HttpParams, responseType?: any): Observable<any> {
+      return this.http.get(url, {headers: headers, params: params, responseType});
+  }
+
+  public HTTP_POST(url: string, body: any, headers?: HttpHeaders, params?: HttpParams, responseType?: any): Observable<any> {
+      return this.http.post(url, body, {headers: headers, params: params, responseType});
   }
 
   public HTTP_PUT(url: string, body: any, headers?: HttpHeaders, params?: HttpParams): Observable<any> {
-      return this.http.put(url, body, {headers: headers, params: params}).catch(this.errorHandler);
+      return this.http.put(url, body, {headers: headers, params: params});
   }
 
   public HTTP_DELETE(url: string, headers?: HttpHeaders, params?: HttpParams): Observable<any> {
-      return this.http.delete(url, {headers: headers, params: params}).catch(this.errorHandler);
+      return this.http.delete(url, {headers: headers, params: params});
   }
 
 }

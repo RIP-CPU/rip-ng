@@ -4,6 +4,12 @@ export interface HttpBaseModel {
     port?: number | null;
     path?: string;
     method?: HttpMethod;
+    file?: FileModel;
+}
+
+export interface FileModel {
+    filename: string;
+    extension: string;
 }
 
 export enum HttpMethod {

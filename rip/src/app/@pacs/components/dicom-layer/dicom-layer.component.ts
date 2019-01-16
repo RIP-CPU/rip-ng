@@ -1,9 +1,15 @@
-import { Component, OnInit, Input, ChangeDetectorRef, OnDestroy, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, ChangeDetectorRef, OnDestroy, Output, EventEmitter, Inject } from '@angular/core';
 import { VERSION } from '@angular/core';
 import { MatDialog } from '@angular/material';
 import * as dwv from 'dwv';
 import * as overlays from 'dwv/locales/en/overlays.json';
 import { TagsDialogComponent } from '../tags-dialog/tags-dialog.component';
+import { HTTP_SERVICE } from '../../../@core/core.provider';
+import { HttpFactoryService } from '../../../@core/utils/http-factory.service';
+import { HttpBaseModel } from '../../../@core/models/http-base.model';
+import { HttpHeaders } from '@angular/common/http';
+import { NotificationService } from '../../../@core/utils/notification.service';
+import { NbToastStatus } from '@nebular/theme/components/toastr/model';
 declare var $: any;
 
 // gui overrides
@@ -170,8 +176,8 @@ export class DicomLayerComponent implements OnInit, OnDestroy {
     [
       'File', 'Url',
     ];
-  @Input() public urls: string[];
-  @Input() public headers: any;
+  @Input() public url: HttpBaseModel;
+  @Input() public zip: false;
   @Output() public metadata: EventEmitter<any> = new EventEmitter();
   public selectedTool: string;
   public selectedShape: string;
@@ -185,7 +191,9 @@ export class DicomLayerComponent implements OnInit, OnDestroy {
   private dwvApp: any;
   private tags: any[];
 
-  constructor(public dialog: MatDialog, protected cdRef: ChangeDetectorRef) {
+  constructor(public dialog: MatDialog, protected cdRef: ChangeDetectorRef,
+    @Inject(HTTP_SERVICE)private httpBaseService: HttpFactoryService,
+    private notification: NotificationService) {
     this.versions = {
       'dwv': dwv.getVersion(),
       'angular': VERSION.full,
@@ -213,9 +221,21 @@ export class DicomLayerComponent implements OnInit, OnDestroy {
       'isMobile': true,
       'helpResourcesPath': 'resources/help',
     });
-    if (this.urls) {
-      this.dwvApp.onInputURLs(this.urls, this.headers);
+    if (this.url) {
       self.progress = true;
+      this.httpBaseService.DOWNLOAD(this.url).toPromise()
+      .then((response) => {
+        let images = [{
+          name: this.url.file.filename,
+          filename: this.url.file.filename + this.url.file.extension,
+          data: response,
+        }];
+        this.dwvApp.loadImageObject(images);
+        self.progress = false;
+      }).catch((error) => {
+        if (error === 'Page Not Found')
+          this.notification.show('DICOM', 'File Not Found', NbToastStatus.DANGER);
+      });
     }
     // progress
     this.dwvApp.addEventListener('load-start', function () {

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpBaseModel } from '../../../@core/models/http-base.model';
+import { API } from '../../../config/api.config';
 
 @Component({
   selector: 'dicom-viewer-archive',
@@ -10,10 +12,7 @@ export class DicomViewerArchiveComponent implements OnInit {
   public loaders: string[] = [
       'Url',
   ];
-  public urls: string[] = [
-    'https://raw.githubusercontent.com/RIP-CPU/rip-pacs/master/data/sample.zip',
-  ];
-  public headers: any;
+  public url: HttpBaseModel = API['pacs']['sample'];
 
   ngOnInit() {
   }

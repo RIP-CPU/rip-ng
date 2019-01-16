@@ -19,6 +19,18 @@ export const API: APIModel = {
             path: '',
         },
     },
+    pacs: {
+        sample: {
+            protocol: 'https',
+            host: 'raw.githubusercontent.com',
+            method: HttpMethod.GET,
+            path: '/RIP-CPU/rip-pacs/master/data/sample.zip',
+            file: {
+                filename : 'sample',
+                extension : '.zip',
+            },
+        },
+    },
     sample: {
         get: {
             protocol: 'http',
