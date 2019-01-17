@@ -121,7 +121,7 @@ export class DicomImageLayerComponent implements OnInit, OnDestroy {
   public revealed: boolean = false;
   public versions: any;
   private dwvApp: any;
-  private state: any;
+  // private state: any;
   private tags: any[];
 
   constructor(protected cdRef: ChangeDetectorRef,
@@ -146,7 +146,7 @@ export class DicomImageLayerComponent implements OnInit, OnDestroy {
       document.getElementsByClassName('dropBox').item(0).remove();
     // create app
     this.dwvApp = new dwv.App();
-    this.state = new dwv.State();
+    // this.state = new dwv.State();
     // initialise app
     this.dwvApp.init({
       'containerDivId': 'dwv',
@@ -192,7 +192,7 @@ export class DicomImageLayerComponent implements OnInit, OnDestroy {
         self.progress = false;
       });
     }
-    //console.log(self.state.toJSON(self.dwvApp));
+    // self.state.toJSON(self.dwvApp));
   }
 
   onChangeTool(tool): void {

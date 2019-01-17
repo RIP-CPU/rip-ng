@@ -87,12 +87,12 @@ export class DicomLayerComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {}
   ngOnInit(): void {}
 
-  onTags(tags){
+  onTags(tags) {
     this.tags = tags;
     this.metadata.emit(tags);
   }
 
-  onLoadedEnd(){
+  onLoadedEnd() {
     this.resize = 'large';
   }
 
