@@ -1,4 +1,7 @@
 <dicom-layer
     [loaders]="loaders"
-    [url]="url">
+    [url]="url"
+    [(onState)]="stateTrigger"
+    (getState)="onGetState($event)"
+    [(doState)]="stateData">
 </dicom-layer>

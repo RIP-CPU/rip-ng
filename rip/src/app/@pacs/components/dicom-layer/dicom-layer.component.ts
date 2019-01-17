@@ -80,6 +80,15 @@ export class DicomLayerComponent implements OnInit, OnDestroy {
   @Input() public url: HttpBaseModel;
   @Input() public zip: boolean = false;
   @Output() public metadata: EventEmitter<any> = new EventEmitter();
+  @Output() public getState: EventEmitter<boolean> = new EventEmitter();
+  @Input('onState') public set onState(data: any) {
+    this.stateTrigger = data;
+  }
+  @Input('doState') public set doState(data: any) {
+    this.stateData = data;
+  }
+  public stateTrigger: any;
+  public stateData: any;
   public revealed: boolean = false;
   public resize: string = 'medium';
   public tags: any[];
@@ -94,6 +103,10 @@ export class DicomLayerComponent implements OnInit, OnDestroy {
 
   onLoadedEnd() {
     this.resize = 'large';
+  }
+
+  onSaveState(state) {
+    this.getState.emit(state);
   }
 
   toggleView(): void {

@@ -110,18 +110,25 @@ export class DicomImageLayerComponent implements OnInit, OnDestroy {
   @Input() public zip: boolean;
   @Output() public metadata: EventEmitter<any> = new EventEmitter();
   @Output() public dataLoaded: EventEmitter<boolean> = new EventEmitter();
+  @Output() public getState: EventEmitter<boolean> = new EventEmitter();
+  @Input() public set onState(data: any) {
+    if (this.dwvApp && this.stateApp)
+      this.getState.emit(this.stateApp.toJSON(this.dwvApp));
+  }
+  @Input() public set doState(data: any) {
+    if (data)
+      this.stateData = data;
+  }
   public selectedTool: string;
-  public selectedShape: string;
   public hasShift: boolean = false;
-  public isDraw: boolean = false;
-  public isFilter: boolean = false;
   public loaded: boolean = false;
   public loadProgress: number = 0;
   public progress: boolean = false;
   public revealed: boolean = false;
   public versions: any;
   private dwvApp: any;
-  // private state: any;
+  private stateApp: any;
+  private stateData: any;
   private tags: any[];
 
   constructor(protected cdRef: ChangeDetectorRef,
@@ -146,7 +153,7 @@ export class DicomImageLayerComponent implements OnInit, OnDestroy {
       document.getElementsByClassName('dropBox').item(0).remove();
     // create app
     this.dwvApp = new dwv.App();
-    // this.state = new dwv.State();
+    this.stateApp = new dwv.State();
     // initialise app
     this.dwvApp.init({
       'containerDivId': 'dwv',
@@ -179,6 +186,8 @@ export class DicomImageLayerComponent implements OnInit, OnDestroy {
     });
     this.dwvApp.addEventListener('load-end', function () {
       self.onLoadEnd();
+      if (self.dwvApp && self.stateApp && self.stateData)
+        self.stateApp.apply(self.dwvApp, self.stateApp.fromJSON(self.stateData));
       const div = self.dwvApp.getElement('layerContainer');
       div.addEventListener('drop', function () {
         self.progress = false;
@@ -192,16 +201,10 @@ export class DicomImageLayerComponent implements OnInit, OnDestroy {
         self.progress = false;
       });
     }
-    // self.state.toJSON(self.dwvApp));
   }
 
   onChangeTool(tool): void {
     if (this.dwvApp) {
-      this.isDraw = tool.key.includes('Draw');
-      if (this.isDraw) {
-        this.selectedShape = 'Ruler';
-        this.cdRef.detectChanges();
-      }
       this.dwvApp.onChangeTool(
         {
           currentTarget: {
@@ -213,6 +216,12 @@ export class DicomImageLayerComponent implements OnInit, OnDestroy {
 
   onChangeShape(shape): void {
     if (this.dwvApp) {
+      this.dwvApp.onChangeTool(
+        {
+          currentTarget: {
+            value: 'Draw',
+          },
+        });
       this.dwvApp.onChangeShape(
         {
           currentTarget: {

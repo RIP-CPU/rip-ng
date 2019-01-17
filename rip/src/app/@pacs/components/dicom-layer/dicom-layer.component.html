@@ -7,6 +7,9 @@
                 [loaders]="loaders"
                 [url]="url"
                 [zip]="zip"
+                [(onState)]="stateTrigger"
+                [(doState)]="stateData"
+                (getState)="onSaveState($event)"
                 (metadata)="onTags($event)"
                 (dataLoaded)="onLoadedEnd()">
             </dicom-image-layer>
