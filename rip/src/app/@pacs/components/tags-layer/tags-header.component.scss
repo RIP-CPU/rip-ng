@@ -1,0 +1,22 @@
+@import '../../../@theme/styles/themes';
+@import '~bootstrap/scss/mixins/breakpoints';
+@import '~@nebular/theme/styles/global/breakpoints';
+@import '~@nebular/theme/components/card/card.component.theme';
+
+@include nb-install-component() {
+
+  span.title-header {
+    padding-bottom: 0.675rem;
+    padding-top: 0.5rem;
+  }
+ 
+  nb-card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.675rem 4rem 0.5rem 1.25rem;
+    @include nb-rtl(padding-right, 1.25rem);
+    @include nb-rtl(padding-left, 4rem);
+  }
+
+}

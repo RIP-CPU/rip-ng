@@ -1,0 +1,278 @@
+@import '../../../@theme/styles/themes';
+@import '~bootstrap/scss/mixins/breakpoints';
+@import '~@nebular/theme/styles/global/breakpoints';
+
+@include nb-install-component() {
+
+  nb-card-body {
+    display: flex;
+    height: 100%;
+    padding: 0;
+  }
+
+  nb-card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.675rem 4rem 0.5rem 1.25rem;
+    @include nb-rtl(padding-right, 1.25rem);
+    @include nb-rtl(padding-left, 4rem);
+  }
+
+  nb-card-back {
+    /deep/ nb-card-header {
+      border: none;
+    }
+  }
+
+  nb-select {
+    display: block;
+    width: 15rem;
+  }
+
+  span.title-header {
+    padding-bottom: 0.675rem;
+    padding-top: 0.5rem;
+  }
+
+  .select-group {
+    nb-select {
+      margin-right: 0.75rem;
+      margin-bottom: 1rem;
+    }
+  }
+
+  .imageCard {
+    display: block;
+    width: 100%;
+  }
+
+  nb-select {
+    display: block;
+    width: 15rem;
+  }
+
+  .select-group {
+    nb-select {
+      margin-right: 0.75rem;
+      margin-bottom: 1rem;
+    }
+  }
+
+  .dwv {
+    font-family: Exo;
+    height: 500px;
+    margin: 0.75rem 0;
+  }
+  
+  .button-row {
+    text-align: center;
+    padding: 5px;
+  }
+  .mat-raised-button {
+    margin: 0.1em;
+  }
+  .legend {
+    text-align: center;
+    font-size: 8px;
+    margin: 1em;
+  }
+
+  /* Layers */
+  .layerContainer {
+    position:relative;
+    padding: 0;
+    margin: auto;
+    text-align: center;
+  }
+  .imageLayer {
+    position:absolute;
+    left: 0;
+  }
+  .drawDiv {
+      position: absolute;
+      pointer-events: none;
+  }
+
+  /* drag&drop */
+  .dropBox {
+    border: 5px dashed #ccc;
+    margin: auto;
+    text-align: center;
+    vertical-align: middle;
+    background: white;
+    color: grey;
+    padding: 14% 7%;
+  }
+  .dropBox.hover { border: 5px dashed #cc0;}
+  /* toolbar */
+  .toolList ul {
+    padding: 0;
+  }
+  .toolList li {
+    list-style-type: none;
+  }
+  
+  /* info */
+  .infoLayer {
+    margin: 0;
+    color: #ababab;
+    font-size: 75%;
+  }
+  .infoLayer canvas {
+    margin: 0;
+    padding: 2px;
+  }
+  .info {
+    color: #fff;
+    font-size: 70%;
+  }
+  .infoc {
+    color: #ff0;
+    font-size: 80%;
+  }
+  .infotl {
+    position: absolute;
+    top: 0;
+    left: 0;
+    text-align: left;
+    margin: 7px 0 0 7px;
+  }
+  .infotc {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    right: 50%;
+    text-align: center;
+    margin: 7px 0 0;
+  }
+  .infotr {
+    position: absolute;
+    top: 0;
+    right: 0;
+    text-align: right;
+    margin: 7px 7px 0 0;
+  }
+  .infocl {
+    position: absolute;
+    bottom: 50%;
+    left: 0;
+    text-align: left;
+    margin: 0 0 0 7px;
+  }
+  .infocr {
+    position: absolute;
+    bottom: 50%;
+    right: 2px;
+    text-align: right;
+    margin: 0;
+  }
+  .infobl {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    text-align: left;
+    margin: 0 0 7px 7px;
+  }
+  .infobc {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    right: 50%;
+    text-align: center;
+    margin: 0;
+  }
+  .infobr {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    text-align: right;
+    margin: 0 7px 60px 0;
+  }
+
+  .plot {
+    position: absolute;
+    width: 100px;
+    height: 50px;
+    bottom: 5px;
+    right: 0;
+  }
+  /* tag list */
+  table.tagsTable {
+    border-collapse: collapse;
+  }
+  table.tagsTable thead th {
+    text-transform: uppercase;
+    font-weight: bold;
+    opacity: 0.5;
+  }
+  table.tagsTable tr:nth-child(even) {
+    background-color: #333;
+  }
+  table.drawsTable {
+    border-collapse: collapse;
+  }
+  table.drawsTable td {
+    vertical-align: middle;
+  }
+  table.drawsTable thead th {
+    text-transform: uppercase;
+    font-weight: bold;
+    opacity: 0.5;
+  }
+  .highlighted {
+    background: #f87217;
+  }
+  .tags form {
+    width: 50%;
+  }
+
+  /* draw list */
+  .drawList tr:nth-child(even) {
+    background-color: #333;
+  }
+  /* history list */
+  .history_list {
+    width: 100%;
+  }
+  /* help */
+  .ui-icon {
+    zoom: 125%;
+  }
+
+  @include media-breakpoint-down(sm) {
+    nb-card-body {
+      flex-direction: column;
+    }
+    .imageCard {
+      width: 100%;
+      height: 100%;
+    }
+    .dwv {
+      margin: 0;
+    }
+    .dropBox {
+      padding: 22% 0;
+    }
+  }
+
+  @include media-breakpoint-down(xs) {
+    .imageCard {
+      width: 100%;
+      height: 90%;
+    }
+    .dropBox {
+      padding: 28% 0;
+    }
+  }
+
+  @include media-breakpoint-down(is) {
+    .imageCard {
+      width: 100%;
+      height: 73%;
+    }
+    .dropBox {
+      padding: 33% 0;
+    }
+  }
+}

@@ -1,0 +1,81 @@
+@import '../../../@theme/styles/themes';
+@import '~@nebular/theme/components/card/card.component.theme';
+@import '~@nebular/theme/styles/global/typography/typography';
+@import '~bootstrap/scss/mixins/breakpoints';
+@import '~@nebular/theme/styles/global/breakpoints';
+
+@include nb-install-component() {
+  overflow: auto;
+
+  nb-card-body {
+    display: flex;
+    height: 576px;
+    padding: 0;
+  }
+
+  .tags {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+  }
+
+  .tags li {
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    position: relative;
+    color: nb-theme(color-fg);
+    padding: nb-theme(card-padding);
+    border-bottom:
+      nb-theme(list-item-border-width)
+      nb-theme(card-header-border-type)
+      nb-theme(separator);
+
+    &:first-child {
+      border-top:
+        nb-theme(list-item-border-width)
+        nb-theme(card-header-border-type)
+        nb-theme(separator);
+    }
+
+    &:hover {
+      background-color: nb-theme(layout-bg);
+
+      &::before {
+        position: absolute;
+        content: '';
+        height: 100%;
+        width: 6px;
+        left: 0;
+        top: 0;
+        background-color: nb-theme(color-success);
+        border-radius: nb-theme(radius);
+      }
+    }
+  }
+
+  .title, .tag-name, .tag-value {
+    font-size: 1rem;
+  }
+
+  .title {
+    font-weight: bold;
+  }
+
+  @include media-breakpoint-down(sm) {
+    nb-card-body {
+      flex-direction: column;
+      height: 450px;
+    }
+
+    .title, .tag-name, .tag-value {
+      font-size: 0.75rem;
+    }
+
+    .tags {
+      width: 150%;
+    }
+  }
+
+}

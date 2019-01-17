@@ -1,35 +1,22 @@
-<nb-card [size]="'large'">
-    <nb-card-header>{{'Dicom File'}}</nb-card-header>
-    <nb-card-body>
-        <div class="imageCard" [nbSpinner]="progress" nbSpinnerStatus="success" nbSpinnerSize="xlarge" nbSpinnerMessage="">
-            <div id="dwv" class="dwv">
-                <div class="layerContainer">
-                    <div class="dropBox">{{(urls)?'':'Drag and drop file here.'}}</div>
-                    <canvas class="imageLayer"></canvas>
-                    <div class="drawDiv"></div>
-                    <div class="infoLayer">
-                        <div class="infotl"></div>
-                        <div class="infotc"></div>
-                        <div class="infotr"></div>
-                        <div class="infocl"></div>
-                        <div class="infocr"></div>
-                        <div class="infobl"></div>
-                        <div class="infobc"></div>
-                        <div class="infobr"></div>
-                        <div class="plot"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="infoCard">
-            <div class="select-group" *ngIf="dataLoaded">
-                <nb-select placeholder="- Select Tool -" status="success" [(selected)]="selectedTool">
-                    <nb-option *ngFor="let tool of tools" value="tool.key" [disabled]="tool.disabled" (selectionChange)="onChangeTool(tool)" [value]="tool.value">{{tool.value}}</nb-option>
-                </nb-select>
-                <nb-select placeholder="- Select Shape -" status="success" [(selected)]="selectedShape" *ngIf="isDraw">
-                    <nb-option *ngFor="let shape of shapes" value="shape.key" [disabled]="shape.disabled" (selectionChange)="onChangeShape(shape)" [value]="shape.value">{{shape.value}}</nb-option>
-                </nb-select>
-            </div>
-        </div>
-    </nb-card-body>
-</nb-card>
+<nb-reveal-card [showToggleButton]="false" [revealed]="revealed">
+    <nb-card-front>
+        <nb-card [size]="resize">
+            <dicom-image-layer
+                [tools]="tools"
+                [shapes]="shapes"
+                [loaders]="loaders"
+                [url]="url"
+                [zip]="zip"
+                (metadata)="onTags($event)"
+                (dataLoaded)="onLoadedEnd()">
+            </dicom-image-layer>
+            <i class="nb-arrow-up" (click)="toggleView()"></i>
+        </nb-card>
+    </nb-card-front>
+    <nb-card-back>
+        <nb-card [size]="resize">
+            <tags-layer [tags]="tags"></tags-layer>
+            <i class="nb-arrow-down" (click)="toggleView()"></i>
+        </nb-card>
+    </nb-card-back>
+</nb-reveal-card>

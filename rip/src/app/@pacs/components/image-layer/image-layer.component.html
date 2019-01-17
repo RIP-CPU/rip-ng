@@ -1,0 +1,31 @@
+<nb-card-header>
+    <span class="title-header">{{'Dicom'}}</span>
+    <nb-select placeholder="- Select Tool -" status="success" [(selected)]="selectedTool" *ngIf="loaded">
+        <nb-option *ngFor="let tool of tools" value="tool.key" [disabled]="tool.disabled" (selectionChange)="onChangeTool(tool)" [value]="tool.value">{{tool.value}}</nb-option>
+        <nb-option-group [ngStyle]="{'padding': '0 1rem'}" title="Draw" class="deep">
+            <nb-option [ngStyle]="{'padding': '0.75rem 1.5rem'}" *ngFor="let shape of shapes" value="shape.key" [disabled]="shape.disabled" (selectionChange)="onChangeShape(shape)" [value]="shape.value">{{shape.value}}</nb-option>
+        </nb-option-group>
+    </nb-select>
+</nb-card-header>
+<nb-card-body>
+    <div class="imageCard" [nbSpinner]="progress" nbSpinnerStatus="success" nbSpinnerSize="xlarge" nbSpinnerMessage="">
+        <div id="dwv" class="dwv">
+            <div class="layerContainer">
+                <div class="dropBox">{{(url)?'':'Drag and drop file here.'}}</div>
+                <canvas class="imageLayer"></canvas>
+                <div class="drawDiv"></div>
+                <div class="infoLayer">
+                    <div class="infotl"></div>
+                    <div class="infotc"></div>
+                    <div class="infotr"></div>
+                    <div class="infocl"></div>
+                    <div class="infocr"></div>
+                    <div class="infobl"></div>
+                    <div class="infobc"></div>
+                    <div class="infobr"></div>
+                    <div class="plot"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</nb-card-body>

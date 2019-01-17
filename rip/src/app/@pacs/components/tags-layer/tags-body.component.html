@@ -1,0 +1,20 @@
+<nb-card-body>
+    <ul class="tags">
+        <li>
+            <div class="tag-name">
+                <div class="title">Name</div>
+            </div>
+            <div class="tag-value">
+                <div class="title">Value</div>
+            </div>          
+        </li>
+        <li *ngFor="let tag of tags">
+            <div class="tag-name">
+                {{ tag.name }}
+            </div>
+            <div class="tag-value">
+                {{ tag.value }}
+            </div>
+        </li>
+    </ul>
+</nb-card-body>
