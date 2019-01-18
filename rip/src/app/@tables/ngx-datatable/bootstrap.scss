@@ -25,7 +25,7 @@ bootstrap table theme
       }
       &.active {
         background-color: #1483ff;
-        color: #FFF;
+        color: #fff;
       }
       .datatable-body-cell {
         padding: 0.75rem;
@@ -55,7 +55,7 @@ bootstrap table theme
       vertical-align: top;
       ul {
         li {
-          margin: 10px 0px;
+          margin: 10px 0;
           &:not(.disabled) {
             &.active,
             &:hover {
@@ -75,7 +75,6 @@ bootstrap table theme
         border-radius: 3px;
         margin: 0 3px;
         text-align: center;
-        vertical-align: top;
         text-decoration: none;
         vertical-align: bottom;
         color: #ededed;
