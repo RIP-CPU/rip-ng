@@ -6,6 +6,7 @@ import { DashboardPageComponent } from './pages/dashboard-page.component';
 import { NgxEchartsModule } from 'ngx-echarts';
 import { CommonSharedModule } from '../@common/common.module';
 import { ChartSharedModule } from '../@charts/chart-shared.module';
+import { TablesModule } from '../@tables/tables.module';
 
 const components = [
     DashboardComponent,
@@ -29,6 +30,7 @@ const routes: Routes = [{
     NgxEchartsModule,
     CommonSharedModule,
     ChartSharedModule,
+    TablesModule,
     RouterModule.forChild(routes),
   ],
   declarations: [

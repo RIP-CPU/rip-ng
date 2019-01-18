@@ -1,0 +1,8 @@
+@import '../../@theme/styles/themes';
+@import '~@swimlane/ngx-datatable/release/index.css';
+@import '~@swimlane/ngx-datatable/release/themes/material.css';
+@import '~@swimlane/ngx-datatable/release/assets/icons.css';
+@import './material.scss';
+
+@include nb-install-component() {
+}
