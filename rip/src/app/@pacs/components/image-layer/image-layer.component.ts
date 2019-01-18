@@ -116,8 +116,9 @@ export class DicomImageLayerComponent implements OnInit, OnDestroy {
       this.getState.emit(this.stateApp.toJSON(this.dwvApp));
   }
   @Input() public set doState(data: any) {
-    if (data)
-      this.stateData = data;
+    this.stateData = data;
+    if (data && this.dwvApp && this.stateApp && this.loaded)
+      this.stateApp.apply(this.dwvApp, this.stateApp.fromJSON(data));
   }
   public selectedTool: string;
   public hasShift: boolean = false;
