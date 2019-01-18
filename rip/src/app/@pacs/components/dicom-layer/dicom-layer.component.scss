@@ -20,7 +20,25 @@
     cursor: pointer;
   }
 
+  @include media-breakpoint-down(md) {
+    nb-card {
+      height: 576px;
+    }
+  }
+
   @include media-breakpoint-down(sm) {
+    nb-card {
+      height: 576px;
+    }
+  }
+
+  @include media-breakpoint-down(is) {
+    nb-card {
+      height: 450px;
+    }
+  }
+
+  @include media-breakpoint-down(xs) {
     nb-card {
       height: 450px;
     }
