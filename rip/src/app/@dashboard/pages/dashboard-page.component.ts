@@ -22,11 +22,10 @@ export class DashboardPageComponent {
   public columns: any[] = [
     { prop: 'name' },
     { name: 'Gender' },
-    { name: 'Company' }
+    { name: 'Company' },
   ];
 
   onSelect({ selected }) {
-    console.log('Select Event', selected, this.selected);
   }
 
 }

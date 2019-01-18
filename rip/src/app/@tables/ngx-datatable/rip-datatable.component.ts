@@ -51,7 +51,7 @@ export class RipDatatableComponent {
   @Input() public messages: any = {
     emptyMessage: 'No data to display',
     totalMessage: 'total',
-    selectedMessage: 'selected'
+    selectedMessage: 'selected',
   };
   public rowsVar: any[] = [];
   public limitVar: number = 10;
