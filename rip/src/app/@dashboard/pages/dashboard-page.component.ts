@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { SelectionType } from '@swimlane/ngx-datatable';
 
 @Component({
   selector: 'dashboard-page',
@@ -22,12 +23,13 @@ export class DashboardPageComponent {
     { name: 'Molly', gender: 'Female', company: 'Burger King' },
   ];
   public columns: any[] = [
-    { prop: 'name' },
-    { name: 'Gender' },
-    { name: 'Company' },
+    { prop: 'name', name: 'Name' },
+    { prop: 'gender', name: 'Gender' },
+    { prop: 'company', name: 'Company' },
   ];
+  public selectionType: SelectionType = SelectionType.multiClick;
 
-  onSelect({ selected }) {
+  onSelect(selected) {
   }
 
 }

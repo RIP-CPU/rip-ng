@@ -2,7 +2,7 @@ import { Component, ViewEncapsulation, Input, EventEmitter, Output } from '@angu
 import { SelectionType, ColumnMode, SortType } from '@swimlane/ngx-datatable';
 
 @Component({
-  selector: 'rip-datatable',
+  selector: 'rip-table',
   templateUrl: './rip-datatable.component.html',
   styleUrls: ['./rip-datatable.component.scss'],
   encapsulation: ViewEncapsulation.None,
@@ -14,6 +14,7 @@ export class RipDatatableComponent {
   @Output() public page: EventEmitter<any> = new EventEmitter();
   @Output() public reorder: EventEmitter<any> = new EventEmitter();
   @Output() public resize: EventEmitter<any> = new EventEmitter();
+  @Output() public edit: EventEmitter<any> = new EventEmitter();
   @Input() public columns: any[] = [];
   @Input() public loadingIndicator: boolean = false;
   @Input() public selected: any[] = [];
@@ -27,6 +28,7 @@ export class RipDatatableComponent {
   @Input() public externalSorting: boolean = false;
   @Input() public reorderable: boolean = true;
   @Input() public checkbox: boolean = false;
+  @Input() public selectAllRowsOnPage: boolean = false;
   @Input() public cssClasses: any = {
     sortAscending: 'datatable-icon-up',
     sortDescending: 'datatable-icon-down',
@@ -57,6 +59,12 @@ export class RipDatatableComponent {
   public limitVar: number = 10;
   public countVar: number = 0;
   public offsetVar: number = 0;
+
+  onActivate(event) {
+    if(event.type === 'dblclick') {
+      this.edit.emit(event.row);
+    }
+  }
 
   onSelect({ selected }) {
     this.select.emit(selected);

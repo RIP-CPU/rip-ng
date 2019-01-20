@@ -4,11 +4,15 @@
     </nb-card-header>
     <nb-card-body>
         <div>
-            <rip-datatable
+            <rip-table
               [selected]="selected"
               [rows]="rows"
-              [columns]="columns">
-            </rip-datatable>
+              [columns]="columns"
+              [selectionType]="selectionType"
+              [selectAllRowsOnPage]="true"
+              (select)="onSelect($event)"
+              [checkbox]="true">
+            </rip-table>
         </div>
     </nb-card-body>
 </nb-card>

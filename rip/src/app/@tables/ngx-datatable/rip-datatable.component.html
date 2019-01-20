@@ -7,6 +7,7 @@
     [offset]="offsetVar"
     [columnMode]="columnMode"
     [loadingIndicator]="loadingIndicator"
+    (activate)="onActivate($event)"
     [selected]="selected"
     [selectionType]="selectionType"
     (select)="onSelect($event)"
@@ -17,6 +18,7 @@
     (sort)="onSort($event)"
     [reorderable]="reorderable"
     (reorder)="onReorder($event)"
+    [selectAllRowsOnPage]="selectAllRowsOnPage"
     [scrollbarV]="scrollbarV"
     [scrollbarH]="scrollbarH"
     [messages]="messages"
@@ -25,4 +27,22 @@
     [headerHeight]="50"
     [footerHeight]="50"
     [rowHeight]="rowHeight">
+    <ngx-datatable-column
+      [width]="30"
+      [sortable]="false"
+      [canAutoResize]="false"
+      [draggable]="false"
+      [resizeable]="false"
+      [headerCheckboxable]="true"
+      [checkboxable]="checkbox"
+      *ngIf="checkbox">
+    </ngx-datatable-column>
+    <ngx-datatable-column *ngFor="let col of columns" [name]="col.name" [width]="col.width">
+        <ng-template let-column="column" ngx-datatable-header-template>
+            {{col.label ? col.label : col.name}}
+        </ng-template>
+        <ng-template let-value="value" let-row="row" ngx-datatable-cell-template>
+            {{value}}
+        </ng-template>
+    </ngx-datatable-column>
 </ngx-datatable>
