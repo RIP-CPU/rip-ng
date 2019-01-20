@@ -165,7 +165,7 @@
     bottom: 50%;
     right: 2px;
     text-align: right;
-    margin: 0;
+    margin: 0 7px 0 0;
   }
   .infobl {
     position: absolute;
@@ -180,7 +180,7 @@
     left: 50%;
     right: 50%;
     text-align: center;
-    margin: 0;
+    margin: 0 0 7px;
   }
   .infobr {
     position: absolute;
@@ -192,39 +192,10 @@
 
   .plot {
     position: absolute;
-    width: 100px;
+    width: 110px;
     height: 50px;
     bottom: 5px;
     right: 0;
-  }
-  /* tag list */
-  table.tagsTable {
-    border-collapse: collapse;
-  }
-  table.tagsTable thead th {
-    text-transform: uppercase;
-    font-weight: bold;
-    opacity: 0.5;
-  }
-  table.tagsTable tr:nth-child(even) {
-    background-color: #333;
-  }
-  table.drawsTable {
-    border-collapse: collapse;
-  }
-  table.drawsTable td {
-    vertical-align: middle;
-  }
-  table.drawsTable thead th {
-    text-transform: uppercase;
-    font-weight: bold;
-    opacity: 0.5;
-  }
-  .highlighted {
-    background: #f87217;
-  }
-  .tags form {
-    width: 50%;
   }
 
   /* draw list */

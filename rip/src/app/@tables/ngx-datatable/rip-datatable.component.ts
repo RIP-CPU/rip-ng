@@ -61,8 +61,14 @@ export class RipDatatableComponent {
   public offsetVar: number = 0;
 
   onActivate(event) {
-    if (event.type === 'dblclick') {
-      this.edit.emit(event.row);
+    if (this.selectionType === SelectionType.checkbox) {
+      if (event.type === 'click' && event.cellIndex > 0) {
+        this.edit.emit(event.row);
+      }
+    } else {
+      if (event.type === 'dblclick') {
+        this.edit.emit(event.row);
+      }
     }
   }
 

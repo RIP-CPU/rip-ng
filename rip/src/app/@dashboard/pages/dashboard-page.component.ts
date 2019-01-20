@@ -27,9 +27,12 @@ export class DashboardPageComponent {
     { prop: 'gender', name: 'Gender' },
     { prop: 'company', name: 'Company' },
   ];
-  public selectionType: SelectionType = SelectionType.multiClick;
+  public selectionType: SelectionType = SelectionType.checkbox;
 
   onSelect(selected) {
+  }
+
+  onEdit(data) {
   }
 
 }
