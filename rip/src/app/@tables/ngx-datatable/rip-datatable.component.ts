@@ -61,7 +61,7 @@ export class RipDatatableComponent {
   public offsetVar: number = 0;
 
   onActivate(event) {
-    if(event.type === 'dblclick') {
+    if (event.type === 'dblclick') {
       this.edit.emit(event.row);
     }
   }
