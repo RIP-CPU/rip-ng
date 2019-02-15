@@ -202,6 +202,7 @@ export class DicomImageLayerComponent implements OnInit, OnDestroy {
         self.progress = false;
       });
     }
+    this.cdRef.detectChanges();
   }
 
   onChangeTool(tool): void {

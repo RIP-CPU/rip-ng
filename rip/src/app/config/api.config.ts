@@ -8,7 +8,7 @@ export const API: APIModel = {
             host: 'localhost',
             port: 8085,
             method: HttpMethod.POST,
-            path: '/oauth/token',
+            path: '/rip/oauth/token',
         },
     },
     master: {
